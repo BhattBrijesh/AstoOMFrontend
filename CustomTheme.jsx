@@ -11,7 +11,7 @@ const CustomTheme = createTheme({
             secondary: '#6b7280', // Card content, submenu items
         },
         success: {
-            main: '#2e7d32', // Form success message
+            main: '#2e7d32',
         },
         error: {
             main: '#d32f2f',
