@@ -14,7 +14,7 @@ const CustomTheme = createTheme({
             main: '#2e7d32', // Form success message
         },
         error: {
-            main: '#d32f2f', // Form error message
+            main: '#d32f2f',
         },
     },
     typography: {
