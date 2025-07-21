@@ -152,10 +152,10 @@ const Home = () => {
                       alignContent: "center",
                       backgroundColor: "#fff",
                       height: { xs: "3.5rem", sm: "4rem" },
-                      width: { xs: "100%", sm: "auto", md: "15rem" },
+                      width: { xs: "200px", sm: "auto", md: "15rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
-                      ml: { xs: 0, sm: -2 },
+                      ml: { xs: 4, sm: -2 },
                       mt: { xs: 1, sm: 0 },
                     }}
                   >
@@ -210,10 +210,10 @@ const Home = () => {
                       alignContent: "center",
                       backgroundColor: "#fff",
                       height: { xs: "3.5rem", sm: "4rem" },
-                      width: { xs: "100%", sm: "auto", md: "16rem" },
+                      width: { xs: "210px", sm: "auto", md: "16rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
-                      ml: { xs: 0, sm: -2 },
+                      ml: { xs: 4, sm: -2 },
                       mt: { xs: 1, sm: 0 },
                     }}
                   >
@@ -268,10 +268,10 @@ const Home = () => {
                       alignContent: "center",
                       backgroundColor: "#fff",
                       height: { xs: "3.5rem", sm: "4rem" },
-                      width: { xs: "100%", sm: "auto", md: "17rem" },
+                      width: { xs: "230px", sm: "auto", md: "17rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
-                      ml: { xs: 0, sm: -2 },
+                      ml: { xs: 4, sm: -2 },
                       mt: { xs: 1, sm: 0 },
                     }}
                   >
