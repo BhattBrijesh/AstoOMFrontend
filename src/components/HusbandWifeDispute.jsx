@@ -18,7 +18,7 @@ import loveBanner from "../assets/images/5.png";
 
 const HusbandWifeDispute = () => {
   useEffect(() => {
-    document.title = "Husband Wife Dispute Solution | OM Astro Solution";
+    document.title = "Husband Wife Dispute Solution | Astro Om Solution";
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const HusbandWifeDispute = () => {
                       mb: 3,
                     }}
                   >
-                    Husband Wife Dispute Solution by Om Astro Solution
+                    Husband Wife Dispute Solution by Astro Om Solution
                   </Typography>
                   <Typography
                     variant="body1"

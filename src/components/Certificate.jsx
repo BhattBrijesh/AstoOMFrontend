@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const Certificate = () => {
   useEffect(() => {
-    document.title = "Certificate | OM Astro Solution";
+    document.title = "Certificate | Astro Om Solution";
   }, []);
 
   return (

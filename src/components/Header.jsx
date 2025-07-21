@@ -199,7 +199,7 @@ const Header = React.memo(() => {
           <Box sx={{ background: "transparent" }}>
             {/* <img
               src={logo}
-              alt="OM Astro Solution Logo"
+              alt="Astro Om Solution Logo"
               sx={{
                 width: "80px",
                 height: "80px",
@@ -301,7 +301,7 @@ const Header = React.memo(() => {
           <Box sx={{ background: "transparent" }}>
             {/* <img
               src={logo}
-              alt="OM Astro Solution Logo"
+              alt="Astro Om Solution Logo"
               sx={{
                 width: "80px",
                 height: "80px",

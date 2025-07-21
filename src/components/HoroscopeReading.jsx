@@ -15,7 +15,7 @@ import loveBanner from "../assets/images/6.png";
 
 const HoroscopeReading = () => {
   useEffect(() => {
-    document.title = "Horoscope Reading | OM Astro Solution";
+    document.title = "Horoscope Reading | Astro Om Solution";
   }, []);
 
   return (
@@ -48,7 +48,7 @@ const HoroscopeReading = () => {
                       mb: 3,
                     }}
                   >
-                    Horoscope Reading by Om Astro Solution
+                    Horoscope Reading by Astro Om Solution
                   </Typography>
                   <Typography
                     variant="body1"

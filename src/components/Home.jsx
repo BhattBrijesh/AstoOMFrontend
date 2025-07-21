@@ -18,7 +18,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "OM Astro Solution";
+    document.title = "Astro Om Solution";
   }, []);
   const containerVariants = {
     hidden: { opacity: 0 },

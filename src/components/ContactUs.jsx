@@ -109,7 +109,7 @@ const Contact = () => {
   const [formStatus, setFormStatus] = useState(null);
 
   useEffect(() => {
-    document.title = "Contact Us | OM Astro Solution";
+    document.title = "Contact Us | Astro Om Solution";
   }, []);
 
   const validateForm = useCallback(() => {

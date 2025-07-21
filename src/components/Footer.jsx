@@ -74,7 +74,7 @@ const Footer = () => {
           >
             <motion.div variants={cardVariants} whileHover="hover">
               <IconButton
-                href="https://www.facebook.com/omastroservice/"
+                href="https://www.facebook.com/profile.php?id=100069020956273"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}
@@ -101,7 +101,7 @@ const Footer = () => {
             </motion.div>
             <motion.div variants={cardVariants} whileHover="hover">
               <IconButton
-                href="https://www.instagram.com/omastroservice/"
+                href="https://www.instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}

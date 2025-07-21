@@ -66,10 +66,10 @@ const WelcomeAstro = () => {
           >
             <Typography variant="h4" component="h1">
               <span style={{ color: "#FFF" }}>Welcome to </span>
-              <span style={{ color: "#ff9800" }}>Om Astro Solution</span>
+              <span style={{ color: "#ff9800" }}>Astro Om Solution</span>
             </Typography>
             <Typography variant="body1" sx={{ color: "#FFF" }}>
-              Unlocking the Mysteries of the Cosmos with Om Astro Solution
+              Unlocking the Mysteries of the Cosmos with Astro Om Solution
             </Typography>
           </Box>
           <Grid
@@ -144,7 +144,7 @@ const WelcomeAstro = () => {
                       >
                         Consult{" "}
                         <span style={{ fontStyle: "italic" }}>
-                          Om Astro Solution
+                          Astro Om Solution
                         </span>
                       </Typography>
                       <Box
@@ -183,7 +183,7 @@ const WelcomeAstro = () => {
                 }}
               >
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  <b>Om Astro Solution a top astrologer in India</b>, with over
+                  <b>Astro Om Solution a top astrologer in India</b>, with over
                   a decade of experience. He specializes in Vedic astrology and
                   offers solutions for things like love problem solution, love
                   marriage problem, marriage problem solution, husband wife
@@ -191,7 +191,7 @@ const WelcomeAstro = () => {
                   helping with everyday life problems.
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  Om Astro Solution is dedicated to giving you genuine and
+                  Astro Om Solution is dedicated to giving you genuine and
                   highly accurate astrology services. People from all over the
                   world trust his services because they are dependable and in
                   line with their beliefs. Many individuals travel from faraway
@@ -200,7 +200,7 @@ const WelcomeAstro = () => {
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
                   If you want to ensure a bright future for yourself, reach out
-                  to the renowned astrologer Om Astro Solution today.
+                  to the renowned astrologer Astro Om Solution today.
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
                   <b>Connect with the Best Astrologer in India:</b>
@@ -208,7 +208,7 @@ const WelcomeAstro = () => {
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
                   When you require assistance in decoding planetary positions
                   and seeking solutions for your life's challenges, don't
-                  hesitate to reach out to Om Astro Solution. Our experienced
+                  hesitate to reach out to Astro Om Solution. Our experienced
                   astrologers in India are committed to providing you with
                   reliable and insightful astrological guidance.
                 </Typography>

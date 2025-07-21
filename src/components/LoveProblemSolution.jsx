@@ -18,7 +18,7 @@ import loveBanner from "../assets/images/1.png";
 
 const LoveProblemSolution = () => {
   useEffect(() => {
-    document.title = "Love Problem Solution | OM Astro Solution";
+    document.title = "Love Problem Solution | Astro Om Solution";
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const LoveProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Love Problem Solution by Om Astro Solution
+                    Love Problem Solution by Astro Om Solution
                   </Typography>
                   <Typography
                     variant="body1"

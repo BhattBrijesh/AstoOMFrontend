@@ -49,7 +49,7 @@ const MarriageProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Marriage Problem Solution by Om Astro Solution
+                    Marriage Problem Solution by Astro Om Solution
                   </Typography>
                   <Typography
                     variant="body1"
