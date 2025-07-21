@@ -4,7 +4,7 @@ import img1 from "../assets/images/ser-icon1.png";
 import img2 from "../assets/images/ser-icon2.png";
 import img3 from "../assets/images/ser-icon3.png";
 import img4 from "../assets/images/ser-icon4.png";
-import img5 from "../assets/images/timer_bg.webp";
+
 import { motion } from "framer-motion";
 
 const CounterItem = ({ target, label, icon }) => {

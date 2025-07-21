@@ -197,23 +197,7 @@ const Header = React.memo(() => {
       <Box>
         <DrawerHeader>
           <Box sx={{ background: "transparent" }}>
-            {/* <img
-              src={logo}
-              alt="Astro Om Solution Logo"
-              sx={{
-                width: "80px",
-                height: "80px",
-                objectFit: "cover",
-                borderRadius: theme.spacing(1),
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: theme.shadows[4],
-                },
-              }}
-              className="h-8"
-              loading="lazy"
-            /> */}
+
           </Box>
           <IconButton onClick={toggleDrawer(false)} aria-label="Close menu">
             <CloseIcon />
@@ -299,23 +283,7 @@ const Header = React.memo(() => {
         <StyledToolbar>
           {/* Logo/Brand */}
           <Box sx={{ background: "transparent" }}>
-            {/* <img
-              src={logo}
-              alt="Astro Om Solution Logo"
-              sx={{
-                width: "80px",
-                height: "80px",
-                objectFit: "cover",
-                borderRadius: theme.spacing(1),
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: theme.shadows[4],
-                },
-              }}
-              className="h-8"
-              loading="lazy"
-            /> */}
+
           </Box>
 
           {/* Desktop Navigation */}
