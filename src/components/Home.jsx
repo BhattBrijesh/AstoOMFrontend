@@ -16,7 +16,6 @@ import time24 from "../assets/images/animation/24-hours.mp4";
 import "../components/css/Home.css";
 import { motion } from "framer-motion";
 
-
 const Home = () => {
   useEffect(() => {
     document.title = "OM Astro Solution";
@@ -58,13 +57,12 @@ const Home = () => {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
   return (
     <div>
-
       <Carousel />
       <div style={{ marginTop: "12px" }}>
         <WelcomeAstro />
@@ -74,19 +72,30 @@ const Home = () => {
       </div>
       {/* <Awards /> */}
       <ZodiacSigns />
-      <Grid mt={2} mb={3} p={2} sx={{ background: "#1a2a4487" }}>
+      <Grid
+        container
+        mt={2}
+        mb={3}
+        p={{ xs: 1, sm: 2 }}
+        sx={{ background: "#1a2a4487" }}
+        justifyContent="center"
+      >
         <Typography
           sx={{
-            fontSize: "3rem",
+            fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
             fontWeight: "bold",
             textAlign: "center",
+            width: "100%",
+            mb: 2,
           }}
           className="header-why"
-
         >
-          <span style={{ color: "#FFF" }}>why</span>  <span style={{ color: "#f28c38" }}>choose us</span>
+          <span style={{ color: "#FFF" }}>why</span>{" "}
+          <span style={{ color: "#f28c38" }}>choose us</span>
         </Typography>
-        <motion.div variants={containerVariants}
+
+        <motion.div
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -94,29 +103,35 @@ const Home = () => {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: "20px",
-          }}>
-
-          <Grid sx={{ display: "flex", justifyContent: "space-evenly" }}>
-            <motion.div
-              variants={cardVariants}
-              whileHover="hover">
-
-              <Grid sx={{ display: "flex", justifyContent: "space-evenly" }}>
-                <Grid
+            gap: "15px",
+            width: "100%",
+          }}
+        >
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              flexDirection: { xs: "column", sm: "row" },
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {/* Card 1 */}
+            <Grid item xs={12} sm={4} md={3}>
+              <motion.div variants={cardVariants} whileHover="hover">
+                <Box
                   sx={{
                     display: "flex",
-                    // backgroundColor: "#f5f5f5",
                     borderRadius: "20px",
                     padding: "10px",
                     alignItems: "center",
+                    justifyContent: { xs: "center", sm: "flex-start" },
                   }}
                 >
                   <Avatar
                     sx={{
-                      width: "7rem",
-                      height: "7rem",
-
+                      width: { xs: "5rem", sm: "6rem", md: "7rem" },
+                      height: { xs: "5rem", sm: "6rem", md: "7rem" },
                       backgroundColor: "#f28c38",
                     }}
                   >
@@ -125,52 +140,56 @@ const Home = () => {
                       autoPlay
                       muted
                       loop
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </Avatar>
-                  <Grid
+                  <Box
                     sx={{
                       alignContent: "center",
                       backgroundColor: "#fff",
-                      height: "4rem",
-                      width: "15rem",
+                      height: { xs: "3.5rem", sm: "4rem" },
+                      width: { xs: "100%", sm: "auto", md: "15rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
+                      ml: { xs: 0, sm: -2 },
+                      mt: { xs: 1, sm: 0 },
                     }}
-                    ml={-2}
                   >
                     <Typography
                       ml={3}
                       sx={{
                         alignContent: "center",
-                        color: "#1a1a1a", // Dark text color from the image
-                        fontSize: "16px", // Adjusted font size
+                        color: "#1a1a1a",
+                        fontSize: { xs: "14px", sm: "16px" },
                       }}
                     >
                       90+ Expert Astrologers
                     </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </motion.div>
-            <motion.div
-              variants={cardVariants}
-              whileHover="hover">
-              <Grid sx={{ display: "flex", justifyContent: "space-evenly" }}>
-                <Grid
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+
+            {/* Card 2 */}
+            <Grid item xs={12} sm={4} md={3}>
+              <motion.div variants={cardVariants} whileHover="hover">
+                <Box
                   sx={{
                     display: "flex",
-                    // backgroundColor: "#f5f5f5",
                     borderRadius: "20px",
                     padding: "10px",
                     alignItems: "center",
+                    justifyContent: { xs: "center", sm: "flex-start" },
                   }}
                 >
                   <Avatar
                     sx={{
-                      width: "7rem",
-                      height: "7rem",
-
+                      width: { xs: "5rem", sm: "6rem", md: "7rem" },
+                      height: { xs: "5rem", sm: "6rem", md: "7rem" },
                       backgroundColor: "#f28c38",
                     }}
                   >
@@ -179,52 +198,56 @@ const Home = () => {
                       autoPlay
                       muted
                       loop
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </Avatar>
-                  <Grid
+                  <Box
                     sx={{
                       alignContent: "center",
                       backgroundColor: "#fff",
-                      height: "4rem",
-                      width: "16rem",
+                      height: { xs: "3.5rem", sm: "4rem" },
+                      width: { xs: "100%", sm: "auto", md: "16rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
+                      ml: { xs: 0, sm: -2 },
+                      mt: { xs: 1, sm: 0 },
                     }}
-                    ml={-2}
                   >
                     <Typography
                       ml={3}
                       sx={{
                         alignContent: "center",
-                        color: "#1a1a1a", // Dark text color from the image
-                        fontSize: "16px", // Adjusted font size
+                        color: "#1a1a1a",
+                        fontSize: { xs: "14px", sm: "16px" },
                       }}
                     >
                       24x7, 365 Days Availability
                     </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </motion.div>
-            <motion.div
-              variants={cardVariants}
-              whileHover="hover">
-              <Grid sx={{ display: "flex", justifyContent: "space-evenly" }}>
-                <Grid
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+
+            {/* Card 3 */}
+            <Grid item xs={12} sm={4} md={3}>
+              <motion.div variants={cardVariants} whileHover="hover">
+                <Box
                   sx={{
                     display: "flex",
-                    // backgroundColor: "#f5f5f5",
                     borderRadius: "20px",
                     padding: "10px",
                     alignItems: "center",
+                    justifyContent: { xs: "center", sm: "flex-start" },
                   }}
                 >
                   <Avatar
                     sx={{
-                      width: "7rem",
-                      height: "7rem",
-
+                      width: { xs: "5rem", sm: "6rem", md: "7rem" },
+                      height: { xs: "5rem", sm: "6rem", md: "7rem" },
                       backgroundColor: "#f28c38",
                     }}
                   >
@@ -233,41 +256,45 @@ const Home = () => {
                       autoPlay
                       muted
                       loop
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
                   </Avatar>
-                  <Grid
+                  <Box
                     sx={{
                       alignContent: "center",
                       backgroundColor: "#fff",
-                      height: "4rem",
-                      width: "17rem",
+                      height: { xs: "3.5rem", sm: "4rem" },
+                      width: { xs: "100%", sm: "auto", md: "17rem" },
                       borderTopRightRadius: 10,
                       borderBottomRightRadius: 10,
+                      ml: { xs: 0, sm: -2 },
+                      mt: { xs: 1, sm: 0 },
                     }}
-                    ml={-2}
                   >
                     <Typography
                       ml={3}
                       sx={{
                         alignContent: "center",
-                        color: "#1a1a1a", // Dark text color from the image
-                        fontSize: "16px", // Adjusted font size
+                        color: "#1a1a1a",
+                        fontSize: { xs: "14px", sm: "16px" },
                       }}
                     >
                       Accurate Remedial Solutions
                     </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </motion.div>
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
           </Grid>
         </motion.div>
       </Grid>
       <Counter />
       <ServicesCardComponent />
       {/* <Testimonials /> */}
-
     </div>
   );
 };
