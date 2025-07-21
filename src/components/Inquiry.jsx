@@ -37,8 +37,8 @@ const Inquiry = () => {
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
       newErrors.email = "Valid email is required";
-    if (!formData.phone.match(/^\+?\d{10,15}$/))
-      newErrors.phone = "Valid phone number is required";
+    if (!formData.phone.match(/^\d{0,10}$/))
+      newErrors.phone = "Exactly 10 digits are required";
     if (!formData.subject) newErrors.subject = "Subject is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
     setErrors(newErrors);
@@ -47,50 +47,35 @@ const Inquiry = () => {
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: null }));
+    if (name === "phone") {
+      if (value.match(/^\d{0,10}$/)) {
+        setFormData((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: null }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          phone: "Only digits are allowed (max 10)",
+        }));
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      setErrors((prev) => ({ ...prev, [name]: null }));
+    }
   }, []);
 
-  // const handleSubmit = useCallback(
-  //   async (e) => {
-  //     e.preventDefault();
-  //     if (!validateForm()) return;
-
-  //     setLoading(true);
-  //     setSubmitStatus(null);
-
-  //     try {
-  //       const response = await fetch("https://api.xyz.com/submit", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(formData),
-  //       });
-
-  //       if (!response.ok) throw new Error("Failed to submit inquiry");
-
-  //       await response.json();
-  //       setSubmitStatus("success");
-  //       setFormData({
-  //         name: "",
-  //         email: "",
-  //         phone: "",
-  //         subject: "",
-  //         message: "",
-  //       });
-  //       setTimeout(() => setSubmitStatus(null), 3000);
-  //     } catch (err) {
-  //       setSubmitStatus("error");
-  //       setErrors({ submit: err.message });
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   },
-  //   [formData, validateForm]
-  // );
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) {
+    if (
+      !formData.name ||
+      !formData.phone ||
+      !formData.subject ||
+      !formData.message
+    ) {
       toast.error("Please fill out all fields.");
+      return;
+    }
+    if (!validateForm()) {
+      toast.error("Please correct the errors in the form.");
       return;
     }
     const toastId = toast.loading("Loading...");
@@ -114,11 +99,12 @@ const Inquiry = () => {
 
       setFormData({ name: "", email: "", message: "", phone: "", subject: "" });
     } catch (error) {
-      toast.error(error?.message);
+      toast.error(error.response?.data?.message);
     } finally {
       toast.dismiss(toastId);
     }
   };
+
   return (
     <Box>
       <Breadcrumb title="Inquiry" />
@@ -178,157 +164,163 @@ const Inquiry = () => {
               >
                 Send us your Inquiry
               </Typography>
-              <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                  {/* Pair 1: Name and Email */}
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Your Name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                      error={!!errors.name}
-                      helperText={errors.name}
-                      InputProps={{ sx: { borderRadius: 1 } }}
-                      aria-required="true"
-                      aria-invalid={errors.name ? "true" : "false"}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Your Email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                      error={!!errors.email}
-                      helperText={errors.email}
-                      InputProps={{ sx: { borderRadius: 1 } }}
-                      aria-required="true"
-                      aria-invalid={errors.email ? "true" : "false"}
-                    />
-                  </Grid>
-                  {/* Pair 2: Phone and Subject */}
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label="Your Phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                      error={!!errors.phone}
-                      helperText={errors.phone}
-                      InputProps={{ sx: { borderRadius: 1 } }}
-                      aria-required="true"
-                      aria-invalid={errors.phone ? "true" : "false"}
-                    />
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    sx={{ minWidth: "100%", maxWidth: "100%" }}
-                  >
-                    <Select
-                      fullWidth
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                      displayEmpty
-                      error={!!errors.subject}
-                      sx={{ borderRadius: 1 }}
-                      aria-required="true"
-                      aria-invalid={errors.subject ? "true" : "false"}
-                    >
-                      <MenuItem value="" disabled>
-                        Select Subject *
-                      </MenuItem>
-                      <MenuItem value="Love Problem Solution">
-                        Love Problem Solution
-                      </MenuItem>
-                      <MenuItem value="Marriage Problem Solution">
-                        Marriage Problem Solution
-                      </MenuItem>
-                      <MenuItem value="Family Problem Solution">
-                        Family Problem Solution
-                      </MenuItem>
-                      <MenuItem value="Horoscope Reading">
-                        Horoscope Reading
-                      </MenuItem>
-                      <MenuItem value="Other">Other</MenuItem>
-                    </Select>
-                    {errors.subject && (
-                      <Typography
-                        color="error"
-                        sx={{ fontSize: "0.75rem", mt: 0.5 }}
-                      >
-                        {errors.subject}
-                      </Typography>
-                    )}
-                  </Grid>
-                </Grid>
-                {/* Message Field */}
-                <Grid item xs={12} sx={{ marginTop: "20px" }}>
+              <Grid container spacing={2}>
+                {/* Pair 1: Name and Email */}
+                <Grid item xs={12} sm={6}>
                   <TextField
                     fullWidth
-                    label="Your Message"
-                    name="message"
-                    value={formData.message}
+                    label="Your Name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleChange}
                     required
                     variant="outlined"
-                    multiline
-                    rows={4}
-                    error={!!errors.message}
-                    helperText={errors.message}
+                    error={!!errors.name}
+                    helperText={errors.name}
                     InputProps={{ sx: { borderRadius: 1 } }}
                     aria-required="true"
-                    aria-invalid={errors.message ? "true" : "false"}
+                    aria-invalid={errors.name ? "true" : "false"}
                   />
                 </Grid>
-                {/* Submit Button and Status */}
-                <Grid item xs={12} sx={{ textAlign: "center", mt: 2 }}>
-                  <Button
+                <Grid item xs={12} sm={6}>
+                  <TextField
                     fullWidth
-                    type="submit"
-                    variant="contained"
-                    disabled={loading}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: 1,
-                      textTransform: "none",
-                      fontWeight: "medium",
-                      bgcolor: "#ff9800",
-                      "&:hover": { bgcolor: "#e68900" },
+                    label="Your Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    variant="outlined"
+                    error={!!errors.email}
+                    helperText={errors.email}
+                    InputProps={{ sx: { borderRadius: 1 } }}
+                    aria-required="true"
+                    aria-invalid={errors.email ? "true" : "false"}
+                  />
+                </Grid>
+                {/* Pair 2: Phone and Subject */}
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    label="Your Phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    variant="outlined"
+                    error={!!errors.phone}
+                    helperText={errors.phone}
+                    InputProps={{
+                      sx: { borderRadius: 1 },
+                      inputProps: {
+                        pattern: "\\d*",
+                        maxLength: 10,
+                        inputMode: "numeric",
+                      },
                     }}
-                    aria-label="Submit inquiry form"
+                    aria-required="true"
+                    aria-invalid={errors.phone ? "true" : "false"}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  sx={{ minWidth: "100%", maxWidth: "100%" }}
+                >
+                  <Select
+                    fullWidth
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    variant="outlined"
+                    displayEmpty
+                    error={!!errors.subject}
+                    sx={{ borderRadius: 1 }}
+                    aria-required="true"
+                    aria-invalid={errors.subject ? "true" : "false"}
                   >
-                    {loading ? "Sending..." : "Send Inquiry"}
-                  </Button>
-                  {submitStatus === "success" && (
-                    <Typography sx={{ mt: 2, color: "green" }}>
-                      Thank you! We'll get back to you soon.
-                    </Typography>
-                  )}
-                  {submitStatus === "error" && (
-                    <Typography sx={{ mt: 2, color: "error.main" }}>
-                      {errors.submit}
+                    <MenuItem value="" disabled>
+                      Select Subject *
+                    </MenuItem>
+                    <MenuItem value="Love Problem Solution">
+                      Love Problem Solution
+                    </MenuItem>
+                    <MenuItem value="Marriage Problem Solution">
+                      Marriage Problem Solution
+                    </MenuItem>
+                    <MenuItem value="Family Problem Solution">
+                      Family Problem Solution
+                    </MenuItem>
+                    <MenuItem value="Horoscope Reading">
+                      Horoscope Reading
+                    </MenuItem>
+                    <MenuItem value="Other">Other</MenuItem>
+                  </Select>
+                  {errors.subject && (
+                    <Typography
+                      color="error"
+                      sx={{ fontSize: "0.75rem", mt: 0.5 }}
+                    >
+                      {errors.subject}
                     </Typography>
                   )}
                 </Grid>
-              </form>
+              </Grid>
+              {/* Message Field */}
+              <Grid item xs={12} sx={{ marginTop: "20px" }}>
+                <TextField
+                  fullWidth
+                  label="Your Message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  variant="outlined"
+                  multiline
+                  rows={4}
+                  error={!!errors.message}
+                  helperText={errors.message}
+                  InputProps={{ sx: { borderRadius: 1 } }}
+                  aria-required="true"
+                  aria-invalid={errors.message ? "true" : "false"}
+                />
+              </Grid>
+              {/* Submit Button and Status */}
+              <Grid item xs={12} sx={{ textAlign: "center", mt: 2 }}>
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  onClick={handleSubmit}
+                  disabled={loading}
+                  sx={{
+                    px: 4,
+                    py: 1.5,
+                    borderRadius: 1,
+                    textTransform: "none",
+                    fontWeight: "medium",
+                    bgcolor: "inquiry.jsx",
+                    "&:hover": { bgcolor: "#e68900" },
+                  }}
+                  aria-label="Submit inquiry form"
+                >
+                  {loading ? "Sending..." : "Send Inquiry"}
+                </Button>
+                {submitStatus === "success" && (
+                  <Typography sx={{ mt: 2, color: "green" }}>
+                    Thank you! We'll get back to you soon.
+                  </Typography>
+                )}
+                {submitStatus === "error" && (
+                  <Typography sx={{ mt: 2, color: "error.main" }}>
+                    {errors.submit}
+                  </Typography>
+                )}
+              </Grid>
             </Box>
           </Grid>
         </Grid>
