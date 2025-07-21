@@ -69,7 +69,7 @@ const Footer = () => {
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
-              gap: { xs: "10px", sm: "15px" }, // Responsive gap
+              gap: "20px", // Uniform 20px gap for all screen sizes
             }}
           >
             <motion.div variants={cardVariants} whileHover="hover">
@@ -78,10 +78,11 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}
+                aria-label="Facebook link"
               >
                 <Avatar
                   sx={{
-                    width: { xs: 40, sm: 50 }, // Responsive icon size
+                    width: { xs: 40, sm: 50 },
                     height: { xs: 40, sm: 50 },
                     background: "transparent",
                   }}
@@ -104,6 +105,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}
+                aria-label="Instagram link"
               >
                 <Avatar
                   sx={{
@@ -130,6 +132,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}
+                aria-label="WhatsApp link"
               >
                 <Avatar
                   sx={{
@@ -156,6 +159,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{ p: 0 }}
+                aria-label="Contact phone link"
               >
                 <Avatar
                   sx={{
