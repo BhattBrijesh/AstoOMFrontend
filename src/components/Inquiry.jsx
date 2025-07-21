@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 import Breadcrumb from "../components/Breadcrumb";
 import img1 from "../assets/images/inquiry.jpg";
+import { handleSubmitInquiryForm } from "../api";
+import toast from "react-hot-toast";
 
 const Inquiry = () => {
   const [formData, setFormData] = useState({
@@ -49,43 +51,74 @@ const Inquiry = () => {
     setErrors((prev) => ({ ...prev, [name]: null }));
   }, []);
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
-      if (!validateForm()) return;
+  // const handleSubmit = useCallback(
+  //   async (e) => {
+  //     e.preventDefault();
+  //     if (!validateForm()) return;
 
-      setLoading(true);
-      setSubmitStatus(null);
+  //     setLoading(true);
+  //     setSubmitStatus(null);
 
-      try {
-        const response = await fetch("https://api.xyz.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+  //     try {
+  //       const response = await fetch("https://api.xyz.com/submit", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(formData),
+  //       });
 
-        if (!response.ok) throw new Error("Failed to submit inquiry");
+  //       if (!response.ok) throw new Error("Failed to submit inquiry");
 
-        await response.json();
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-        setTimeout(() => setSubmitStatus(null), 3000);
-      } catch (err) {
-        setSubmitStatus("error");
-        setErrors({ submit: err.message });
-      } finally {
-        setLoading(false);
+  //       await response.json();
+  //       setSubmitStatus("success");
+  //       setFormData({
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         subject: "",
+  //         message: "",
+  //       });
+  //       setTimeout(() => setSubmitStatus(null), 3000);
+  //     } catch (err) {
+  //       setSubmitStatus("error");
+  //       setErrors({ submit: err.message });
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   },
+  //   [formData, validateForm]
+  // );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+    const toastId = toast.loading("Loading...");
+    try {
+      const reqBody = {
+        name: formData?.name,
+        email: formData?.email,
+        phone: formData?.phone,
+        subject: formData?.subject,
+        message: formData?.message,
+      };
+      const res = await handleSubmitInquiryForm(reqBody);
+      if (res?.data) {
+        toast.success(
+          "Thank you for reaching out! We've received your message and will connect with you shortly.",
+          {
+            duration: 5000,
+          }
+        );
       }
-    },
-    [formData, validateForm]
-  );
 
+      setFormData({ name: "", email: "", message: "", phone: "", subject: "" });
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      toast.dismiss(toastId);
+    }
+  };
   return (
     <Box>
       <Breadcrumb title="Inquiry" />
