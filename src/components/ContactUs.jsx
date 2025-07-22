@@ -169,12 +169,18 @@ const Contact = () => {
           }
         );
         setFormStatus("Message sent successfully!");
+        setTimeout(() => {
+          setFormStatus(null);
+        }, 4000);
         setFormData({ name: "", email: "", message: "", phone: "" });
         setErrors({});
       }
     } catch (error) {
       toast.error(error.response?.data?.message || "An error occurred.");
       setFormStatus("Failed to send message. Please try again.");
+      setTimeout(() => {
+        setFormStatus(null);
+      }, 4000);
     } finally {
       toast.dismiss(toastId);
     }
