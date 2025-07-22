@@ -327,6 +327,7 @@ const Dashboard = () => {
       headerName: "Subject",
       width: 200,
       renderCell: (params) => (
+        params.value &&
         <Chip
           label={params.value}
           size="small"
