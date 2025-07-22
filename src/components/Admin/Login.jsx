@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Link, Alert } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Alert,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +19,7 @@ const AdminLogin = () => {
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -47,6 +57,10 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -94,12 +108,25 @@ const AdminLogin = () => {
         <TextField
           fullWidth
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           variant="outlined"
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{ "& .MuiOutlinedInput-root": { borderRadius: 1 } }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleTogglePasswordVisibility}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <Button
           fullWidth
@@ -111,20 +138,6 @@ const AdminLogin = () => {
         >
           {loading ? "Logging in..." : "Login"}
         </Button>
-        <Link
-          href="/register"
-          onClick={handleAstroLogin}
-          sx={{
-            display: "block",
-            mt: 1,
-            textAlign: "center",
-            color: "#1976d2",
-            textDecoration: "none",
-            "&:hover": { textDecoration: "underline" },
-          }}
-        >
-          Astro Login? Click here to Register
-        </Link>
         {name && token && (
           <Typography align="center" sx={{ mt: 2, color: "green" }}>
             Welcome, {name}

@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Box, Typography, TextField, Button, Link, Alert } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Link,
+  Alert,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +20,7 @@ const Register = () => {
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -43,6 +54,10 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -90,12 +105,25 @@ const Register = () => {
         <TextField
           fullWidth
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           variant="outlined"
           margin="normal"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{ "& .MuiOutlinedInput-root": { borderRadius: 1 } }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleTogglePasswordVisibility}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
         <Button
           fullWidth

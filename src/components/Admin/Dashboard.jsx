@@ -16,6 +16,7 @@ import {
   Divider,
   useTheme,
   alpha,
+  Button,
 } from "@mui/material";
 import {
   DataGrid,
@@ -36,6 +37,7 @@ import {
 } from "@mui/icons-material";
 import axios from "axios";
 import moment from "moment";
+import { Link, useNavigate } from "react-router-dom";
 
 // Custom Toolbar Component
 function CustomToolbar() {
@@ -146,6 +148,7 @@ const Dashboard = () => {
     page: 0,
     pageSize: 10,
   });
+  const navigate = useNavigate();
 
   // View details handler
   const handleViewDetails = useCallback((row, type) => {
@@ -412,7 +415,10 @@ const Dashboard = () => {
       console.error("Inquiry fetch error:", err);
     }
   };
-
+  const handleAstroLogin = () => {
+    console.log("eeee");
+    navigate("/register");
+  };
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -461,9 +467,28 @@ const Dashboard = () => {
         >
           Dashboard
         </Typography>
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" color="#ffff">
           Manage your contacts and inquiries efficiently
         </Typography>
+        <Box
+          sx={{
+            textAlign: "right",
+            color: "#ff9800",
+          }}
+        >
+          <Button
+            onClick={handleAstroLogin}
+            sx={{
+              mt: 1,
+              textAlign: "center",
+              color: "#ff9800",
+              textDecoration: "none",
+              "&:hover": { textDecoration: "none" },
+            }}
+          >
+            Click here to Register
+          </Button>
+        </Box>
       </Box>
 
       {/* Error Alerts */}
@@ -481,27 +506,6 @@ const Dashboard = () => {
       </Stack>
 
       {/* Stats Cards */}
-      {/* <Grid container spacing={3} sx={{ mb: 4 }}>
-        <Grid item xs={12} sm={6} md={6}>
-          <StatsCard
-            title="Total Contacts"
-            count={contactUsTotalCount}
-            icon={<ContactMail />}
-            color={theme.palette.primary.main}
-            trend={15}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <StatsCard
-            title="Total Inquiries"
-            count={inquiryTotalCount}
-            icon={<QuestionAnswer />}
-            color={theme.palette.secondary.main}
-            trend={8}
-          />
-        </Grid>
-      </Grid> */}
-      {/* Stats Cards - Fixed for better visibility */}
       <Box
         sx={{
           backgroundColor: "rgba(255, 255, 255, 0.05)",
