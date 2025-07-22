@@ -1,6 +1,10 @@
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+const AdminLogin = React.lazy(() => import("../components/Admin/Login"));
+const Register = React.lazy(() => import("../components/Admin/Register"));
+
+const Dashboard = React.lazy(() => import("../components/Admin/Dashboard"));
 const Home = React.lazy(() => import("../components/Home"));
 const AboutUs = React.lazy(() => import("../components/AboutUs"));
 const Awards = React.lazy(() => import("../components/Awards"));
@@ -106,6 +110,9 @@ const AppRoutes = () => {
         <Route path="/inquiry" element={<Inquiry />} />
         <Route path="/zodiac" element={<ZodiacSigns />} />
         <Route path="/zodiac/:sign" element={<ZodiacDetail />} />
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Suspense>
   );
