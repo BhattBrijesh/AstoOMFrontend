@@ -17,6 +17,10 @@ import {
   useTheme,
   alpha,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
 } from "@mui/material";
 import {
   DataGrid,
@@ -50,7 +54,7 @@ function CustomToolbar() {
   );
 }
 
-// Stats Card Component
+// Stats Card Component (unchanged)
 const StatsCard = ({ title, count, icon, color, trend }) => {
   const theme = useTheme();
 
@@ -138,6 +142,9 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [contactUsError, setContactUsError] = useState("");
   const [inquiryError, setInquiryError] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [modalType, setModalType] = useState("");
 
   // Pagination states
   const [contactUsPaginationModel, setContactUsPaginationModel] = useState({
@@ -150,11 +157,19 @@ const Dashboard = () => {
   });
   const navigate = useNavigate();
 
-  // View details handler
+  // Handle opening the modal and setting the selected row
   const handleViewDetails = useCallback((row, type) => {
-    console.log(`Viewing ${type} details:`, row);
-    // Implement modal or navigation to detailed view
+    setSelectedRow(row);
+    setModalType(type);
+    setOpenModal(true);
   }, []);
+
+  // Handle closing the modal
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setSelectedRow(null);
+    setModalType("");
+  };
 
   // Enhanced columns for Contact Us
   const contactUsColumns = [
@@ -250,7 +265,7 @@ const Dashboard = () => {
     },
   ];
 
-  // Enhanced columns for Inquiry (similar structure)
+  // Enhanced columns for Inquiry (similar structure, updated actions)
   const inquiryColumns = [
     {
       field: "createdAt",
@@ -415,10 +430,12 @@ const Dashboard = () => {
       console.error("Inquiry fetch error:", err);
     }
   };
+
   const handleAstroLogin = () => {
-    console.log("eeee");
+    console.log("Navigating to register");
     navigate("/register");
   };
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -657,6 +674,123 @@ const Dashboard = () => {
           />
         </Box>
       </Paper>
+
+      {/* Modal for displaying user details */}
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        maxWidth="sm"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 2,
+            border: `1px solid ${alpha(
+              modalType === "Contact"
+                ? theme.palette.primary.main
+                : theme.palette.secondary.main,
+              0.2
+            )}`,
+          },
+        }}
+      >
+        <DialogTitle
+          sx={{
+            backgroundColor:
+              modalType === "Contact"
+                ? alpha(theme.palette.primary.main, 0.05)
+                : alpha(theme.palette.secondary.main, 0.05),
+            color:
+              modalType === "Contact"
+                ? theme.palette.primary.main
+                : theme.palette.secondary.main,
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          {modalType === "Contact" ? <ContactMail /> : <QuestionAnswer />}
+          {modalType} Details
+        </DialogTitle>
+        <DialogContent
+          sx={{
+            py: 3,
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+          }}
+        >
+          {selectedRow && (
+            <>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <CalendarToday sx={{ fontSize: 20, color: "text.secondary" }} />
+                <Typography variant="body1">
+                  <strong>Date:</strong>{" "}
+                  {selectedRow.createdAt
+                    ? moment(selectedRow.createdAt).format("DD/MM/YYYY")
+                    : "N/A"}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <ContactMail sx={{ fontSize: 20, color: "text.secondary" }} />
+                <Typography variant="body1">
+                  <strong>Name:</strong> {selectedRow.name || "N/A"}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Phone sx={{ fontSize: 20, color: "text.secondary" }} />
+                <Typography variant="body1">
+                  <strong>Phone:</strong> {selectedRow.phone || "N/A"}
+                </Typography>
+              </Box>
+              {modalType === "Contact" && (
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Email sx={{ fontSize: 20, color: "text.secondary" }} />
+                  <Typography variant="body1">
+                    <strong>Email:</strong> {selectedRow.email || "N/A"}
+                  </Typography>
+                </Box>
+              )}
+              {modalType === "Contact" && (
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <Typography variant="body1">
+                    <strong>Message:</strong> {selectedRow.message || "N/A"}
+                  </Typography>
+                </Box>
+              )}
+              {modalType === "Inquiry" && (
+                <>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Email sx={{ fontSize: 20, color: "text.secondary" }} />
+                    <Typography variant="body1">
+                      <strong>Email:</strong> {selectedRow.email || "N/A"}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Typography variant="body1">
+                      <strong>Subject:</strong> {selectedRow.subject || "N/A"}
+                    </Typography>
+                  </Box>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Typography variant="body1">
+                      <strong>Message:</strong> {selectedRow.message || "N/A"}
+                    </Typography>
+                  </Box>
+                </>
+              )}
+            </>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleCloseModal}
+            color="primary"
+            variant="contained"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };
