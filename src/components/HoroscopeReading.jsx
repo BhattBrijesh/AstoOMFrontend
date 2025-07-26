@@ -80,7 +80,7 @@ const HoroscopeReading = () => {
                   alt="Love and Relationship Solutions"
                   sx={{
                     width: "100vw",    // Full viewport width
-                    height: "50vh",    // 30% of viewport height
+                    height: "70vh",    // 30% of viewport height
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
@@ -99,7 +99,7 @@ const HoroscopeReading = () => {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="xxl" sx={{ mb: 4 }}>
+      <Container maxWidth="xxl" sx={{ py: { xs: 4, md: 4 } }}>
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Grow in timeout={800}>
