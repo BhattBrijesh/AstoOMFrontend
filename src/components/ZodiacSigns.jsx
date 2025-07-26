@@ -10,19 +10,20 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import aries from "../assets/images/animation/Aries.mp4";
-import Taurus from "../assets/images/animation/Taurus.mp4";
-import Gemini from "../assets/images/animation/Gemini.mp4";
-import Cancer from "../assets/images/animation/Cancer.mp4";
-import Leo from "../assets/images/animation/Leo.mp4";
-import Virgo from "../assets/images/animation/Virgo.mp4";
-import Libra from "../assets/images/animation/Libra.mp4";
-import Aquarius from "../assets/images/animation/Aquarius.mp4";
-import Capricorn from "../assets/images/animation/Capricorn.mp4";
-import Pisces from "../assets/images/animation/Pisces.mp4";
-import Scorpio from "../assets/images/animation/Scorpio.mp4";
-import Sagittarius from "../assets/images/animation/Sagittarius.mp4";
+import aries from "../assets/images/ZodiacSignsVideo/aries.mp4";
+import Taurus from "../assets/images/ZodiacSignsVideo/Taurus.mp4";
+import Gemini from "../assets/images/ZodiacSignsVideo/Gemini.mp4";
+import Cancer from "../assets/images/ZodiacSignsVideo/Cancer.mp4";
+import Leo from "../assets/images/ZodiacSignsVideo/lio.mp4";
+import Virgo from "../assets/images/ZodiacSignsVideo/Virgo.mp4";
+import Libra from "../assets/images/ZodiacSignsVideo/Libra.mp4";
+import Aquarius from "../assets/images/ZodiacSignsVideo/Aquarius.mp4";
+import Capricorn from "../assets/images/ZodiacSignsVideo/Capricorn.mp4";
+import Pisces from "../assets/images/ZodiacSignsVideo/Pisces.mp4";
+import Scorpio from "../assets/images/ZodiacSignsVideo/Scorpio.mp4";
+import Sagittarius from "../assets/images/ZodiacSignsVideo/Sagittarius.mp4";
 import { motion } from "framer-motion";
+
 const ZodiacSigns = () => {
   const zodiacSigns = [
     {
@@ -56,7 +57,7 @@ const ZodiacSigns = () => {
     {
       name: "Leo",
       hindi: "सिंह",
-      animation: Leo,
+      animation: Leo, // This is set to be a video (Leo.mp4)
       prediction:
         "Shine bright, Leo! Your confidence will attract positive attention in social or professional settings.",
     },
@@ -134,7 +135,7 @@ const ZodiacSigns = () => {
     },
     hover: {
       y: -15,
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
+      boxShadow: "0 25px 50px -12px rgba(0,0,0,0.4)",
       transition: {
         duration: 0.3,
         ease: "easeOut",
@@ -142,18 +143,8 @@ const ZodiacSigns = () => {
     },
   };
 
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
   return (
-    <Grid container spacing={2} sx={{ mt: 5, mb: 5, ml: 1 }}>
+    <Grid container spacing={2} sx={{ mt: 2, mb: 2, ml: 1 }}>
       <Grid
         container
         sx={{
@@ -162,7 +153,8 @@ const ZodiacSigns = () => {
           flexWrap: "wrap",
         }}
       >
-        <motion.div variants={containerVariants}
+        <motion.div
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -171,20 +163,18 @@ const ZodiacSigns = () => {
             flexWrap: "wrap",
             justifyContent: "center",
             gap: "20px",
-          }}>
+          }}
+        >
           {zodiacSigns.map((item, index) => (
-            <motion.div key={index}
+            <motion.div
+              key={index}
               variants={cardVariants}
-              whileHover="hover">
+              whileHover="hover"
+            >
               <Grid
                 item
-                // xs={12}
-                // sm={6}
-                // md={4}
-                key={index}
                 sx={{ display: "flex", justifyContent: "center" }}
               >
-                {" "}
                 <Button
                   component={Link}
                   to={`/zodiac/${item.name.toLowerCase()}`}
@@ -193,7 +183,11 @@ const ZodiacSigns = () => {
                   sx={{ width: "18rem" }}
                 >
                   <Card
-                    sx={{ width: "15rem", height: "16rem", textAlign: "center" }}
+                    sx={{
+                      width: "15rem",
+                      height: "16rem",
+                      textAlign: "center",
+                    }}
                   >
                     <CardMedia
                       component="video"
@@ -202,7 +196,11 @@ const ZodiacSigns = () => {
                       loop
                       muted
                       playsInline
-                      sx={{ width: "100%", height: "60%", objectFit: "cover" }}
+                      sx={{
+                        width: "100%",
+                        height: "70%",
+                        objectFit: "cover",
+                      }}
                     />
                     <CardContent>
                       <Typography variant="h6" sx={{ color: "#ff9800" }}>
