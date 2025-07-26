@@ -11,7 +11,7 @@ import {
   Grow,
 } from "@mui/material";
 import Breadcrumb from "../components/Breadcrumb";
-import loveBanner from "../assets/images/6.png";
+import horoscopeVideo from "../assets/images/horoscope1.mp4";
 
 const HoroscopeReading = () => {
   useEffect(() => {
@@ -27,10 +27,7 @@ const HoroscopeReading = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
-          bgcolor: "linear-gradient(135deg, #fff8e1 0%, #fef3ec 100%)",
-          borderBottom: "1px solid",
-          borderColor: "grey.200",
+          py: { xs: 4, md: 2 },
         }}
       >
         <Container maxWidth="xxl">
@@ -44,8 +41,8 @@ const HoroscopeReading = () => {
                     sx={{
                       color: "#ff9800",
                       fontWeight: "bold",
-                      fontSize: { xs: "2.5rem", md: "3.5rem" },
-                      mb: 3,
+                      fontSize: { xs: "1.5rem", md: "2.5rem" },
+                      mb: 1,
                     }}
                   >
                     Horoscope Reading by Astro Om Solution
@@ -74,15 +71,21 @@ const HoroscopeReading = () => {
             <Grid item xs={12} md={6}>
               <Grow in timeout={1000}>
                 <Box
-                  component="img"
-                  src={loveBanner}
+                  component="video"
+                  src={horoscopeVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100%",
-                    height: "auto",
+                    width: "100vw",    // Full viewport width
+                    height: "50vh",    // 30% of viewport height
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
+                    mx: "auto",        // Centered display
+                    display: "block",  // Remove inline spacing
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -96,7 +99,7 @@ const HoroscopeReading = () => {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="xxl" sx={{ py: { xs: 6, md: 8 } }}>
+      <Container maxWidth="xxl" sx={{ mb: 4 }}>
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Grow in timeout={800}>
