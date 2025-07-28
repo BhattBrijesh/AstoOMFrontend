@@ -1,9 +1,13 @@
 import React, { Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 const AdminLogin = React.lazy(() => import("../components/Admin/Login"));
 const Register = React.lazy(() => import("../components/Admin/Register"));
-
 const Dashboard = React.lazy(() => import("../components/Admin/Dashboard"));
 const Home = React.lazy(() => import("../components/Home"));
 const AboutUs = React.lazy(() => import("../components/AboutUs"));
@@ -35,6 +39,11 @@ const Inquiry = React.lazy(() => import("../components/Inquiry"));
 const ZodiacSigns = React.lazy(() => import("../components/ZodiacSigns"));
 const ZodiacDetail = React.lazy(() => import("../components/ZodiacDetail"));
 
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem("status") === "active";
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
 const AppRoutes = () => {
   return (
     <Suspense
@@ -50,14 +59,7 @@ const AppRoutes = () => {
                 />
               ))}
             </div>
-            {/* <p className="text-xl font-bold text-gray-800 dark:text-gray-200">
-              Loading Content...
-            </p>
-            <p className="text-md text-gray-600 dark:text-gray-400 mt-1">
-              Please wait a moment.
-            </p> */}
           </div>
-
           <style jsx>{`
             @keyframes wave {
               0%,
@@ -111,8 +113,22 @@ const AppRoutes = () => {
         <Route path="/zodiac" element={<ZodiacSigns />} />
         <Route path="/zodiac/:sign" element={<ZodiacDetail />} />
         <Route path="/login" element={<AdminLogin />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/register"
+          element={
+            <ProtectedRoute>
+              <Register />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Suspense>
   );

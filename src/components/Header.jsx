@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useRef,
-  useCallback,
-  useMemo,
-  useEffect,
-} from "react";
+import React, { useState, useRef, useCallback, useMemo } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
@@ -30,6 +24,8 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { styled, useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../components/Admin/Redux/Store";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -148,6 +144,10 @@ const menuItems = [
 const Header = React.memo(() => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state) => state.auth.status === "active"
+  );
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState({
     about: null,
@@ -156,16 +156,7 @@ const Header = React.memo(() => {
   });
   const [accountAnchorEl, setAccountAnchorEl] = useState(null);
   const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const closeTimeoutRef = useRef(null);
-
-  useEffect(() => {
-    const checkAuthStatus = () => {
-      setIsAuthenticated(false);
-    };
-
-    checkAuthStatus();
-  }, []);
 
   const handleMenuOpen = useCallback((event, menu) => {
     if (closeTimeoutRef.current) {
@@ -210,18 +201,13 @@ const Header = React.memo(() => {
   const handleLoginClick = useCallback(() => {
     handleAccountMenuClose();
     navigate("/login");
-    setTimeout(() => {
-      setIsAuthenticated(true);
-    }, 1000);
   }, [navigate]);
 
   const handleLogoutClick = useCallback(() => {
-    localStorage.clear();
-    sessionStorage.clear();
+    dispatch(logout());
     handleAccountMenuClose();
-    setIsAuthenticated(false);
     navigate("/");
-  }, [navigate]);
+  }, [dispatch, navigate]);
 
   const structuredData = useMemo(
     () => ({
