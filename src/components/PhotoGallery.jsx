@@ -31,7 +31,7 @@ const PhotoGallery = memo(() => {
 
   // Set document title and log image paths
   useEffect(() => {
-    document.title = 'Photo Gallery | OM Astro Solution';
+    document.title = 'Photo Gallery | Astro Om Solution';
     photos.forEach((photo, index) => {
       console.log(`Image ${index + 1} path:`, photo.src);
     });

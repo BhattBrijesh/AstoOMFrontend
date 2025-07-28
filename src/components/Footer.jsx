@@ -7,42 +7,16 @@ import {
   IconButton,
   List,
   ListItem,
-  ListItemText,
-  Divider,
-  Grid,
   Avatar,
+  Grid,
 } from "@mui/material";
-import PhoneIcon from "@mui/icons-material/Phone";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-
+import { motion } from "framer-motion";
 import Facebook from "../assets/images/animation/icons8-facebook.gif";
 import Instagram from "../assets/images/animation/icons8-instagram.gif";
 import Whatsapp from "../assets/images/animation/icons8-whatsapp.gif";
 import Contact from "../assets/images/animation/icons8-contact-us.gif";
-import { motion } from "framer-motion";
-import { blue } from "@mui/material/colors";
 
 const Footer = () => {
-  const logoStyle = {
-    width: "100px",
-    height: "100px",
-    objectFit: "cover",
-    backgroundSize: "cover",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    animation: "float 3s ease-in-out infinite",
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-  };
-
-  const [isHovered, setIsHovered] = React.useState(false);
-  const hoverStyle = isHovered
-    ? {
-      transform: "scale(1.05)",
-      boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
-    }
-    : {};
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -65,8 +39,8 @@ const Footer = () => {
       },
     },
     hover: {
-      y: -15,
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
+      y: -10,
+      boxShadow: "0 15px 30px -12px rgba(0, 0, 0, 0.3)",
       transition: {
         duration: 0.3,
         ease: "easeOut",
@@ -74,35 +48,20 @@ const Footer = () => {
     },
   };
 
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
   return (
     <Box
       mt={1}
-      className="bg-teal-900 text-white"
       sx={{
         background: "#1a2a4487",
         color: "#f0f4f8",
-        objectFit: "cover",
+        p: { xs: 2, sm: 3 }, // Responsive padding
       }}
-      p={1}
     >
-      <Grid
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Grid>
-          <motion.div variants={containerVariants}
+      <Container maxWidth="lg">
+        {/* Social Media Icons */}
+        <Grid container justifyContent="center" mb={3}>
+          <motion.div
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -110,642 +69,311 @@ const Footer = () => {
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
-              gap: "20px",
-            }}>
-
-            <Box sx={{ display: "flex" }}>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover">
-                <IconButton
-                  id="facebook-icon"
-                  href="https://www.facebook.com/omastroservice/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-yellow-300"
+              gap: "20px", // Uniform 20px gap for all screen sizes
+            }}
+          >
+            <motion.div variants={cardVariants} whileHover="hover">
+              <IconButton
+                href="https://www.facebook.com/profile.php?id=100069020956273"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0 }}
+                aria-label="Facebook link"
+              >
+                <Avatar
+                  sx={{
+                    width: { xs: 40, sm: 50 },
+                    height: { xs: 40, sm: 50 },
+                    background: "transparent",
+                  }}
                 >
-                  <Avatar>
-                    <img
-                      src={Facebook} // assuming Facebook is imported .gif
-                      alt="Facebook icon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "none",
-                        background: "none",
-                      }}
-                    />
-                  </Avatar>
-                </IconButton>
-              </motion.div>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover">
-                <IconButton
-                  href="https://www.instagram.com/omastroservice/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-yellow-300"
+                  <img
+                    src={Facebook}
+                    alt="Facebook icon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </motion.div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <IconButton
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0 }}
+                aria-label="Instagram link"
+              >
+                <Avatar
+                  sx={{
+                    width: { xs: 40, sm: 50 },
+                    height: { xs: 40, sm: 50 },
+                    background: "transparent",
+                  }}
                 >
-                  <Avatar>
-                    <img
-                      src={Instagram} // assuming Facebook is imported .gif
-                      alt="Facebook icon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </Avatar>
-                </IconButton>
-              </motion.div>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover">
-                <IconButton
-                  href="https://api.whatsapp.com/send?phone=919417339708&text=I'd%20like%20to%20know%20more%20about%20your%20services.%20Please%20contact%20me"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-yellow-300"
+                  <img
+                    src={Instagram}
+                    alt="Instagram icon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </motion.div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <IconButton
+                href="https://api.whatsapp.com/send?phone=919417339708&text=I'd%20like%20to%20know%20more%20about%20your%20services.%20Please%20contact%20me"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0 }}
+                aria-label="WhatsApp link"
+              >
+                <Avatar
+                  sx={{
+                    width: { xs: 40, sm: 50 },
+                    height: { xs: 40, sm: 50 },
+                    background: "transparent",
+                  }}
                 >
-                  <Avatar>
-                    <img
-                      src={Whatsapp} // assuming Facebook is imported .gif
-                      alt="Facebook icon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "none",
-                      }}
-                    />
-                  </Avatar>
-                </IconButton>
-              </motion.div>
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover">
-                <IconButton
-                  href="tel:+919417339708"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white hover:text-yellow-300"
+                  <img
+                    src={Whatsapp}
+                    alt="WhatsApp icon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </motion.div>
+            <motion.div variants={cardVariants} whileHover="hover">
+              <IconButton
+                href="tel:+919417339708"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{ p: 0 }}
+                aria-label="Contact phone link"
+              >
+                <Avatar
+                  sx={{
+                    width: { xs: 40, sm: 50 },
+                    height: { xs: 40, sm: 50 },
+                    background: "transparent",
+                  }}
                 >
-                  <Avatar>
-                    <img
-                      src={Contact} // assuming Facebook is imported .gif
-                      alt="Facebook icon"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </Avatar>
-                </IconButton>
-              </motion.div>
-            </Box>
+                  <img
+                    src={Contact}
+                    alt="Contact icon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Avatar>
+              </IconButton>
+            </motion.div>
           </motion.div>
         </Grid>
-      </Grid>
-      <Grid sx={{ display: "flex", justifyContent: "space-evenly" }}>
+
+        {/* Footer Links */}
         <Grid
+          container
+          spacing={3}
           sx={{
-            display: "flex",
+            flexDirection: { xs: "column", sm: "row" }, // Stack on mobile
             justifyContent: "space-between",
-            width: "60rem",
+            alignItems: { xs: "left", sm: "flex-start" },
+            textAlign: { xs: "left", sm: "left" }, // Center text on mobile
           }}
         >
-          <Box id="Quick_Links">
-            <Typography variant="h6" className="text-orange-500 mb-0" sx={{ marginLeft: "15px" }}>
+          {/* Quick Links */}
+          <Grid item xs={12} sm={4}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#ff9800",
+                mb: 1,
+                fontSize: { xs: "1.2rem", sm: "1.5rem" }, // Responsive font
+              }}
+            >
               Quick Links
             </Typography>
-            <List sx={{
-              textDecoration: "none", color: "#ff9800",
-            }}>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Home
-                  <span
+            <List>
+              {[
+                { to: "/", text: "Home" },
+                { to: "/aboutus", text: "About Us" },
+                { to: "/photo-gallery", text: "Photo Gallery" },
+                { to: "/video-gallery", text: "Video Gallery" },
+                { to: "/inquiry", text: "Inquiry" },
+                { to: "/contactus", text: "Contact Us" },
+              ].map((link) => (
+                <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
+                  <Link
+                    to={link.to}
                     style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
+                      textDecoration: "none",
+                      color: "#ffffff",
+                      position: "relative",
+                      fontSize: { xs: "0.9rem", sm: "1rem" }, // Responsive font
                     }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/aboutus"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  About Us
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/photo-gallery"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Photo Gallery
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/video-gallery"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Video Gallery
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/inquiry"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Inquiry
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/contactus"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Contact Us
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
+                    className="hover:text-yellow-300"
+                  >
+                    {link.text}
+                    <span
+                      style={{
+                        content: '""',
+                        position: "absolute",
+                        bottom: "-2px",
+                        left: 0,
+                        width: 0,
+                        height: "2px",
+                        backgroundColor: "#ffd54f",
+                        transition: "width 0.3s ease-in-out",
+                      }}
+                    />
+                  </Link>
+                </ListItem>
+              ))}
             </List>
-          </Box>
-          <Box id="Our_Services">
-            <Typography variant="h6" className="text-orange-500" sx={{ marginLeft: "15px" }}>
+          </Grid>
+
+          {/* Our Services */}
+          <Grid item xs={12} sm={4}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#ff9800",
+                mb: 1,
+                fontSize: { xs: "1.2rem", sm: "1.5rem" },
+              }}
+            >
               Our Services
             </Typography>
-            <List sx={{ textDecoration: "none", color: "#ff9800" }}>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/love-problem-solution"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Love Problem Solution
-                  <span
+            <List>
+              {[
+                { to: "/love-problem-solution", text: "Love Problem Solution" },
+                {
+                  to: "/marriage-problem-solution",
+                  text: "Marriage Problem Solution",
+                },
+                {
+                  to: "/love-marriage-problem-solution",
+                  text: "Love Marriage Problem Solution",
+                },
+                {
+                  to: "/family-problem-solution",
+                  text: "Family Problem Solution",
+                },
+                {
+                  to: "/husband-wife-dispute-solution",
+                  text: "Husband Wife Dispute Solution",
+                },
+                { to: "/horoscope-reading", text: "Horoscope Reading" },
+              ].map((link) => (
+                <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
+                  <Link
+                    to={link.to}
                     style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
+                      textDecoration: "none",
+                      color: "#ffffff",
+                      position: "relative",
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
                     }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/marriage-problem-solution"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Marriage Problem Solution
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/love-marriage-problem-solution"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Love Marriage Problem Solution
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/family-problem-solution"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Family Problem Solution
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/husband-wife-dispute-solution"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Husband Wife Dispute Solution
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Link
-                  to="/horoscope-reading"
-                  className="text-white relative transition-colors duration-200 ease-in-out"
-                  style={{ textDecoration: "none", position: "relative" }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = "#ffd54f";
-                    e.target.querySelector('::after').style.width = "100%";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = "#ffffff";
-                    e.target.querySelector('::after').style.width = "0";
-                  }}
-                >
-                  Horoscope Reading
-                  <span
-                    style={{
-                      content: '""',
-                      position: "absolute",
-                      bottom: "-2px",
-                      left: "0",
-                      width: "0",
-                      height: "2px",
-                      backgroundColor: "#ffd54f",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
-                </Link>
-              </ListItem>
+                    className="hover:text-yellow-300"
+                  >
+                    {link.text}
+                    <span
+                      style={{
+                        content: '""',
+                        position: "absolute",
+                        bottom: "-2px",
+                        left: 0,
+                        width: 0,
+                        height: "2px",
+                        backgroundColor: "#ffd54f",
+                        transition: "width 0.3s ease-in-out",
+                      }}
+                    />
+                  </Link>
+                </ListItem>
+              ))}
             </List>
-          </Box>
-          <Box id="Get_In_Touch">
-            <Typography variant="h6" className="text-orange-500 mb-0" sx={{ marginLeft: "15px" }}>
+          </Grid>
+
+          {/* Get In Touch */}
+          <Grid item xs={12} sm={4}>
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#ff9800",
+                mb: 1,
+                fontSize: { xs: "1.2rem", sm: "1.5rem" },
+              }}
+            >
               Get In Touch
             </Typography>
-            <List sx={{ textDecoration: "none" }}>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Typography variant="body2">
-                  <span className="mr-2">🏠</span>
-                  <a
-                    href="mailto:astroomsolution@gmail.com"
-                    className="text-white relative transition-colors duration-200 ease-in-out"
-                    style={{ textDecoration: "none", position: "relative" }}
-                    onMouseEnter={(e) => {
-                      e.target.style.color = "#ffd54f";
-                      e.target.querySelector('::after').style.width = "100%";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.color = "#ffffff";
-                      e.target.querySelector('::after').style.width = "0";
-                    }}
+            <List>
+              {[
+                {
+                  href: "mailto:astroomsolution@gmail.com",
+                  text: "House Number 20 Sector 11 Chandigarh",
+                  icon: "🏠",
+                },
+                {
+                  href: "mailto:astroomsolution@gmail.com",
+                  text: "astroomsolution@gmail.com",
+                  icon: "📧",
+                },
+                {
+                  href: "tel:+919417339708",
+                  text: "+91 9417339708",
+                  icon: "📞",
+                },
+              ].map((item) => (
+                <ListItem key={item.text} disablePadding sx={{ mb: 0.5 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{ fontSize: { xs: "0.9rem", sm: "1rem" } }}
                   >
-                    House Number 20 Sector 11 Chandigarh
-                    <span
+                    <span style={{ marginRight: "8px" }}>{item.icon}</span>
+                    <a
+                      href={item.href}
                       style={{
-                        content: '""',
-                        position: "absolute",
-                        bottom: "-2px",
-                        left: "0",
-                        width: "0",
-                        height: "2px",
-                        backgroundColor: "#ffd54f",
-                        transition: "width 0.3s ease-in-out",
+                        textDecoration: "none",
+                        color: "#ffffff",
+                        position: "relative",
                       }}
-                    />
-                  </a>
-                </Typography>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Typography variant="body2">
-                  <span className="mr-2">📧</span>
-                  <a
-                    href="mailto:astroomsolution@gmail.com"
-                    className="text-white relative transition-colors duration-200 ease-in-out"
-                    style={{ textDecoration: "none", position: "relative" }}
-                    onMouseEnter={(e) => {
-                      e.target.style.color = "#ffd54f";
-                      e.target.querySelector('::after').style.width = "100%";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.color = "#ffffff";
-                      e.target.querySelector('::after').style.width = "0";
-                    }}
-                  >
-                    astroomsolution@gmail.com
-                    <span
-                      style={{
-                        content: '""',
-                        position: "absolute",
-                        bottom: "-2px",
-                        left: "0",
-                        width: "0",
-                        height: "2px",
-                        backgroundColor: "#ffd54f",
-                        transition: "width 0.3s ease-in-out",
-                      }}
-                    />
-                  </a>
-                </Typography>
-              </ListItem>
-              <ListItem sx={{
-                '&.MuiListItem-root': {
-                  paddingBottom: 0
-                }
-              }}>
-                <Typography variant="body2">
-                  <span className="mr-2">📞</span>
-                  <a
-                    href="tel:+9999999999999"
-                    className="text-white relative transition-colors duration-200 ease-in-out"
-                    style={{ textDecoration: "none", position: "relative" }}
-                    onMouseEnter={(e) => {
-                      e.target.style.color = "#ffd54f";
-                      e.target.querySelector('::after').style.width = "100%";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.color = "#ffffff";
-                      e.target.querySelector('::after').style.width = "0";
-                    }}
-                  >
-                    +91 9417339708
-                    <span
-                      style={{
-                        content: '""',
-                        position: "absolute",
-                        bottom: "-2px",
-                        left: "0",
-                        width: "0",
-                        height: "2px",
-                        backgroundColor: "#ffd54f",
-                        transition: "width 0.3s ease-in-out",
-                      }}
-                    />
-                  </a>
-                </Typography>
-              </ListItem>
-
+                      className="hover:text-yellow-300"
+                    >
+                      {item.text}
+                      <span
+                        style={{
+                          content: '""',
+                          position: "absolute",
+                          bottom: "-2px",
+                          left: 0,
+                          width: 0,
+                          height: "2px",
+                          backgroundColor: "#ffd54f",
+                          transition: "width 0.3s ease-in-out",
+                        }}
+                      />
+                    </a>
+                  </Typography>
+                </ListItem>
+              ))}
             </List>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </Container>
     </Box>
   );
 };

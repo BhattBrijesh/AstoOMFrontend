@@ -14,11 +14,11 @@ import {
   Grow,
 } from "@mui/material";
 import Breadcrumb from "../components/Breadcrumb";
-import loveBanner from "../assets/images/1.png";
+import loveProblemSolution from "../assets/images/services/love problem solution.mp4";
 
 const LoveProblemSolution = () => {
   useEffect(() => {
-    document.title = "Love Problem Solution | OM Astro Solution";
+    document.title = "Love Problem Solution | Astro Om Solution";
   }, []);
 
   return (
@@ -31,10 +31,7 @@ const LoveProblemSolution = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          py: { xs: 6, md: 10 },
-          bgcolor: "linear-gradient(135deg, #fff8e1 0%, #fef3ec 100%)",
-          borderBottom: "1px solid",
-          borderColor: "grey.200",
+          py: { xs: 4, md: 2, mt: 0, pt: 0 },
         }}
       >
         <Container maxWidth="xxl">
@@ -52,7 +49,7 @@ const LoveProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Love Problem Solution by Om Astro Solution
+                    Love Problem Solution by Astro Om Solution
                   </Typography>
                   <Typography
                     variant="body1"
@@ -75,15 +72,21 @@ const LoveProblemSolution = () => {
             <Grid item xs={12} md={6}>
               <Grow in timeout={1000}>
                 <Box
-                  component="img"
-                  src={loveBanner}
+                  component="video"
+                  src={loveProblemSolution}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100%",
-                    height: "auto",
+                    width: "100vw",    // Full viewport width
+                    height: "78vh",    // 30% of viewport height
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
+                    mx: "auto",        // Centered display
+                    display: "block",  // Remove inline spacing
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -97,7 +100,7 @@ const LoveProblemSolution = () => {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="xxl" sx={{ py: { xs: 6, md: 8 } }}>
+      <Container maxWidth="xxl" sx={{ py: { xs: 4, md: 4 } }}>
         <Grid container spacing={4}>
           <Grid item xs={12}>
             <Grow in timeout={800}>

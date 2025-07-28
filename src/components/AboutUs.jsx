@@ -10,7 +10,7 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const About = () => {
   useEffect(() => {
-    document.title = "About Us | OM Astro Solution";
+    document.title = "About Us | Astro Om Solution";
   }, []);
 
   return (
@@ -32,7 +32,7 @@ const About = () => {
               color="text.secondary"
               sx={{ lineHeight: 1.4, fontSize: { xs: "2rem", md: "2.1rem" }, color: "#ff9800", fontWeight: 500, boxShadow: 1 }}
             >
-              Unlocking the Mysteries of the Cosmos with OM Astro Solutions
+              Unlocking the Mysteries of the Cosmos with Astro Om Solution
             </Typography>
           </Box>
           <Grid
@@ -65,14 +65,14 @@ const About = () => {
                 component="h1"
                 sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
               >
-                OM Astro Solution: Your Premier Destination for Expert Vedic Astrology in India
+                Astro Om Solution: Your Premier Destination for Expert Vedic Astrology in India
               </Typography>
               <Typography
                 variant="body2"
                 color="text.secondary"
                 sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
               >
-                Are you in search of profound astrological insights and guidance to navigate life's challenges? Look no further than OM Astro Solution, your trusted partner in Vedic astrology based in India. Our mission is to provide you with top-notch astrological solutions and help you find answers to your deepest questions.
+                Are you in search of profound astrological insights and guidance to navigate life's challenges? Look no further than Astro Om Solution, your trusted partner in Vedic astrology based in India. Our mission is to provide you with top-notch astrological solutions and help you find answers to your deepest questions.
               </Typography>
               <Typography
                 variant="h5"
@@ -134,7 +134,7 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            At OM Astro Solution, we understand that every individual is unique. That's why we offer a wide range of services tailored to your specific needs. Our team of top astrologers is skilled in deciphering the intricate details of your birth chart, including your zodiac sign, moon sign, and the positions of planets and modalities. With this information, we can provide you with personalized guidance and expert advice to address various aspects of your life.
+            At Astro Om Solution, we understand that every individual is unique. That's why we offer a wide range of services tailored to your specific needs. Our team of top astrologers is skilled in deciphering the intricate details of your birth chart, including your zodiac sign, moon sign, and the positions of planets and modalities. With this information, we can provide you with personalized guidance and expert advice to address various aspects of your life.
           </Typography>
           <Typography
             variant="h4"
@@ -149,7 +149,7 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            One of the key benefits of consulting with OM Astro Solution is gaining insight into the influence of planetary transitions on your life. Our expert astrologers will help you understand how planetary movements impact your experiences. Whether it's navigating challenging times during planetary retrogrades or capitalizing on favourable celestial alignments, our guidance will empower you to make informed decisions and lead a more harmonious life.
+            One of the key benefits of consulting with Astro Om Solution is gaining insight into the influence of planetary transitions on your life. Our expert astrologers will help you understand how planetary movements impact your experiences. Whether it's navigating challenging times during planetary retrogrades or capitalizing on favourable celestial alignments, our guidance will empower you to make informed decisions and lead a more harmonious life.
           </Typography>
           <Typography
             variant="h4"
@@ -265,7 +265,7 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            When you require assistance in decoding planetary positions and seeking solutions for your life's challenges, don't hesitate to reach out to OM Astro Solution. Our experienced astrologers in India are committed to providing you with reliable and insightful astrological guidance.
+            When you require assistance in decoding planetary positions and seeking solutions for your life's challenges, don't hesitate to reach out to Astro Om Solution. Our experienced astrologers in India are committed to providing you with reliable and insightful astrological guidance.
           </Typography>
           <Typography
             variant="body2"
@@ -273,7 +273,7 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            Take the first step toward a more fulfilling life by contacting the best astrologer in India today. Whether you're seeking answers about your personal relationships, career prospects, financial decisions, or any other aspect of your life, our dedicated team is here to guide you towards a brighter future. Embrace the wisdom of Vedic astrology and unlock the secrets to a more balanced and harmonious life with OM Astro Solution.
+            Take the first step toward a more fulfilling life by contacting the best astrologer in India today. Whether you're seeking answers about your personal relationships, career prospects, financial decisions, or any other aspect of your life, our dedicated team is here to guide you towards a brighter future. Embrace the wisdom of Vedic astrology and unlock the secrets to a more balanced and harmonious life with Astro Om Solution.
           </Typography>
           <Button
             variant="contained"

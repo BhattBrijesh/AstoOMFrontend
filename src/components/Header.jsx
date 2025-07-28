@@ -1,4 +1,10 @@
-import React, { useState, useRef, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+  useEffect,
+} from "react";
 import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
@@ -21,8 +27,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { styled, useTheme } from "@mui/material/styles";
-
+import { useNavigate } from "react-router-dom";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
@@ -35,8 +42,8 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: theme.spacing(1, 0), // Reduced padding for compactness
-  minHeight: 56, // Slightly smaller for tighter layout
+  padding: theme.spacing(1, 0),
+  minHeight: 56,
 }));
 
 const NavButton = styled(Button)(({ theme }) => ({
@@ -47,7 +54,7 @@ const NavButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(1, 2),
   minWidth: "auto",
   "&:hover": {
-    color: theme.palette.primary.main, // #ff9800
+    color: theme.palette.primary.main,
     backgroundColor: "transparent",
   },
 }));
@@ -56,7 +63,7 @@ const IconButtonStyled = styled(IconButton)(({ theme }) => ({
   color: "#fff",
   padding: theme.spacing(0.5),
   "&:hover": {
-    color: theme.palette.text.primary, // #111827
+    color: theme.palette.text.primary,
     backgroundColor: "rgba(243, 244, 246, 0.8)",
   },
 }));
@@ -72,31 +79,31 @@ const DrawerHeader = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: theme.spacing(1), // Reduced padding
+  padding: theme.spacing(1),
   borderBottom: `1px solid ${theme.palette.divider}`,
   backgroundColor: "#ffffff",
 }));
 
 const StyledListItem = styled(ListItem)(({ theme }) => ({
   "&:hover": {
-    backgroundColor: theme.palette.grey[100], // #f3f4f6
+    backgroundColor: theme.palette.grey[100],
   },
   borderRadius: theme.spacing(1),
-  margin: theme.spacing(0.25, 0.5), // Reduced margin
+  margin: theme.spacing(0.25, 0.5),
   backgroundColor: "#ffffff",
 }));
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
   fontSize: "0.875rem",
   "&:hover": {
-    backgroundColor: theme.palette.grey[100], // #f3f4f6
+    backgroundColor: theme.palette.grey[100],
   },
   backgroundColor: "#ffffff",
 }));
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   "& .MuiPaper-root": {
-    marginTop: theme.spacing(0.5), // Reduced margin
+    marginTop: theme.spacing(0.5),
     boxShadow: theme.shadows[3],
     border: `1px solid ${theme.palette.divider}`,
     borderRadius: theme.spacing(1),
@@ -139,6 +146,7 @@ const menuItems = [
 ];
 
 const Header = React.memo(() => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState({
@@ -146,8 +154,18 @@ const Header = React.memo(() => {
     services: null,
     gallery: null,
   });
+  const [accountAnchorEl, setAccountAnchorEl] = useState(null);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const closeTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      setIsAuthenticated(false);
+    };
+
+    checkAuthStatus();
+  }, []);
 
   const handleMenuOpen = useCallback((event, menu) => {
     if (closeTimeoutRef.current) {
@@ -163,6 +181,14 @@ const Header = React.memo(() => {
     closeTimeoutRef.current = setTimeout(() => {
       setAnchorEl({ about: null, services: null, gallery: null });
     }, 50);
+  }, []);
+
+  const handleAccountMenuOpen = useCallback((event) => {
+    setAccountAnchorEl(event.currentTarget);
+  }, []);
+
+  const handleAccountMenuClose = useCallback(() => {
+    setAccountAnchorEl(null);
   }, []);
 
   const toggleDrawer = useCallback(
@@ -181,7 +207,22 @@ const Header = React.memo(() => {
     [anchorEl]
   );
 
-  // Structured data for SEO
+  const handleLoginClick = useCallback(() => {
+    handleAccountMenuClose();
+    navigate("/login");
+    setTimeout(() => {
+      setIsAuthenticated(true);
+    }, 1000);
+  }, [navigate]);
+
+  const handleLogoutClick = useCallback(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+    handleAccountMenuClose();
+    setIsAuthenticated(false);
+    navigate("/");
+  }, [navigate]);
+
   const structuredData = useMemo(
     () => ({
       "@context": "https://schema.org",
@@ -196,25 +237,7 @@ const Header = React.memo(() => {
     () => (
       <Box>
         <DrawerHeader>
-          <Box sx={{ background: "transparent" }}>
-            {/* <img
-              src={logo}
-              alt="OM Astro Solution Logo"
-              sx={{
-                width: "80px",
-                height: "80px",
-                objectFit: "cover",
-                borderRadius: theme.spacing(1),
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: theme.shadows[4],
-                },
-              }}
-              className="h-8"
-              loading="lazy"
-            /> */}
-          </Box>
+          <Box sx={{ background: "transparent" }}></Box>
           <IconButton onClick={toggleDrawer(false)} aria-label="Close menu">
             <CloseIcon />
           </IconButton>
@@ -283,47 +306,76 @@ const Header = React.memo(() => {
                 )}
               </Box>
             ))}
+
+            {/* Mobile Auth Options */}
+            <Box
+              sx={{
+                borderTop: `1px solid ${theme.palette.divider}`,
+                mt: 1,
+                pt: 1,
+              }}
+            >
+              {isAuthenticated ? (
+                <StyledListItem button onClick={handleLogoutClick}>
+                  <LogoutIcon sx={{ mr: 2, fontSize: 20 }} />
+                  <ListItemText
+                    primary="Logout"
+                    primaryTypographyProps={{
+                      fontWeight: 500,
+                      fontSize: "0.875rem",
+                    }}
+                  />
+                </StyledListItem>
+              ) : (
+                <StyledListItem button onClick={handleLoginClick}>
+                  <PersonIcon sx={{ mr: 2, fontSize: 20 }} />
+                  <ListItemText
+                    primary="Login"
+                    primaryTypographyProps={{
+                      fontWeight: 500,
+                      fontSize: "0.875rem",
+                    }}
+                  />
+                </StyledListItem>
+              )}
+            </Box>
           </List>
         </Box>
       </Box>
     ),
-    [openSubmenu, toggleDrawer, toggleSubmenu, theme]
+    [
+      openSubmenu,
+      toggleDrawer,
+      toggleSubmenu,
+      theme,
+      isAuthenticated,
+      handleLoginClick,
+      handleLogoutClick,
+    ]
   );
 
   return (
-    <StyledAppBar component="nav" position="static" aria-label="Main navigation">
+    <StyledAppBar
+      component="nav"
+      position="static"
+      aria-label="Main navigation"
+    >
       {/* Structured Data for SEO */}
-      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
 
       <Container maxWidth="xl" sx={{ background: "transparent" }}>
         <StyledToolbar>
           {/* Logo/Brand */}
-          <Box sx={{ background: "transparent" }}>
-            {/* <img
-              src={logo}
-              alt="OM Astro Solution Logo"
-              sx={{
-                width: "80px",
-                height: "80px",
-                objectFit: "cover",
-                borderRadius: theme.spacing(1),
-                transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  boxShadow: theme.shadows[4],
-                },
-              }}
-              className="h-8"
-              loading="lazy"
-            /> */}
-          </Box>
+          <Box sx={{ background: "transparent" }}></Box>
 
           {/* Desktop Navigation */}
           <Box
             sx={{
               display: { xs: "none", lg: "flex" },
               alignItems: "center",
-              gap: 2, // Reduced gap for compactness
+              gap: 2,
             }}
           >
             {menuItems.map((item, index) => (
@@ -381,9 +433,50 @@ const Header = React.memo(() => {
             <IconButtonStyled aria-label="Search">
               <SearchIcon fontSize="small" />
             </IconButtonStyled>
-            <IconButtonStyled aria-label="Account">
+            <IconButtonStyled
+              aria-label="Account"
+              onClick={handleAccountMenuOpen}
+              aria-controls={accountAnchorEl ? "account-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={accountAnchorEl ? "true" : undefined}
+            >
               <PersonIcon fontSize="small" />
             </IconButtonStyled>
+            <Menu
+              id="account-menu"
+              anchorEl={accountAnchorEl}
+              open={Boolean(accountAnchorEl)}
+              onClose={handleAccountMenuClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  minWidth: 120,
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                  borderRadius: 1,
+                  mt: 0.5,
+                },
+              }}
+            >
+              {isAuthenticated ? (
+                <MenuItem onClick={handleLogoutClick}>
+                  <LogoutIcon sx={{ mr: 1, fontSize: 18 }} />
+                  Logout
+                </MenuItem>
+              ) : (
+                <MenuItem onClick={handleLoginClick}>
+                  <PersonIcon sx={{ mr: 1, fontSize: 18 }} />
+                  Login
+                </MenuItem>
+              )}
+            </Menu>
             <IconButtonStyled
               sx={{ display: { lg: "none" }, marginLeft: 0.25 }}
               onClick={toggleDrawer(true)}

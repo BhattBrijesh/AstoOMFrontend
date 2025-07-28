@@ -23,7 +23,7 @@ const Services = () => {
       image: img1,
       title: "Love Problem Solution",
       description:
-        "OM Astro Solution is your top love problem solution Astrologer, specializing in love marriages. Love is a precious gift but can come with challenges like communication issues and relationship troubles.",
+        "Astro Om Solution is your top love problem solution Astrologer, specializing in love marriages. Love is a precious gift but can come with challenges like communication issues and relationship troubles.",
       link: "/love-problem-solution",
     },
     {
@@ -37,14 +37,14 @@ const Services = () => {
       image: img3,
       title: "Love Marriage Problem Solution",
       description:
-        "Increasingly, couples are turning to phone-based solutions for love marriage challenges. OM Astro Solution, India's leading astrologer with over a decade of experience, provides immediate answers.",
+        "Increasingly, couples are turning to phone-based solutions for love marriage challenges. Astro Om Solution, India's leading astrologer with over a decade of experience, provides immediate answers.",
       link: "/love-marriage-problem-solution",
     },
     {
       image: img4,
       title: "Husband Wife Dispute Solution",
       description:
-        "Marriage, a sacred bond, faces modern life's trials, testing resilience. When challenges strain relationships, individuals turn to astrologers like OM Astro Solution for guidance.",
+        "Marriage, a sacred bond, faces modern life's trials, testing resilience. When challenges strain relationships, individuals turn to astrologers like Astro Om Solution for guidance.",
       link: "/husband-wife-dispute-solution",
     },
     {
