@@ -11,16 +11,17 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../Admin/Redux/Store";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     setLoading(true);
@@ -34,10 +35,14 @@ const AdminLogin = () => {
         }
       );
       const { token, user } = response.data;
-      setToken(token);
-      setName(user.email);
-      localStorage.setItem("authToken", token);
-      localStorage.setItem("userName", user.email);
+      dispatch(
+        login({
+          status: user.status,
+          token: token,
+          userName: user.email,
+        })
+      );
+      window.dispatchEvent(new Event("customStorageChange"));
       navigate("/dashboard");
       console.log("Login successful", { token, name: user.email });
     } catch (err) {
@@ -138,11 +143,6 @@ const AdminLogin = () => {
         >
           {loading ? "Logging in..." : "Login"}
         </Button>
-        {name && token && (
-          <Typography align="center" sx={{ mt: 2, color: "green" }}>
-            Welcome, {name}
-          </Typography>
-        )}
       </Box>
     </Box>
   );
