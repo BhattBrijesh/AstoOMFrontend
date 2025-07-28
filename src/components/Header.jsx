@@ -107,7 +107,7 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
   },
 }));
 
-const menuItems = [
+const baseMenuItems = [
   { label: "Home", to: "/" },
   {
     label: "About",
@@ -157,6 +157,12 @@ const Header = React.memo(() => {
   const [accountAnchorEl, setAccountAnchorEl] = useState(null);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const closeTimeoutRef = useRef(null);
+  const menuItems = useMemo(() => {
+    if (isAuthenticated) {
+      return [...baseMenuItems, { label: "Dashboard", to: "/dashboard" }];
+    }
+    return baseMenuItems;
+  }, [isAuthenticated]);
 
   const handleMenuOpen = useCallback((event, menu) => {
     if (closeTimeoutRef.current) {
@@ -216,7 +222,7 @@ const Header = React.memo(() => {
       name: menuItems.map((item) => item.label),
       url: menuItems.map((item) => `${window.location.origin}${item.to}`),
     }),
-    []
+    [menuItems]
   );
 
   const drawerList = useMemo(
@@ -337,6 +343,7 @@ const Header = React.memo(() => {
       isAuthenticated,
       handleLoginClick,
       handleLogoutClick,
+      menuItems,
     ]
   );
 
