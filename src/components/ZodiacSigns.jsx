@@ -29,66 +29,18 @@ const ZodiacSigns = () => {
   const [loading, setLoading] = useState(false);
 
   const zodiacSigns = [
-    {
-      name: "Aries",
-      hindi: "मेष",
-      animation: aries,
-    },
-    {
-      name: "Taurus",
-      hindi: "वृषभ",
-      animation: Taurus,
-    },
-    {
-      name: "Gemini",
-      hindi: "मिथुन",
-      animation: Gemini,
-    },
-    {
-      name: "Cancer",
-      hindi: "कर्क",
-      animation: Cancer,
-    },
-    {
-      name: "Leo",
-      hindi: "सिंह",
-      animation: Leo,
-    },
-    {
-      name: "Virgo",
-      hindi: "कन्या",
-      animation: Virgo,
-    },
-    {
-      name: "Libra",
-      hindi: "तुला",
-      animation: Libra,
-    },
-    {
-      name: "Scorpio",
-      hindi: "वृश्चिक",
-      animation: Scorpio,
-    },
-    {
-      name: "Sagittarius",
-      hindi: "धनु",
-      animation: Sagittarius,
-    },
-    {
-      name: "Capricorn",
-      hindi: "मकर",
-      animation: Capricorn,
-    },
-    {
-      name: "Aquarius",
-      hindi: "कुम्भ",
-      animation: Aquarius,
-    },
-    {
-      name: "Pisces",
-      hindi: "मीन",
-      animation: Pisces,
-    },
+    { name: "Aries", hindi: "मेष", animation: aries },
+    { name: "Taurus", hindi: "वृषभ", animation: Taurus },
+    { name: "Gemini", hindi: "मिथुन", animation: Gemini },
+    { name: "Cancer", hindi: "कर्क", animation: Cancer },
+    { name: "Leo", hindi: "सिंह", animation: Leo },
+    { name: "Virgo", hindi: "कन्या", animation: Virgo },
+    { name: "Libra", hindi: "तुला", animation: Libra },
+    { name: "Scorpio", hindi: "वृश्चिक", animation: Scorpio },
+    { name: "Sagittarius", hindi: "धनु", animation: Sagittarius },
+    { name: "Capricorn", hindi: "मकर", animation: Capricorn },
+    { name: "Aquarius", hindi: "कुम्भ", animation: Aquarius },
+    { name: "Pisces", hindi: "मीन", animation: Pisces },
   ];
 
   const containerVariants = {
@@ -127,7 +79,7 @@ const ZodiacSigns = () => {
     try {
       const response = await getZodiaDaily({
         sign: zodiac.name.toLowerCase(),
-        period: "DAILY",
+        type: "daily",
       });
       navigate(`/zodiac/${zodiac.name.toLowerCase()}`, {
         state: { zodiac, horoscope: response.data },
