@@ -18,17 +18,16 @@ import {
 import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import { getZodiaDaily } from "../api";
 
-// Custom theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#f28c38", // Orange accent
+      main: "#f28c38",
     },
     secondary: {
-      main: "#424242", // Dark gray for contrast
+      main: "#424242",
     },
     background: {
-      default: "#f5f5f5", // Light background for the page
+      default: "#f5f5f5",
     },
   },
   typography: {
@@ -79,7 +78,6 @@ const theme = createTheme({
   },
 });
 
-// Styled components
 const StyledCardMedia = styled(CardMedia)(({ theme }) => ({
   width: "100%",
   height: 300,
@@ -95,36 +93,40 @@ const ZodiacDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { zodiac, horoscope } = location.state || {};
-  const [period, setPeriod] = useState("DAILY");
+  const [type, setType] = useState("daily");
   const [horoscopeData, setHoroscopeData] = useState(horoscope || null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const fetchHoroscope = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await getZodiaDaily({
+        sign: zodiac.name.toLowerCase(),
+        type,
+      });
+      setHoroscopeData(response.data);
+      console.log("Fetched data:", response.data?.data);
+    } catch (error) {
+      console.error("Error fetching horoscope:", error);
+      setError("Failed to fetch horoscope data. Please try again.");
+      setHoroscopeData(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  console.log("Horoscope data:", horoscopeData);
+
   useEffect(() => {
-    if (zodiac && period) {
-      const fetchHoroscope = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-          const response = await getZodiaDaily({
-            sign: zodiac.name.toLowerCase(),
-            period,
-          });
-          setHoroscopeData(response.data);
-        } catch (error) {
-          console.error("Error fetching horoscope:", error);
-          setError("Failed to fetch horoscope data. Please try again.");
-          setHoroscopeData(null);
-        } finally {
-          setLoading(false);
-        }
-      };
+    if (zodiac && type) {
       fetchHoroscope();
     }
-  }, [zodiac, period]);
+  }, [zodiac, type]);
 
-  const handlePeriodChange = (event) => {
-    setPeriod(event.target.value);
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
   };
 
   if (!zodiac) {
@@ -162,15 +164,13 @@ const ZodiacDetail = () => {
                 {zodiac.name} ({zodiac.hindi})
               </Typography>
               <FormControl sx={{ my: 2, minWidth: 180 }} size="small">
-                <InputLabel id="period-select-label">
-                  Horoscope Period
-                </InputLabel>
+                <InputLabel id="type-select-label">Horoscope Type</InputLabel>
                 <Select
-                  labelId="period-select-label"
-                  id="period-select"
-                  value={period}
-                  label="Horoscope Period"
-                  onChange={handlePeriodChange}
+                  labelId="type-select-label"
+                  id="type-select"
+                  value={type}
+                  label="Horoscope Type"
+                  onChange={handleTypeChange}
                   disabled={loading}
                   sx={{
                     "& .MuiOutlinedInput-root": {
@@ -178,16 +178,22 @@ const ZodiacDetail = () => {
                     },
                   }}
                 >
-                  <MenuItem value="DAILY">Daily</MenuItem>
-                  <MenuItem value="WEEKLY">Weekly</MenuItem>
-                  <MenuItem value="MONTHLY">Monthly</MenuItem>
+                  <MenuItem value="daily">Daily</MenuItem>
+                  <MenuItem value="weekly">Weekly</MenuItem>
+                  <MenuItem value="monthly">Monthly</MenuItem>
                 </Select>
               </FormControl>
               <Typography variant="h6" gutterBottom textAlign="center">
-                {period.charAt(0) + period.slice(1).toLowerCase()}
-                <span style={{ marginLeft: "5px", color: "#f28c38" }}>
+                {type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}
+                <span
+                  style={{
+                    color: "#f28c38",
+                    marginLeft: "5px",
+                    marginRight: "4px",
+                  }}
+                >
                   {zodiac.name}
-                </span>{" "}
+                </span>
                 Horoscope
               </Typography>
               {loading ? (
@@ -195,10 +201,24 @@ const ZodiacDetail = () => {
                   <CircularProgress color="primary" size={32} />
                 </Box>
               ) : error ? (
-                <Alert severity="error" sx={{ my: 2 }}>
-                  {error}
-                </Alert>
-              ) : horoscopeData && horoscopeData.success ? (
+                <Box sx={{ my: 2 }}>
+                  <Alert
+                    severity="error"
+                    action={
+                      <Button
+                        color="inherit"
+                        size="small"
+                        onClick={fetchHoroscope}
+                        disabled={loading}
+                      >
+                        Retry
+                      </Button>
+                    }
+                  >
+                    {error}
+                  </Alert>
+                </Box>
+              ) : horoscopeData && horoscopeData.isSuccess ? (
                 <>
                   <Typography
                     variant="body1"
@@ -211,25 +231,50 @@ const ZodiacDetail = () => {
                     variant="caption"
                     display="block"
                     textAlign="center"
-                    sx={{ color: "#f28c38" }}
+                    sx={{ color: "#f28c38", mb: 2 }}
                   >
-                    Date: {horoscopeData.data.date}
+                    {type === "daily" && `Date: ${horoscopeData.data.date}`}
+                    {type === "weekly" && `Week: ${horoscopeData.data.week}`}
+                    {type === "monthly" && `Month: ${horoscopeData.data.month}`}
                   </Typography>
+                  {type === "monthly" && (
+                    <>
+                      {horoscopeData.data.standout_days && (
+                        <Typography
+                          variant="body1"
+                          paragraph
+                          sx={{ lineHeight: 1.6 }}
+                        >
+                          <strong>Standout Days:</strong>
+                          {horoscopeData.data.standout_days}
+                        </Typography>
+                      )}
+                      {horoscopeData.data.challenging_days && (
+                        <Typography
+                          variant="body1"
+                          paragraph
+                          sx={{ lineHeight: 1.6 }}
+                        >
+                          <strong>Challenging Days:</strong>
+                          {horoscopeData.data.challenging_days}
+                        </Typography>
+                      )}
+                    </>
+                  )}
                 </>
               ) : (
-                <Typography
-                  variant="body1"
-                  paragraph
-                  sx={{ lineHeight: 1.6, textAlign: "center" }}
-                >
-                  No Data
-                </Typography>
+                <Box sx={{ my: 2 }}>
+                  <Alert severity="info">
+                    Unable to fetch horoscope. Please try again later.
+                  </Alert>
+                </Box>
               )}
               <Box sx={{ textAlign: "center", mt: 3 }}>
                 <Button
                   variant="contained"
                   onClick={() => navigate("/")}
                   size="large"
+                  sx={{ color: "#fff" }}
                 >
                   Back to Zodiac Signs
                 </Button>

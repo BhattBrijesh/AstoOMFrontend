@@ -14,17 +14,12 @@ export const handleSubmitInquiryForm = async (reqBody = {}) => {
   );
   return response;
 };
-export const getZodiaDaily = async ({ sign, period }) => {
-  let endpoint = "";
-  if (period === "DAILY") {
-    endpoint = `/api/get-horoscope/daily?sign=${sign}&day=TODAY`;
-  } else if (period === "WEEKLY") {
-    endpoint = `/api/get-horoscope/weekly?sign=${sign}`;
-  } else if (period === "MONTHLY") {
-    endpoint = `/api/get-horoscope/monthly?sign=${sign}`;
-  } else {
-    throw new Error("Invalid period specified");
+
+export const getZodiaDaily = async ({ sign, type }) => {
+  if (!["daily", "weekly", "monthly"].includes(type)) {
+    throw new Error("Invalid type specified");
   }
+  const endpoint = `https://asto-om-backend.vercel.app/api/getZodiacDaily?sign=${sign}&type=${type}`;
   const response = await axios.get(endpoint);
   return response;
 };
