@@ -7,8 +7,8 @@ import {
   CardContent,
   Button,
   Grid,
-} from "@mui/material"
-import img1 from '../assets/images/banner4.jpeg';
+} from "@mui/material";
+import img1 from "../assets/images/banner4.jpeg";
 import { motion } from "framer-motion";
 
 const WelcomeAstro = () => {
@@ -49,9 +49,9 @@ const WelcomeAstro = () => {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
   return (
     <Box
@@ -65,12 +65,12 @@ const WelcomeAstro = () => {
             sx={{ textAlign: "center", marginBottom: "40px" }}
           >
             <Typography variant="h4" component="h1">
-              <span style={{ color: "#FFF" }}>Welcome to </span>
-              <span style={{ color: "#ff9800" }}>Astro Om Solution</span>
+              <span style={{ color: "#FFF" }}>स्वागत </span>
+              <span style={{ color: "#ff9800" }}>पृष्ठ परिचय</span>
             </Typography>
-            <Typography variant="body1" sx={{ color: "#FFF" }}>
+            {/* <Typography variant="body1" sx={{ color: "#FFF" }}>
               Unlocking the Mysteries of the Cosmos with Astro Om Solution
-            </Typography>
+            </Typography> */}
           </Box>
           <Grid
             container
@@ -82,7 +82,8 @@ const WelcomeAstro = () => {
               padding: "0", // Remove extra padding to avoid white space
             }}
           >
-            <motion.div variants={containerVariants}
+            <motion.div
+              variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -91,8 +92,8 @@ const WelcomeAstro = () => {
                 flexWrap: "wrap",
                 justifyContent: "center",
                 gap: "20px",
-              }}>
-
+              }}
+            >
               <Grid
                 item
                 sx={{
@@ -102,10 +103,7 @@ const WelcomeAstro = () => {
                   justifyContent: "center",
                 }}
               >
-                <motion.div
-                  variants={cardVariants}
-                  whileHover="hover">
-
+                <motion.div variants={cardVariants} whileHover="hover">
                   <Card
                     sx={{
                       borderRadius: "10px",
@@ -183,39 +181,56 @@ const WelcomeAstro = () => {
                 }}
               >
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  <b>Astro Om Solution a top astrologer in India</b>, with over
-                  a decade of experience. He specializes in Vedic astrology and
-                  offers solutions for things like love problem solution, love
-                  marriage problem, marriage problem solution, husband wife
-                  dispute, family problem solution, horoscopes reading and
-                  helping with everyday life problems.
+                  <span style={{ color: "#ff9800" }}>
+                    नमस्ते और स्वागत है पंडित ओम प्रकाश
+                  </span>
+                  , की आधिकारिक वेबसाइट पर! भारत के शीर्ष ज्योतिषियों में से एक,
+                  पंडित ओम प्रकाश, जिनके पास 20 वर्षों से अधिक का अनुभव है,
+                  वैदिक ज्योतिष के क्षेत्र में अपनी विशेषज्ञता के लिए प्रसिद्ध
+                  हैं। उत्तराखंड के पवित्र गंगोत्री से ताल्लुक रखने वाले और
+                  हरिद्वार व ऋषिकेश से शिक्षा प्राप्त पंडित ओम प्रकाश ने ज्योतिष
+                  और आध्यात्मिक मार्गदर्शन के माध्यम से लाखों लोगों के जीवन को
+                  रोशन किया है।
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  Astro Om Solution is dedicated to giving you genuine and
-                  highly accurate astrology services. People from all over the
-                  world trust his services because they are dependable and in
-                  line with their beliefs. Many individuals travel from faraway
-                  places, including different cities, states, and even
-                  countries, to seek his guidance.
+                  वह न केवल एक प्रख्यात ज्योतिषी हैं, बल्कि चंडीगढ़ के सेक्टर 37
+                  में देवालया परिषद संगठन के वित्तीय सलाहकार के रूप में भी
+                  कार्यरत हैं। इसके अतिरिक्त, वह चंडीगढ़ के विभिन्न मंदिर
+                  समितियों के साथ मिलकर सामाजिक और आध्यात्मिक कार्यों में योगदान
+                  दे रहे हैं। उनकी सेवाएँ प्रेम, विवाह, दांपत्य जीवन, पारिवारिक
+                  समस्याओं, और दैनिक जीवन की चुनौतियों के समाधान के लिए जानी
+                  जाती हैं, जो अत्यंत सटीक और विश्वसनीय हैं।
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  If you want to ensure a bright future for yourself, reach out
-                  to the renowned astrologer Astro Om Solution today.
+                  वर्तमान में, पंडित ओम प्रकाश चंडीगढ़ के सेक्टर 11 और सेक्टर 43
+                  में दो कार्यालयों के माध्यम से अपनी सेवाएँ प्रदान कर रहे हैं।
+                  उनकी वैदिक ज्योतिष पर गहरी पकड़ और आध्यात्मिक दृष्टिकोण ने
+                  उन्हें देश-विदेश में विश्वास और सम्मान दिलाया है। लोग दूर-दूर
+                  से, विभिन्न शहरों, राज्यों, और यहाँ तक कि देशों से, उनके
+                  मार्गदर्शन के लिए आते हैं।
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  <b>Connect with the Best Astrologer in India:</b>
+                  <span style={{ color: "#ff9800" }}>पंडित ओम प्रकाश </span> का
+                  उद्देश्य आपके जीवन को ग्रहों की शक्ति और वैदिक ज्योतिष के
+                  प्राचीन ज्ञान के माध्यम से सकारात्मक दिशा प्रदान करना है। चाहे
+                  आप प्रेम संबंधी समस्याओं, वैवाहिक मुद्दों, पारिवारिक विवादों,
+                  या भविष्य के बारे में जानना चाहते हों, हमारी सेवाएँ आपके लिए
+                  एक उज्ज्वल और सुखमय भविष्य सुनिश्चित करने के लिए समर्पित हैं।
                 </Typography>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  When you require assistance in decoding planetary positions
-                  and seeking solutions for your life's challenges, don't
-                  hesitate to reach out to Astro Om Solution. Our experienced
-                  astrologers in India are committed to providing you with
-                  reliable and insightful astrological guidance.
+                  आज ही संपर्क करें और अपने जीवन की चुनौतियों का समाधान प्राप्त
+                  करें। वैदिक ज्योतिष के इस अनुभवी विशेषज्ञ के साथ अपने भविष्य
+                  को नई दिशा दें!
                 </Typography>
                 <Button variant="contained" color="warning" href="/aboutus">
                   Read More
                 </Button>
-                <Button variant="contained" color="warning" href="/contactus" sx={{ marginLeft: "30px" }}>
+                <Button
+                  variant="contained"
+                  color="warning"
+                  href="/contactus"
+                  sx={{ marginLeft: "30px" }}
+                >
                   Contact Us Now
                 </Button>
               </Box>
