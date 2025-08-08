@@ -35,7 +35,7 @@ const VideoGallery = memo(() => {
   useEffect(() => {
     document.title = 'Video Gallery | Astro Om Solution';
     videos.forEach((video, index) => {
-      console.log(`Video ${index + 1} path:`, video.src);
+
     });
   }, []);
 
@@ -49,7 +49,7 @@ const VideoGallery = memo(() => {
     if (e.target.tagName === 'VIDEO') {
       e.stopPropagation(); // Allow video controls to work
     } else {
-      console.log('Video clicked, but no lightbox implemented');
+
       // Add lightbox functionality here if needed
     }
   };

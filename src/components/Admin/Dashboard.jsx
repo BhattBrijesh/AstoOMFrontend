@@ -382,7 +382,7 @@ const Dashboard = () => {
       const data = Array.isArray(contactUsResponse.data.data)
         ? contactUsResponse.data.data
         : [];
-      console.log("Contact Us Data:", data);
+
       const contactUsDataWithId = data.map((item, index) => {
         if (!item.createdAt) {
           console.warn(`Missing createdAt in Contact Us item:`, item);
@@ -411,7 +411,7 @@ const Dashboard = () => {
       const data = Array.isArray(inquiryResponse.data.data)
         ? inquiryResponse.data.data
         : [];
-      console.log("Inquiry Data:", data);
+
       const inquiryDataWithId = data.map((item, index) => {
         if (!item.createdAt) {
           console.warn(`Missing createdAt in Inquiry item:`, item);
@@ -433,7 +433,7 @@ const Dashboard = () => {
   };
 
   const handleAstroLogin = () => {
-    console.log("Navigating to register");
+
     navigate("/register");
   };
 

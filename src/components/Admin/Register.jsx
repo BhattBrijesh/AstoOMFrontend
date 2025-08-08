@@ -36,7 +36,7 @@ const Register = () => {
       );
       const { token, user } = response.data;
       navigate("/login");
-      console.log("Register successful", { token, name: user.email });
+
     } catch (err) {
       setError(
         err.response?.data?.message || "Register failed. Please try again."
@@ -48,7 +48,7 @@ const Register = () => {
   };
 
   const handleAstroLogin = () => {
-    console.log("Navigate to Astro Login");
+
   };
 
   const handleSubmit = (e) => {

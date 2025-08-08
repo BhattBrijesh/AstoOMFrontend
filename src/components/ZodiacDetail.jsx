@@ -107,7 +107,7 @@ const ZodiacDetail = () => {
         type,
       });
       setHoroscopeData(response.data);
-      console.log("Fetched data:", response.data?.data);
+
     } catch (error) {
       console.error("Error fetching horoscope:", error);
       setError("Failed to fetch horoscope data. Please try again.");
@@ -117,7 +117,7 @@ const ZodiacDetail = () => {
     }
   };
 
-  console.log("Horoscope data:", horoscopeData);
+
 
   useEffect(() => {
     if (zodiac && type) {

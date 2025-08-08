@@ -33,17 +33,17 @@ const PhotoGallery = memo(() => {
   useEffect(() => {
     document.title = 'Photo Gallery | Astro Om Solution';
     photos.forEach((photo, index) => {
-      console.log(`Image ${index + 1} path:`, photo.src);
+
     });
   }, []);
 
   const openLightbox = useCallback((index) => {
-    console.log('Opening lightbox for image index:', index, 'src:', photos[index].src);
+
     setSelectedImageIndex(index);
   }, [photos]);
 
   const closeLightbox = useCallback(() => {
-    console.log('Closing lightbox');
+
     setSelectedImageIndex(null);
   }, []);
 

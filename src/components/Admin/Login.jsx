@@ -44,7 +44,7 @@ const AdminLogin = () => {
       );
       window.dispatchEvent(new Event("customStorageChange"));
       navigate("/dashboard");
-      console.log("Login successful", { token, name: user.email });
+
     } catch (err) {
       setError(
         err.response?.data?.message || "Login failed. Please try again."
@@ -56,7 +56,7 @@ const AdminLogin = () => {
   };
 
   const handleAstroLogin = () => {
-    console.log("Navigate to Astro Login");
+
   };
 
   const handleSubmit = (e) => {
