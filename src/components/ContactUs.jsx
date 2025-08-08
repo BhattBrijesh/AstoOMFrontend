@@ -295,6 +295,7 @@ const Contact = () => {
                         sx={{ width: 48, height: 48, bgcolor: "blue.100" }}
                       >
                         <img
+                          loading="lazy"
                           src={item.icon}
                           alt={item.alt}
                           style={{

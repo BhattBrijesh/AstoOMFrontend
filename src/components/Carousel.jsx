@@ -81,8 +81,8 @@ const Carousel = () => {
                 index === currentSlide
                   ? "translateX(0)"
                   : index > currentSlide
-                  ? "translateX(100%)"
-                  : "translateX(-100%)",
+                    ? "translateX(100%)"
+                    : "translateX(-100%)",
               transition:
                 "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
               opacity: index === currentSlide ? 1 : 0,
@@ -93,6 +93,7 @@ const Carousel = () => {
             aria-label={`Slide ${index + 1}`}
           >
             <img
+              loading="lazy"
               src={slide}
               alt={`Slide ${index + 1}`}
               style={{
@@ -137,12 +138,12 @@ const Carousel = () => {
               transform: index === currentSlide ? "scale(1.2)" : "scale(1)",
             }}
             onMouseOver={(e) =>
-              (e.currentTarget.style.transform =
-                index === currentSlide ? "scale(1.2)" : "scale(1.1)")
+            (e.currentTarget.style.transform =
+              index === currentSlide ? "scale(1.2)" : "scale(1.1)")
             }
             onMouseOut={(e) =>
-              (e.currentTarget.style.transform =
-                index === currentSlide ? "scale(1.2)" : "scale(1)")
+            (e.currentTarget.style.transform =
+              index === currentSlide ? "scale(1.2)" : "scale(1)")
             }
             aria-label={`Go to slide ${index + 1}`}
           />

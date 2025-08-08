@@ -88,6 +88,7 @@ const Footer = () => {
                   }}
                 >
                   <img
+                    loading="lazy"
                     src={Facebook}
                     alt="Facebook icon"
                     style={{
@@ -115,6 +116,7 @@ const Footer = () => {
                   }}
                 >
                   <img
+                    loading="lazy"
                     src={Instagram}
                     alt="Instagram icon"
                     style={{
@@ -142,6 +144,7 @@ const Footer = () => {
                   }}
                 >
                   <img
+                    loading="lazy"
                     src={Whatsapp}
                     alt="WhatsApp icon"
                     style={{
@@ -169,6 +172,7 @@ const Footer = () => {
                   }}
                 >
                   <img
+                    loading="lazy"
                     src={Contact}
                     alt="Contact icon"
                     style={{

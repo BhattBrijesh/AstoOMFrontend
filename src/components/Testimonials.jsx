@@ -83,6 +83,7 @@ const Testimonials = () => {
                 </button>
                 <div className="ast_testimonials_slider_box" style={{ textAlign: 'center' }}>
                   <img
+                    loading="lazy"
                     src={testimonials[currentTestimonial].image}
                     alt="Testimonial"
                   />
