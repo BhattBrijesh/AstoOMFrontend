@@ -20,7 +20,6 @@ import { handleSubmitInquiryForm } from "../api";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
-
 const Inquiry = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -80,27 +79,24 @@ const Inquiry = () => {
     return Object.keys(newErrors).length === 0;
   }, [formData]);
 
-  const handleChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      if (name === "phone") {
-        // Allow only digits and max 10 characters
-        if (/^\d{0,10}$/.test(value)) {
-          setFormData((prev) => ({ ...prev, [name]: value }));
-          setErrors((prev) => ({ ...prev, [name]: null }));
-        } else {
-          setErrors((prev) => ({
-            ...prev,
-            phone: "Only digits are allowed (max 10)",
-          }));
-        }
-      } else {
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    if (name === "phone") {
+      // Allow only digits and max 10 characters
+      if (/^\d{0,10}$/.test(value)) {
         setFormData((prev) => ({ ...prev, [name]: value }));
         setErrors((prev) => ({ ...prev, [name]: null }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          phone: "Only digits are allowed (max 10)",
+        }));
       }
-    },
-    []
-  );
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+      setErrors((prev) => ({ ...prev, [name]: null }));
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -168,8 +164,9 @@ const Inquiry = () => {
           }}
         >
           {/* Video Card */}
-          <Grid size={8}>
-            <motion.div variants={containerVariants}
+          <Grid size={12}>
+            <motion.div
+              variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
@@ -179,10 +176,9 @@ const Inquiry = () => {
                 justifyContent: "center",
                 gap: "20px",
                 height: "100%",
-              }}>
-              <motion.div variants={cardVariants}
-                whileHover="hover">
-
+              }}
+            >
+              <motion.div variants={cardVariants} whileHover="hover">
                 <Card
                   sx={{
                     height: "100%",
@@ -214,12 +210,11 @@ const Inquiry = () => {
                   />
                 </Card>
               </motion.div>
-
             </motion.div>
           </Grid>
 
           {/* Inquiry Form */}
-          <Grid size={8}>
+          <Grid size={12}>
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -232,9 +227,7 @@ const Inquiry = () => {
                 gap: "20px",
               }}
             >
-              <motion.div variants={cardVariants}
-                whileHover="hover">
-
+              <motion.div variants={cardVariants} whileHover="hover">
                 <Box
                   className="ast_about_info"
                   component="form"
@@ -327,9 +320,10 @@ const Inquiry = () => {
                         variant="outlined"
                         error={!!errors.subject}
                         sx={{ borderRadius: 1 }}
-
                       >
-                        <InputLabel id="subject-select-label">Select Subject *</InputLabel>
+                        <InputLabel id="subject-select-label">
+                          Select Subject *
+                        </InputLabel>
                         <Select
                           labelId="subject-select-label"
                           id="subject-select"
@@ -344,15 +338,26 @@ const Inquiry = () => {
                           <MenuItem value="">
                             <em>Select Subject</em>
                           </MenuItem>
-                          <MenuItem value="Love Problem Solution">Love Problem Solution</MenuItem>
-                          <MenuItem value="Marriage Problem Solution">Marriage Problem Solution</MenuItem>
-                          <MenuItem value="Family Problem Solution">Family Problem Solution</MenuItem>
-                          <MenuItem value="Horoscope Reading">Horoscope Reading</MenuItem>
+                          <MenuItem value="Love Problem Solution">
+                            Love Problem Solution
+                          </MenuItem>
+                          <MenuItem value="Marriage Problem Solution">
+                            Marriage Problem Solution
+                          </MenuItem>
+                          <MenuItem value="Family Problem Solution">
+                            Family Problem Solution
+                          </MenuItem>
+                          <MenuItem value="Horoscope Reading">
+                            Horoscope Reading
+                          </MenuItem>
                           <MenuItem value="Other">Other</MenuItem>
                         </Select>
                       </FormControl>
                       {errors.subject && (
-                        <Typography color="error" sx={{ fontSize: "0.75rem", mt: 0.5 }}>
+                        <Typography
+                          color="error"
+                          sx={{ fontSize: "0.75rem", mt: 0.5 }}
+                        >
                           {errors.subject}
                         </Typography>
                       )}
@@ -380,7 +385,13 @@ const Inquiry = () => {
                   </Grid>
 
                   {/* Fourth Row: Button */}
-                  <Grid item xs={12} sm={12} lg={12} sx={{ textAlign: "center", mt: 2 }}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    sx={{ textAlign: "center", mt: 2 }}
+                  >
                     <Button
                       fullWidth
                       type="submit"
@@ -410,7 +421,6 @@ const Inquiry = () => {
                       </Typography>
                     )}
                   </Grid>
-
                 </Box>
               </motion.div>
             </motion.div>

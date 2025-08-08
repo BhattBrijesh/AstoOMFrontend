@@ -48,13 +48,18 @@ const Footer = () => {
     },
   };
 
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <Box
       mt={1}
       sx={{
         background: "#1a2a4487",
         color: "#f0f4f8",
-        p: { xs: 2, sm: 3 }, // Responsive padding
+        p: { xs: 2, sm: 3 },
       }}
     >
       <Container maxWidth="lg">
@@ -69,7 +74,7 @@ const Footer = () => {
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",
-              gap: "20px", // Uniform 20px gap for all screen sizes
+              gap: "20px",
             }}
           >
             <motion.div variants={cardVariants} whileHover="hover">
@@ -192,10 +197,10 @@ const Footer = () => {
           container
           spacing={3}
           sx={{
-            flexDirection: { xs: "column", sm: "row" }, // Stack on mobile
+            flexDirection: { xs: "column", sm: "row" },
             justifyContent: "space-between",
             alignItems: { xs: "left", sm: "flex-start" },
-            textAlign: { xs: "left", sm: "left" }, // Center text on mobile
+            textAlign: { xs: "left", sm: "left" },
           }}
         >
           {/* Quick Links */}
@@ -205,7 +210,7 @@ const Footer = () => {
               sx={{
                 color: "#ff9800",
                 mb: 1,
-                fontSize: { xs: "1.2rem", sm: "1.5rem" }, // Responsive font
+                fontSize: { xs: "1.2rem", sm: "1.5rem" },
               }}
             >
               Quick Links
@@ -222,11 +227,12 @@ const Footer = () => {
                 <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
                   <Link
                     to={link.to}
+                    onClick={scrollToTop} // Add scrollToTop handler
                     style={{
                       textDecoration: "none",
                       color: "#ffffff",
                       position: "relative",
-                      fontSize: { xs: "0.9rem", sm: "1rem" }, // Responsive font
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
                     }}
                     className="hover:text-yellow-300"
                   >
@@ -285,6 +291,7 @@ const Footer = () => {
                 <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
                   <Link
                     to={link.to}
+                    onClick={scrollToTop} // Add scrollToTop handler
                     style={{
                       textDecoration: "none",
                       color: "#ffffff",
