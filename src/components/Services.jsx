@@ -21,45 +21,45 @@ const Services = () => {
   const services = [
     {
       image: img1,
-      title: "Love Problem Solution",
+      title: "Love & Relationship Guidance",
       description:
-        "Astro Om Solution is your top love problem solution Astrologer, specializing in love marriages. Love is a precious gift but can come with challenges like communication issues and relationship troubles.",
+        "Facing challenges in your love life? Get personalized guidance to overcome misunderstandings, rebuild trust, and bring harmony back into your relationship.",
       link: "/love-problem-solution",
     },
     {
       image: img2,
-      title: "Marriage Problem Solution",
+      title: "Marriage Harmony Solutions",
       description:
-        "When navigating hurdles on the path to marriage, astrology offers solutions. Whether due to planetary changes or chart discrepancies, it can address pre- and post-marriage issues.",
+        "Whether before or after marriage, receive expert astrological support to resolve delays, conflicts, and compatibility concerns for a peaceful married life.",
       link: "/marriage-problem-solution",
     },
     {
       image: img3,
-      title: "Love Marriage Problem Solution",
+      title: "Love Marriage Support",
       description:
-        "Increasingly, couples are turning to phone-based solutions for love marriage challenges. Astro Om Solution, India's leading astrologer with over a decade of experience, provides immediate answers.",
+        "Struggling to make your love marriage successful? Get trusted guidance to overcome family opposition, delays, and emotional challenges with confidence.",
       link: "/love-marriage-problem-solution",
     },
     {
       image: img4,
-      title: "Husband Wife Dispute Solution",
+      title: "Couple & Marital Conflict Resolution",
       description:
-        "Marriage, a sacred bond, faces modern life's trials, testing resilience. When challenges strain relationships, individuals turn to astrologers like Astro Om Solution for guidance.",
+        "Resolve ongoing disputes between husband and wife with compassionate guidance that helps restore understanding, balance, and emotional connection.",
       link: "/husband-wife-dispute-solution",
     },
     {
       image: img5,
-      title: "Family Problem Solution",
+      title: "Family Peace & Harmony",
       description:
-        "At times, we encounter family conflicts that disrupt harmony and strain relationships among relatives. These issues can cause emotional turmoil as family matters deeply to us.",
+        "Family conflicts can be stressful and overwhelming. Receive thoughtful solutions to restore peace, understanding, and emotional balance at home.",
       link: "/family-problem-solution",
     },
     {
       image: img6,
-      title: "Get Your Love Back",
+      title: "Reunite With Your Loved One",
       description:
-        "If you want to reunite with your loved one, it's possible. Begin by having an honest chat with your partner. Listen to their concerns and express your feelings as well.",
-      link: "#",
+        "Lost someone you still care about? Discover practical guidance and proven remedies to reconnect, heal emotional gaps, and rebuild your relationship.",
+      link: "/horoscope-reading",
     },
   ];
 
@@ -101,13 +101,13 @@ const Services = () => {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
-    <div style={{ padding: "10px ", background: "#1a2a4487" }}>
+    <div style={{ padding: "7px ", background: "#1a2a4487" }}>
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <Typography
           sx={{
@@ -116,12 +116,12 @@ const Services = () => {
           }}
           className="header-why"
         >
-          <span style={{ color: "#FFF" }}>Our</span>{" "}
-          <span style={{ color: "#f28c38" }}>Services</span>
+          <span style={{ color: "#FFF" }}>How We</span>{" "}
+          <span style={{ color: "#f28c38" }}>Help</span>
         </Typography>
         <Typography variant="body1" sx={{ color: "#FFF" }}>
-          Connect with our team to get remedies for your love life. We have pool
-          of expert and qualified astrologer
+          Unlock solutions to your love life with personalized guidance from our
+          pool of expert and certified astrologers.
         </Typography>
       </div>
 
@@ -134,15 +134,11 @@ const Services = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "20px",
+          gap: "15px",
         }}
       >
         {services.map((service, index) => (
-          <motion.div
-            key={index}
-            variants={cardVariants}
-            whileHover="hover"
-          >
+          <motion.div key={index} variants={cardVariants} whileHover="hover">
             <Card
               style={{
                 width: "500px", // Preserving original width
@@ -153,18 +149,16 @@ const Services = () => {
               }}
               component={motion.div}
             >
-              <motion.div
-                variants={imageHover}
-              >
+              <motion.div variants={imageHover}>
                 <CardMedia
+                  sx={{ height: "38vh" }}
                   component="img"
-                  height="200"
                   image={service.image}
                   alt={service.title}
-                // style={{ objectFit: "cover" }}
+                  // style={{ objectFit: "cover" }}
                 />
               </motion.div>
-              <CardContent>
+              <CardContent sx={{ height: "24vh" }}>
                 <Typography variant="h6" component="div">
                   {service.title}
                 </Typography>
@@ -176,13 +170,12 @@ const Services = () => {
                   color="warning"
                   href={service.link}
                   endIcon={<ArrowForwardIcon />}
-
                   sx={{
                     transition: "all 0.3s ease",
                     "&:hover": {
                       transform: "translateX(5px)",
-                      backgroundColor: "#e67c22"
-                    }
+                      backgroundColor: "#e67c22",
+                    },
                   }}
                 >
                   Read More
