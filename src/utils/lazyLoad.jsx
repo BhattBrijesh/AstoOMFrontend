@@ -1,4 +1,4 @@
 import React from "react";
 
-export const lazyLoad = (path) =>
+export const LazyLoad = (path) =>
   React.lazy(() => import(`../components/${path}`));
