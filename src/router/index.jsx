@@ -1,29 +1,29 @@
 import React, { Suspense, useMemo } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Loader from "../utils/loader";
-import { lazyLoad } from "../utils/lazyLoad";
+import Loader from "../utils/Loader";
+import { LazyLoad } from "../utils/LazyLoad";
 
-const Home = lazyLoad("Home");
-const AboutUs = lazyLoad("AboutUs");
-const Awards = lazyLoad("Awards");
-const Certificate = lazyLoad("Certificate");
-const ContactUs = lazyLoad("ContactUs");
-const FamilyProblemSolution = lazyLoad("FamilyProblemSolution");
-const HoroscopeReading = lazyLoad("HoroscopeReading");
-const HusbandWifeDispute = lazyLoad("HusbandWifeDispute");
-const LoveMarriageProblem = lazyLoad("LoveMarriageProblem");
-const LoveProblemSolution = lazyLoad("LoveProblemSolution");
-const MarriageProblemSolution = lazyLoad("MarriageProblemSolution");
-const PhotoGallery = lazyLoad("PhotoGallery");
-const VideoGallery = lazyLoad("VideoGallery");
-const PrivacyPolicy = lazyLoad("PrivacyPolicy");
-const Inquiry = lazyLoad("Inquiry");
-const ZodiacSigns = lazyLoad("ZodiacSigns");
-const ZodiacDetail = lazyLoad("ZodiacDetail");
+const Home = LazyLoad("Home");
+const AboutUs = LazyLoad("AboutUs");
+const Awards = LazyLoad("Awards");
+const Certificate = LazyLoad("Certificate");
+const ContactUs = LazyLoad("ContactUs");
+const FamilyProblemSolution = LazyLoad("FamilyProblemSolution");
+const HoroscopeReading = LazyLoad("HoroscopeReading");
+const HusbandWifeDispute = LazyLoad("HusbandWifeDispute");
+const LoveMarriageProblem = LazyLoad("LoveMarriageProblem");
+const LoveProblemSolution = LazyLoad("LoveProblemSolution");
+const MarriageProblemSolution = LazyLoad("MarriageProblemSolution");
+const PhotoGallery = LazyLoad("PhotoGallery");
+const VideoGallery = LazyLoad("VideoGallery");
+const PrivacyPolicy = LazyLoad("PrivacyPolicy");
+const Inquiry = LazyLoad("Inquiry");
+const ZodiacSigns = LazyLoad("ZodiacSigns");
+const ZodiacDetail = LazyLoad("ZodiacDetail");
 
-const AdminLogin = lazyLoad("Admin/Login");
-const Register = lazyLoad("Admin/Register");
-const Dashboard = lazyLoad("Admin/Dashboard");
+const AdminLogin = LazyLoad("Admin/Login");
+const Register = LazyLoad("Admin/Register");
+const Dashboard = LazyLoad("Admin/Dashboard");
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = useMemo(
