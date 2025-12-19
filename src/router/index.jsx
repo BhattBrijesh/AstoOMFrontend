@@ -3,8 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Loader from "../utils/Loader";
 import { LazyLoad } from "../utils/LazyLoad";
 
-//test
-
 const Home = LazyLoad("Home");
 const AboutUs = LazyLoad("AboutUs");
 const Awards = LazyLoad("Awards");
