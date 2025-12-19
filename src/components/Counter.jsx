@@ -71,26 +71,27 @@ const CounterItem = ({ target, label, icon }) => {
 const Counter = () => {
   const counterData = [
     {
-      target: 20,
-      label: "Years of Experience",
+      target: 25,
+      label: "Years of Trusted Guidance",
       icon: img1,
     },
     {
-      target: 75,
-      label: "Type of Horoscope",
+      target: 100,
+      label: "Different Horoscope Types Handled",
       icon: img2,
     },
     {
-      target: 200,
-      label: "Expert Team",
+      target: 250,
+      label: "Astrology Experts on Our Team",
       icon: img3,
     },
     {
-      target: 5000,
-      label: "Satisfied Clients in Globally",
+      target: 1000,
+      label: "Happy Clients Worldwide",
       icon: img4,
     },
   ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -128,24 +129,24 @@ const Counter = () => {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
   return (
-
     <Box
       className="bg-teal-900 text-white py-8"
       sx={{ background: "#1a2a4487" }}
     >
       <Box className="container mx-auto text-center">
         <Typography variant="h4" component="h1">
-          Now {"  "}
-          <span style={{ color: "#ff9800" }}>We Have</span>
+          Discover {"  "}
+          <span style={{ color: "#ff9800" }}>What We Have</span>
         </Typography>
 
         <Grid container spacing={4} justifyContent="center" alignItems="center">
-          <motion.div variants={containerVariants}
+          <motion.div
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -154,12 +155,10 @@ const Counter = () => {
               flexWrap: "wrap",
               justifyContent: "center",
               gap: "20px",
-            }}>
+            }}
+          >
             {counterData.map((item, index) => (
-              <motion.div
-                variants={cardVariants}
-                whileHover="hover">
-
+              <motion.div variants={cardVariants} whileHover="hover">
                 <Grid item key={index}>
                   <CounterItem
                     target={item.target}
@@ -169,7 +168,7 @@ const Counter = () => {
                 </Grid>
               </motion.div>
             ))}
-          </motion.div >
+          </motion.div>
         </Grid>
       </Box>
     </Box>

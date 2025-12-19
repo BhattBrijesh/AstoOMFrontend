@@ -1,11 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 // Import your video files here
@@ -18,44 +13,44 @@ import divorceVideo from "../assets/images/services/diveroce.mp4";
 
 const services = [
   {
-    title: "World Famous Astrologer",
+    title: "World’s Trusted Astrology Expert",
     description:
-      "Looking for guidance in your life? Consult a World Famous Astrologer for expert advice. These astrologers are renowned worldwide for their accurate predictions and insights. Get answers to your questions about love, career, and more today.",
+      "Feeling confused about love, career, or life decisions? Connect with a world-renowned astrology expert known for accurate predictions and deep insights. Get clear answers and practical guidance to move forward with confidence.",
     video: num0Video,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
   {
-    title: "Love Marriage Specialist",
+    title: "Expert Love Marriage Guidance",
     description:
-      'Are you looking for a "Love Marriage Specialist"? You\'re in the right place! A love marriage specialist is someone who helps couples facing challenges in their love marriage. They offer advice and solutions to make your love marriage successful.',
+      "Facing challenges in your love marriage? Our love marriage specialist helps couples overcome obstacles, family issues, and misunderstandings. Receive trusted guidance to build a happy and successful love marriage.",
     video: loveMarriageVideo,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
   {
-    title: "Intercast Love Marriage",
+    title: "Inter-Caste Love Marriage Solutions",
     description:
-      "Intercast Love Marriage is when people from different castes choose love over social norms. It's a journey filled with emotions and trials. This article will provide insights into the world of Intercast Love Marriage and how to make it work.",
+      "Inter-caste love marriages often face social and family pressure. Get expert support and proven solutions to handle challenges, gain family acceptance, and build a strong future together with confidence.",
     video: intercastemarriage,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
   {
-    title: "Marital Issues And Solutions",
+    title: "Marital Problems & Relationship Healing",
     description:
-      "Marital issues can be tough, but there are simple solutions. Communication is key. Make time to talk and listen to each other. Be open about your feelings and concerns. Remember, it's okay to ask for help from a trusted friend or counselor.",
+      "Struggling with misunderstandings or conflicts in your marriage? Discover effective solutions to improve communication, rebuild trust, and restore peace and harmony in your relationship.",
     video: maritalIssuesVideo,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
   {
-    title: "Delay In Marriage",
+    title: "Solutions for Delay in Marriage",
     description:
-      "A delayed marriage isn't unusual. There are myriad reasons, like career focus, self-improvement, or waiting for the right match. It's your individual journey. This article simplifies why marriages may take time, providing comfort and a roadmap to a more enriching union.",
+      "Worried about marriage delays? Whether due to career, compatibility, or planetary influences, get clear insights and personalized guidance to remove obstacles and move closer to a happy marriage.",
     video: delayInMarriageVideo,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
   {
-    title: "Divorce Problem Solution",
+    title: "Divorce Issues & Marriage Protection",
     description:
-      "Dealing with divorce problems can be hard, but there are ways to resolve them. Talk openly with your partner and consider marriage counseling. Sometimes, simple changes in communication can make a big difference. If the situation doesn't improve, consult a divorce attorney for guidance.",
+      "Going through serious relationship problems or divorce situations? Receive expert guidance to resolve conflicts, save your marriage when possible, or find peace and clarity for the next step in life.",
     video: divorceVideo,
     whatsappLink: "https://api.whatsapp.com/send?phone=919417339708&text=I",
   },
@@ -100,9 +95,9 @@ const ServicesCardComponent = () => {
       scale: 1.05,
       transition: {
         duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const buttonHover = {
@@ -111,19 +106,25 @@ const ServicesCardComponent = () => {
       scale: 1.05,
       transition: {
         duration: 0.2,
-      }
-    }
+      },
+    },
   };
 
   return (
-    <div style={{ padding: "10px" }}>
+    <div style={{ padding: "5px" }}>
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
         <Typography variant="h4" component="h1">
-          <span style={{ color: "#FFF" }}>What</span>  <span style={{ color: "#ff9800" }}>we Offer</span>
+          <span style={{ color: "#FFF" }}>Solutions</span>{" "}
+          <span style={{ color: "#ff9800" }}>That Truly Work</span>
         </Typography>
-        <Typography variant="body1" sx={{ color: "#FFF" }}>
-          Explore our range of services to get rid of your problem. Get in Touch
-          with best and renowned Astrologer in India.
+
+        <Typography variant="h6" component="h1" sx={{ lineHeight: 1.6 }}>
+          <span style={{ color: "#FFF" }}>
+            Facing love, marriage, or life problems? Get trusted solutions from{" "}
+            <br />
+            a renowned astrologer in India and move forward with clarity, peace,
+            <br /> and confidence.
+          </span>{" "}
         </Typography>
       </div>
 
@@ -136,21 +137,19 @@ const ServicesCardComponent = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "20px",
+          gap: "15px",
         }}
       >
         {services.map((service, index) => (
-          <motion.div
-            key={index}
-            variants={cardVariants}
-            whileHover="hover"
-          >
-            <Card style={{
-              width: "500px",
-              textAlign: "center",
-              overflow: "hidden",
-              cursor: "pointer"
-            }}>
+          <motion.div key={index} variants={cardVariants} whileHover="hover">
+            <Card
+              style={{
+                width: "300px",
+                textAlign: "center",
+                overflow: "hidden",
+                cursor: "pointer",
+              }}
+            >
               <motion.div
                 variants={imageHover}
                 whileHover="hover"
@@ -159,7 +158,7 @@ const ServicesCardComponent = () => {
                 <video
                   src={service.video}
                   style={{
-                    height: "20rem",
+                    height: "12rem",
                     width: "100%",
                     objectFit: "cover",
                   }}
@@ -174,13 +173,14 @@ const ServicesCardComponent = () => {
                 <Typography variant="h6" component="div" sx={{ mb: 1 }}>
                   {service.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 1 }}
+                >
                   {service.description}
                 </Typography>
-                <motion.div
-                  variants={buttonHover}
-                  whileHover="hover"
-                >
+                <motion.div variants={buttonHover} whileHover="hover">
                   <Button
                     variant="contained"
                     color="primary"
