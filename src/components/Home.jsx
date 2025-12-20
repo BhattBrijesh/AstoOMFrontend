@@ -15,6 +15,8 @@ import team_building from "../assets/images/animation/team-building.mp4";
 import time24 from "../assets/images/animation/24-hours.mp4";
 import "../components/css/Home.css";
 import { motion } from "framer-motion";
+import PhoneIcon from "@mui/icons-material/Phone";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 const Home = () => {
   useEffect(() => {
@@ -65,9 +67,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* If Header is fixed, ensure Carousel has enough top margin in your CSS */}
-      {/* <Carousel /> */}
-
+      {/* Your existing content */}
       <Box mt={{ xs: 1, sm: 2 }}>
         <WelcomeAstro />
       </Box>
@@ -76,7 +76,6 @@ const Home = () => {
         <Services />
       </Box>
 
-      {/* <Awards /> */}
       <ZodiacSigns />
 
       {/* WHY CHOOSE US SECTION */}
@@ -89,227 +88,86 @@ const Home = () => {
         sx={{ background: "#1a2a4487" }}
         justifyContent="center"
       >
-        <Typography
-          sx={{
-            fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
-            fontWeight: "bold",
-            textAlign: "center",
-            width: "100%",
-            mb: { xs: 1.5, sm: 2 },
-          }}
-          className="header-why"
-        >
-          <span style={{ color: "#FFF" }}>why</span>{" "}
-          <span style={{ color: "#f28c38" }}>choose us</span>
-        </Typography>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          style={{
-            width: "100%",
-          }}
-        >
-          <Grid
-            container
-            spacing={2}
-            sx={{
-              flexDirection: { xs: "column", sm: "row" },
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {/* Card 1 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Box
-                  sx={{
-                    display: "flex",
-                    borderRadius: "20px",
-                    padding: { xs: "8px", sm: "10px" },
-                    alignItems: "center",
-                    justifyContent: { xs: "flex-start", sm: "flex-start" },
-                    maxWidth: { xs: "100%", sm: "100%" },
-                  }}
-                >
-                  <Avatar
-                    sx={{
-                      width: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      height: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      backgroundColor: "#f28c38",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <video
-                      src={employee}
-                      autoPlay
-                      muted
-                      loop
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </Avatar>
-                  <Box
-                    sx={{
-                      alignContent: "center",
-                      backgroundColor: "#fff",
-                      minHeight: { xs: "3.2rem", sm: "3.5rem" },
-                      width: { xs: "100%", sm: "auto", md: "15rem" },
-                      borderTopRightRadius: 10,
-                      borderBottomRightRadius: 10,
-                      ml: { xs: 1.5, sm: -2 },
-                      mt: { xs: 0, sm: 0 },
-                      px: { xs: 1.5, sm: 2 },
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "#1a1a1a",
-                        fontSize: { xs: "13px", sm: "15px" },
-                      }}
-                    >
-                      90+ Expert Astrologers
-                    </Typography>
-                  </Box>
-                </Box>
-              </motion.div>
-            </Grid>
-
-            {/* Card 2 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Box
-                  sx={{
-                    display: "flex",
-                    borderRadius: "20px",
-                    padding: { xs: "8px", sm: "10px" },
-                    alignItems: "center",
-                    justifyContent: { xs: "flex-start", sm: "flex-start" },
-                    maxWidth: { xs: "100%", sm: "100%" },
-                  }}
-                >
-                  <Avatar
-                    sx={{
-                      width: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      height: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      backgroundColor: "#f28c38",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <video
-                      src={time24}
-                      autoPlay
-                      muted
-                      loop
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </Avatar>
-                  <Box
-                    sx={{
-                      alignContent: "center",
-                      backgroundColor: "#fff",
-                      minHeight: { xs: "3.2rem", sm: "3.5rem" },
-                      width: { xs: "100%", sm: "auto", md: "16rem" },
-                      borderTopRightRadius: 10,
-                      borderBottomRightRadius: 10,
-                      ml: { xs: 1.5, sm: -2 },
-                      mt: { xs: 0, sm: 0 },
-                      px: { xs: 1.5, sm: 2 },
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "#1a1a1a",
-                        fontSize: { xs: "13px", sm: "15px" },
-                      }}
-                    >
-                      24x7, 365 Days Availability
-                    </Typography>
-                  </Box>
-                </Box>
-              </motion.div>
-            </Grid>
-
-            {/* Card 3 */}
-            <Grid item xs={12} sm={6} md={3}>
-              <motion.div variants={cardVariants} whileHover="hover">
-                <Box
-                  sx={{
-                    display: "flex",
-                    borderRadius: "20px",
-                    padding: { xs: "8px", sm: "10px" },
-                    alignItems: "center",
-                    justifyContent: { xs: "flex-start", sm: "flex-start" },
-                    maxWidth: { xs: "100%", sm: "100%" },
-                  }}
-                >
-                  <Avatar
-                    sx={{
-                      width: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      height: { xs: "4.5rem", sm: "5.5rem", md: "7rem" },
-                      backgroundColor: "#f28c38",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <video
-                      src={team_building}
-                      autoPlay
-                      muted
-                      loop
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </Avatar>
-                  <Box
-                    sx={{
-                      alignContent: "center",
-                      backgroundColor: "#fff",
-                      minHeight: { xs: "3.2rem", sm: "3.5rem" },
-                      width: { xs: "100%", sm: "auto", md: "17rem" },
-                      borderTopRightRadius: 10,
-                      borderBottomRightRadius: 10,
-                      ml: { xs: 1.5, sm: -2 },
-                      mt: { xs: 0, sm: 0 },
-                      px: { xs: 1.5, sm: 2 },
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "#1a1a1a",
-                        fontSize: { xs: "13px", sm: "15px" },
-                      }}
-                    >
-                      Accurate Remedial Solutions
-                    </Typography>
-                  </Box>
-                </Box>
-              </motion.div>
-            </Grid>
-          </Grid>
-        </motion.div>
+        {/* ... your existing Why Choose Us content ... */}
       </Grid>
 
       <Counter />
       <ServicesCardComponent />
-      {/* <Testimonials /> */}
+
+      {/* === STICKY PHONE BUTTON (Bottom Center) === */}
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: { xs: 16, sm: 24 },
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 1300,
+        }}
+      >
+        <a href="tel:+9417339708" style={{ textDecoration: "none" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "#28a745", // Green
+              color: "white",
+              px: { xs: 2, sm: 3 },
+              py: { xs: 1.2, sm: 1.5 },
+              borderRadius: 50,
+              boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
+              fontSize: { xs: "14px", sm: "16px" },
+              fontWeight: 600,
+              "&:hover": {
+                backgroundColor: "#218838",
+                transform: "scale(1.05)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            <PhoneIcon sx={{ mr: 1, fontSize: { xs: 20, sm: 24 } }} />
+            +91 9417339708
+          </Box>
+        </a>
+      </Box>
+
+      {/* === STICKY WHATSAPP ICON (Bottom Right) === */}
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: { xs: 16, sm: 24 },
+          right: { xs: 16, sm: 24 },
+          zIndex: 1300,
+        }}
+      >
+        <a
+          href="https://wa.me/9417339708"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          <Box
+            sx={{
+              width: { xs: 56, sm: 64 },
+              height: { xs: 56, sm: 64 },
+              backgroundColor: "#25D366",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 6px 20px rgba(0,0,0,0.4)",
+              "&:hover": {
+                backgroundColor: "#128C7E",
+                transform: "scale(1.1)",
+              },
+              transition: "all 0.3s ease",
+            }}
+          >
+            <WhatsAppIcon
+              sx={{ fontSize: { xs: 32, sm: 36 }, color: "white" }}
+            />
+          </Box>
+        </a>
+      </Box>
     </div>
   );
 };
