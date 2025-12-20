@@ -1,7 +1,7 @@
 import React, { Suspense, useMemo } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Loader from "../utils/LazyLoad.jsx";
-import { LazyLoad } from "../utils/LazyLoad.jsx";
+import Loader from "../utils/LoaderUtil.jsx";
+import { LazyLoad } from "../utils/LazyLoadUtil.jsx";
 
 const Home = LazyLoad("Home");
 const AboutUs = LazyLoad("AboutUs");

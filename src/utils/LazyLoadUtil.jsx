@@ -25,4 +25,4 @@ const componentMap = {
   "Admin/Dashboard": () => import("../components/Admin/Dashboard"),
 };
 
-export const LazyLoad = (name) => React.lazy(componentMap[name]);
+export const LazyLoadUtil = (name) => React.lazy(componentMap[name]);
