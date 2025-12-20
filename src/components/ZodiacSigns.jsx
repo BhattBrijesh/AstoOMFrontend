@@ -7,6 +7,8 @@ import {
   Grid,
   Typography,
   Button,
+  CircularProgress,
+  Backdrop,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import aries from "../assets/images/ZodiacSignsVideo/aries.mp4";
@@ -76,16 +78,20 @@ const ZodiacSigns = () => {
 
   const handleZodiacClick = async (zodiac) => {
     setLoading(true);
+
     try {
       const response = await getZodiaDaily({
         sign: zodiac.name.toLowerCase(),
         type: "daily",
       });
+
+      // Navigate as soon as data is ready
       navigate(`/zodiac/${zodiac.name.toLowerCase()}`, {
         state: { zodiac, horoscope: response.data },
       });
     } catch (error) {
       console.error("Error fetching horoscope:", error);
+      // Still navigate so detail page can handle error
       navigate(`/zodiac/${zodiac.name.toLowerCase()}`, {
         state: { zodiac, horoscope: null },
       });
@@ -95,72 +101,89 @@ const ZodiacSigns = () => {
   };
 
   return (
-    <Grid container spacing={2} sx={{ mt: 2, mb: 2, ml: 1 }}>
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-        }}
+    <>
+      {/* Full-screen loader when fetching */}
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
       >
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          style={{
+        <CircularProgress color="inherit" size={60} />
+      </Backdrop>
+
+      <Grid container spacing={2} sx={{ mt: 2, mb: 2, ml: 1 }}>
+        <Grid
+          container
+          sx={{
             display: "flex",
+            justifyContent: "space-between",
             flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "20px",
           }}
         >
-          {zodiacSigns.map((item, index) => (
-            <motion.div key={index} variants={cardVariants} whileHover="hover">
-              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
-                <Button
-                  onClick={() => handleZodiacClick(item)}
-                  size="small"
-                  sx={{ width: "18rem" }}
-                  disabled={loading}
-                >
-                  <Card
-                    sx={{
-                      width: "15rem",
-                      height: "16rem",
-                      textAlign: "center",
-                    }}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "20px",
+            }}
+          >
+            {zodiacSigns.map((item, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+              >
+                <Grid item sx={{ display: "flex", justifyContent: "center" }}>
+                  <Button
+                    onClick={() => handleZodiacClick(item)}
+                    size="small"
+                    sx={{ width: "18rem" }}
+                    disabled={loading}
                   >
-                    <CardMedia
-                      component="video"
-                      src={item.animation}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
+                    <Card
                       sx={{
-                        width: "100%",
-                        height: "70%",
-                        objectFit: "cover",
+                        width: "15rem",
+                        height: "16rem",
+                        textAlign: "center",
                       }}
-                    />
-                    <CardContent>
-                      <Typography variant="h6" sx={{ color: "#ff9800" }}>
-                        {item.name}
-                      </Typography>
-                      <Typography variant="subtitle1" sx={{ color: "#ff9800" }}>
-                        {item.hindi}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Button>
-              </Grid>
-            </motion.div>
-          ))}
-        </motion.div>
+                    >
+                      <CardMedia
+                        component="video"
+                        src={item.animation}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        sx={{
+                          width: "100%",
+                          height: "70%",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <CardContent>
+                        <Typography variant="h6" sx={{ color: "#ff9800" }}>
+                          {item.name}
+                        </Typography>
+                        <Typography
+                          variant="subtitle1"
+                          sx={{ color: "#ff9800" }}
+                        >
+                          {item.hindi}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Button>
+                </Grid>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
