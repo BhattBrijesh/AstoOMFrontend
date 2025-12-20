@@ -66,7 +66,7 @@ const Home = () => {
   return (
     <div>
       {/* If Header is fixed, ensure Carousel has enough top margin in your CSS */}
-      <Carousel />
+      {/* <Carousel /> */}
 
       <Box mt={{ xs: 1, sm: 2 }}>
         <WelcomeAstro />
