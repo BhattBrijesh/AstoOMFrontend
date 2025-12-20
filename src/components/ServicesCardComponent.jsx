@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, Typography, Button } from "@mui/material";
+import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 // Import your video files here
@@ -129,23 +129,27 @@ const ServicesCardComponent = () => {
           <span style={{ color: "#FFF" }}>Solutions</span>{" "}
           <span style={{ color: "#ff9800" }}>That Truly Work</span>
         </Typography>
-
-        <Typography
-          variant="h6"
-          component="h2"
-          sx={{
-            lineHeight: 1.6,
-            color: "#FFF",
-            fontSize: { xs: "1rem", md: "1.1rem" },
-            maxWidth: "750px",
-            margin: "8px auto 0",
-            padding: { xs: "0 8px", md: 0 },
-          }}
+        <Box
+          className="bg-teal-900 text-white py-8"
+          sx={{ background: "#1a2a4487" }}
         >
-          Facing love, marriage, or life problems? Get trusted solutions from a
-          renowned astrologer in India and move forward with clarity, peace, and
-          confidence.
-        </Typography>
+          <Typography
+            variant="h6"
+            component="h2"
+            sx={{
+              lineHeight: 1.6,
+              color: "#FFF",
+              fontSize: { xs: "1rem", md: "1.1rem" },
+              maxWidth: "750px",
+              margin: "8px auto 0",
+              padding: { xs: "0 8px", md: 0 },
+            }}
+          >
+            Facing love, marriage, or life problems? Get trusted solutions from
+            a renowned astrologer in India and move forward with clarity, peace,
+            and confidence.
+          </Typography>
+        </Box>
       </div>
 
       <motion.div
