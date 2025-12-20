@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, Typography, Button, Box } from "@mui/material";
+import { Card, CardContent, Typography, Button } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 
 // Import your video files here
@@ -111,20 +111,40 @@ const ServicesCardComponent = () => {
   };
 
   return (
-    <div style={{ padding: "5px" }}>
-      <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <Typography variant="h4" component="h1">
+    <div
+      style={{
+        padding: "16px 10px",
+      }}
+    >
+      <div style={{ textAlign: "center", marginBottom: "32px" }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{
+            fontSize: { xs: "2rem", md: "2.4rem" },
+            fontWeight: "bold",
+            color: "#FFF",
+          }}
+        >
           <span style={{ color: "#FFF" }}>Solutions</span>{" "}
           <span style={{ color: "#ff9800" }}>That Truly Work</span>
         </Typography>
 
-        <Typography variant="h6" component="h1" sx={{ lineHeight: 1.6 }}>
-          <span style={{ color: "#FFF" }}>
-            Facing love, marriage, or life problems? Get trusted solutions from{" "}
-            <br />
-            a renowned astrologer in India and move forward with clarity, peace,
-            <br /> and confidence.
-          </span>{" "}
+        <Typography
+          variant="h6"
+          component="h2"
+          sx={{
+            lineHeight: 1.6,
+            color: "#FFF",
+            fontSize: { xs: "1rem", md: "1.1rem" },
+            maxWidth: "750px",
+            margin: "8px auto 0",
+            padding: { xs: "0 8px", md: 0 },
+          }}
+        >
+          Facing love, marriage, or life problems? Get trusted solutions from a
+          renowned astrologer in India and move forward with clarity, peace, and
+          confidence.
         </Typography>
       </div>
 
@@ -141,46 +161,87 @@ const ServicesCardComponent = () => {
         }}
       >
         {services.map((service, index) => (
-          <motion.div key={index} variants={cardVariants} whileHover="hover">
+          <motion.div
+            key={index}
+            variants={cardVariants}
+            whileHover="hover"
+            style={{
+              flex: "1 1 260px", // responsive basis
+              maxWidth: "340px",
+              minWidth: "260px",
+            }}
+          >
             <Card
               style={{
-                width: "300px",
+                width: "100%",
                 textAlign: "center",
                 overflow: "hidden",
                 cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
               }}
             >
               <motion.div
                 variants={imageHover}
+                initial="rest"
                 whileHover="hover"
                 style={{ overflow: "hidden" }}
               >
                 <video
                   src={service.video}
                   style={{
-                    height: "12rem",
                     width: "100%",
+                    height: 180, // fixed px height so small screens don’t squash content
                     objectFit: "cover",
+                    display: "block",
                   }}
                   autoPlay
                   loop
                   muted
                   playsInline
-                  alt={service.title}
                 />
               </motion.div>
-              <CardContent>
-                <Typography variant="h6" component="div" sx={{ mb: 1 }}>
-                  {service.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mb: 1 }}
+
+              <CardContent
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  padding: { xs: "14px 10px", md: "16px 14px" },
+                }}
+              >
+                <div>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      mb: 1,
+                      fontSize: { xs: "1.05rem", md: "1.15rem" },
+                      fontWeight: 600,
+                    }}
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      mb: 1.5,
+                      fontSize: { xs: "0.9rem", md: "0.95rem" },
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {service.description}
+                  </Typography>
+                </div>
+
+                <motion.div
+                  variants={buttonHover}
+                  whileHover="hover"
+                  style={{ marginTop: "auto" }}
                 >
-                  {service.description}
-                </Typography>
-                <motion.div variants={buttonHover} whileHover="hover">
                   <Button
                     variant="contained"
                     color="primary"
@@ -188,9 +249,16 @@ const ServicesCardComponent = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     startIcon={<WhatsAppIcon />}
-                    style={{
+                    sx={{
                       backgroundColor: "#25D366",
                       color: "#fff",
+                      width: { xs: "100%", sm: "auto" },
+                      fontSize: { xs: "0.85rem", md: "0.9rem" },
+                      px: { xs: 2, md: 3 },
+                      py: 1,
+                      "&:hover": {
+                        backgroundColor: "#1ebe5a",
+                      },
                     }}
                   >
                     Whatsapp Now

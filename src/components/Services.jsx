@@ -107,19 +107,34 @@ const Services = () => {
   };
 
   return (
-    <div style={{ padding: "7px ", background: "#1a2a4487" }}>
+    <div
+      style={{
+        padding: "16px 10px",
+        background: "#1a2a4487",
+      }}
+    >
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <Typography
           sx={{
-            fontSize: "3rem",
+            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
             fontWeight: "bold",
+            lineHeight: 1.2,
           }}
           className="header-why"
         >
           <span style={{ color: "#FFF" }}>How We</span>{" "}
           <span style={{ color: "#f28c38" }}>Help</span>
         </Typography>
-        <Typography variant="body1" sx={{ color: "#FFF" }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "#FFF",
+            fontSize: { xs: "1rem", md: "1.1rem" },
+            maxWidth: "650px",
+            margin: "0 auto",
+            padding: { xs: "0 8px", md: 0 },
+          }}
+        >
           Unlock solutions to your love life with personalized guidance from our
           pool of expert and certified astrologers.
         </Typography>
@@ -138,39 +153,90 @@ const Services = () => {
         }}
       >
         {services.map((service, index) => (
-          <motion.div key={index} variants={cardVariants} whileHover="hover">
+          <motion.div
+            key={index}
+            variants={cardVariants}
+            whileHover="hover"
+            style={{
+              flex: "1 1 320px", // responsive: 1 per row on small, 2 on larger
+              maxWidth: "500px",
+              minWidth: "280px",
+            }}
+          >
             <Card
               style={{
-                width: "500px", // Preserving original width
+                width: "100%",
                 textAlign: "center",
                 cursor: "pointer",
                 overflow: "hidden",
                 position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
               }}
               component={motion.div}
             >
-              <motion.div variants={imageHover}>
+              <motion.div
+                variants={imageHover}
+                initial="rest"
+                whileHover="hover"
+              >
                 <CardMedia
-                  sx={{ height: "38vh" }}
+                  sx={{
+                    height: { xs: 180, sm: 220, md: 240 }, // responsive height, no vh
+                  }}
                   component="img"
                   image={service.image}
                   alt={service.title}
-                  // style={{ objectFit: "cover" }}
                 />
               </motion.div>
-              <CardContent sx={{ height: "24vh" }}>
-                <Typography variant="h6" component="div">
-                  {service.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {service.description}
-                </Typography>
+
+              <CardContent
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  padding: { xs: "14px 12px", md: "20px 16px" },
+                }}
+              >
+                <div>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      fontSize: { xs: "1.1rem", md: "1.25rem" },
+                      fontWeight: 600,
+                      mb: 1,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: "0.9rem", md: "0.95rem" },
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {service.description}
+                  </Typography>
+                </div>
+
                 <Button
                   variant="contained"
                   color="warning"
                   href={service.link}
                   endIcon={<ArrowForwardIcon />}
                   sx={{
+                    mt: 2,
+                    width: { xs: "100%", sm: "auto" },
+                    fontSize: { xs: "0.85rem", md: "0.9rem" },
+                    px: { xs: 2, md: 3 },
+                    py: 1,
+                    alignSelf: { xs: "stretch", sm: "center" },
                     transition: "all 0.3s ease",
                     "&:hover": {
                       transform: "translateX(5px)",
