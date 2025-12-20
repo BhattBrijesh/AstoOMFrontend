@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -7,11 +7,18 @@ import {
   CardContent,
   Button,
   Grid,
+  Collapse,
 } from "@mui/material";
 import img1 from "../assets/images/banner4.jpeg";
 import { motion } from "framer-motion";
 
 const WelcomeAstro = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setExpanded(!expanded);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -43,35 +50,47 @@ const WelcomeAstro = () => {
     },
   };
 
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
   return (
-    <Box
-      className="ast_about_wrapper"
-      sx={{ padding: "10px 0", background: "#1a2a4487" }}
-    >
-      <Box className="container-fluid">
+    <Box sx={{ background: "#1a2a4487" }}>
+      <Box>
         <Box>
+          {/* New Welcome Title */}
+          <Box
+            sx={{
+              textAlign: "center",
+              my: { xs: 2, sm: 6 },
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: "1rem", sm: "1.8rem", md: "2.5rem" },
+                fontWeight: "bold",
+                color: "#ff9800",
+              }}
+            >
+              Welcome to Om Astrology Services
+            </Typography>
+          </Box>
+
+          {/* Main Hindi Heading */}
           <Box
             className="ast_heading"
-            sx={{ textAlign: "center", marginBottom: "40px" }}
+            sx={{ textAlign: "center", marginBottom: "10px" }}
           >
-            <Typography variant="h4" component="h1">
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{
+                fontSize: { xs: "1.2rem", sm: "2rem", md: "1.5rem" },
+                fontWeight: "bold",
+              }}
+            >
               <span style={{ color: "#FFF" }}>स्वागत </span>
               <span style={{ color: "#ff9800" }}>पृष्ठ परिचय</span>
             </Typography>
-            {/* <Typography variant="body1" sx={{ color: "#FFF" }}>
-              Unlocking the Mysteries of the Cosmos with Astro Om Solution
-            </Typography> */}
           </Box>
+
           <Grid
             container
             sx={{
@@ -79,7 +98,7 @@ const WelcomeAstro = () => {
               justifyContent: "center",
               alignItems: "flex-start",
               flexWrap: { xs: "wrap", md: "nowrap" },
-              padding: "0", // Remove extra padding to avoid white space
+              padding: "0",
             }}
           >
             <motion.div
@@ -109,19 +128,19 @@ const WelcomeAstro = () => {
                       borderRadius: "10px",
                       overflow: "hidden",
                       boxShadow: "none",
-                      width: "300px", // Adjusted to match the image width in the provided design
-                      height: "520px",
+                      width: "300px",
+                      height: "448px",
                     }}
                   >
                     <CardMedia
                       component="img"
                       image={img1}
-                      alt="About"
+                      alt="Pandit Om Prakash"
                       sx={{
                         borderRadius: "10px 10px 0 0",
-                        width: "100%", // Stretch to full card width
-                        height: "400px", // Fixed height to fill image area
-                        objectFit: "cover", // Crop to fill, removing white borders
+                        width: "100%",
+                        height: "350px",
+                        objectFit: "cover",
                       }}
                     />
                     <CardContent
@@ -130,15 +149,15 @@ const WelcomeAstro = () => {
                           "linear-gradient(to bottom, #26a69a 0%, #ffca28 100%)",
                         color: "#fff",
                         textAlign: "center",
-                        padding: "5px",
-                        borderRadius: "0 0 10px 10px",
-                        height: "120px", // Adjusted to fit content snugly
+                        padding: "2px",
+                        // borderRadius: "10px 10px",
+                        height: "30px",
                       }}
                     >
                       <Typography
                         variant="h6"
                         component="div"
-                        sx={{ color: "#fff", marginBottom: "5px" }}
+                        sx={{ color: "#fff" }}
                       >
                         Consult{" "}
                         <span style={{ fontStyle: "italic" }}>
@@ -146,15 +165,22 @@ const WelcomeAstro = () => {
                         </span>
                       </Typography>
                       <Box
+                        component="a"
+                        href="tel:+919417339708"
                         sx={{
                           background: "#ffca28",
                           color: "#26a69a",
-                          padding: "5px",
+                          padding: "5px 20px",
                           borderRadius: "5px",
                           display: "inline-block",
+                          textDecoration: "none",
+                          fontWeight: "bold",
+                          cursor: "pointer",
+                          transition: "background 0.3s ease",
+                          "&:hover": { background: "#ffb300" },
                         }}
                       >
-                        <Typography variant="h6" component="div">
+                        <Typography variant="h8" component="div">
                           Call Now <br /> +91 9417339708
                         </Typography>
                       </Box>
@@ -163,11 +189,13 @@ const WelcomeAstro = () => {
                 </motion.div>
               </Grid>
             </motion.div>
+
+            {/* Right Side - Collapsible Text */}
             <Grid
               item
               sx={{
-                width: { xs: "100%", md: "40rem" }, // Adjusted for better balance
-                padding: { xs: "0 10px", md: "20px 0" },
+                width: { xs: "100%", md: "20rem" },
+                padding: { xs: "0 5px", md: "10px 0" },
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -177,9 +205,10 @@ const WelcomeAstro = () => {
                 sx={{
                   paddingLeft: "0",
                   textAlign: "center",
-                  maxWidth: "500px", // Limit width for centered text
+                  maxWidth: "500px",
                 }}
               >
+                {/* Always Visible Short Intro */}
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
                   <span style={{ color: "#ff9800" }}>
                     नमस्ते और स्वागत है पंडित ओम प्रकाश
@@ -193,47 +222,66 @@ const WelcomeAstro = () => {
                   प्रकाश ने ज्योतिष और आध्यात्मिक मार्गदर्शन के माध्यम से लाखों
                   लोगों के जीवन को रोशन किया है।
                 </Typography>
-                <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  वह न केवल एक प्रख्यात ज्योतिषी हैं, बल्कि चंडीगढ़ के सेक्टर 37
-                  में देवालया परिषद संगठन के महा सचिव के रूप में भी कार्यरत हैं।
-                  इसके अतिरिक्त, वह चंडीगढ़ के विभिन्न मंदिर समितियों के साथ
-                  मिलकर सामाजिक और आध्यात्मिक कार्यों में योगदान दे रहे हैं।
-                  उनकी सेवाएँ प्रेम, विवाह, दांपत्य जीवन, पारिवारिक समस्याओं, और
-                  दैनिक जीवन की चुनौतियों के समाधान के लिए जानी जाती हैं, जो
-                  अत्यंत सटीक और विश्वसनीय हैं।
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  वर्तमान में, पंडित ओम प्रकाश चंडीगढ़ के सेक्टर 11 और सेक्टर 43
-                  में दो कार्यालयों के माध्यम से अपनी सेवाएँ प्रदान कर रहे हैं।
-                  उनकी वैदिक ज्योतिष पर गहरी पकड़ और आध्यात्मिक दृष्टिकोण ने
-                  उन्हें देश-विदेश में विश्वास और सम्मान दिलाया है। लोग दूर-दूर
-                  से, विभिन्न शहरों, राज्यों, और यहाँ तक कि देशों से, उनके
-                  मार्गदर्शन के लिए आते हैं।
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  <span style={{ color: "#ff9800" }}>पंडित ओम प्रकाश </span> का
-                  उद्देश्य आपके जीवन को ग्रहों की शक्ति और वैदिक ज्योतिष के
-                  प्राचीन ज्ञान के माध्यम से सकारात्मक दिशा प्रदान करना है। चाहे
-                  आप प्रेम संबंधी समस्याओं, वैवाहिक मुद्दों, पारिवारिक विवादों,
-                  या भविष्य के बारे में जानना चाहते हों, हमारी सेवाएँ आपके लिए
-                  एक उज्ज्वल और सुखमय भविष्य सुनिश्चित करने के लिए समर्पित हैं।
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  आज ही संपर्क करें और अपने जीवन की चुनौतियों का समाधान प्राप्त
-                  करें। वैदिक ज्योतिष के इस अनुभवी विशेषज्ञ के साथ अपने भविष्य
-                  को नई दिशा दें!
-                </Typography>
-                <Button variant="contained" color="warning" href="/aboutus">
-                  Read More
-                </Button>
+
+                {/* Collapsible Remaining Content */}
+                <Collapse in={expanded} collapsedSize={0}>
+                  <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
+                    वह न केवल एक प्रख्यात ज्योतिषी हैं, बल्कि चंडीगढ़ के सेक्टर
+                    37 में देवालया परिषद संगठन के महा सचिव के रूप में भी कार्यरत
+                    हैं। इसके अतिरिक्त, वह चंडीगढ़ के विभिन्न मंदिर समितियों के
+                    साथ मिलकर सामाजिक और आध्यात्मिक कार्यों में योगदान दे रहे
+                    हैं। उनकी सेवाएँ प्रेम, विवाह, दांपत्य जीवन, पारिवारिक
+                    समस्याओं, और दैनिक जीवन की चुनौतियों के समाधान के लिए जानी
+                    जाती हैं, जो अत्यंत सटीक और विश्वसनीय हैं।
+                  </Typography>
+                  <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
+                    वर्तमान में, पंडित ओम प्रकाश चंडीगढ़ के सेक्टर 11 और सेक्टर
+                    43 में दो कार्यालयों के माध्यम से अपनी सेवाएँ प्रदान कर रहे
+                    हैं। उनकी वैदिक ज्योतिष पर गहरी पकड़ और आध्यात्मिक दृष्टिकोण
+                    ने उन्हें देश-विदेश में विश्वास और सम्मान दिलाया है। लोग
+                    दूर-दूर से, विभिन्न शहरों, राज्यों, और यहाँ तक कि देशों से,
+                    उनके मार्गदर्शन के लिए आते हैं।
+                  </Typography>
+                  <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
+                    <span style={{ color: "#ff9800" }}>पंडित ओम प्रकाश </span>{" "}
+                    का उद्देश्य आपके जीवन को ग्रहों की शक्ति और वैदिक ज्योतिष के
+                    प्राचीन ज्ञान के माध्यम से सकारात्मक दिशा प्रदान करना है।
+                    चाहे आप प्रेम संबंधी समस्याओं, वैवाहिक मुद्दों, पारिवारिक
+                    विवादों, या भविष्य के बारे में जानना चाहते हों, हमारी सेवाएँ
+                    आपके लिए एक उज्ज्वल और सुखमय भविष्य सुनिश्चित करने के लिए
+                    समर्पित हैं।
+                  </Typography>
+                  <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
+                    आज ही संपर्क करें और अपने जीवन की चुनौतियों का समाधान
+                    प्राप्त करें। वैदिक ज्योतिष के इस अनुभवी विशेषज्ञ के साथ
+                    अपने भविष्य को नई दिशा दें!
+                  </Typography>
+                </Collapse>
+
+                {/* Show More / Show Less Button */}
                 <Button
-                  variant="contained"
-                  color="warning"
-                  href="/contactus"
-                  sx={{ marginLeft: "30px" }}
+                  variant="outlined"
+                  color="success"
+                  onClick={handleToggle}
+                  sx={{ color: "#FFF", mt: 1, border: "2px solid #FFF" }}
                 >
-                  Contact Us Now
+                  {expanded ? "Show Less" : "Show More"}
                 </Button>
+
+                {/* Existing Buttons */}
+                <Box sx={{ mt: 2 }}>
+                  <Button
+                    variant="contained"
+                    color="warning"
+                    href="/aboutus"
+                    sx={{ mr: 1 }}
+                  >
+                    Read More
+                  </Button>
+                  <Button variant="contained" color="warning" href="/contactus">
+                    Contact Us Now
+                  </Button>
+                </Box>
               </Box>
             </Grid>
           </Grid>

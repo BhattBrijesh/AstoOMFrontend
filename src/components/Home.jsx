@@ -68,13 +68,10 @@ const Home = () => {
   return (
     <div>
       {/* Your existing content */}
-      <Box mt={{ xs: 1, sm: 2 }}>
-        <WelcomeAstro />
-      </Box>
 
-      <Box mt={{ xs: 2, sm: 3 }}>
-        <Services />
-      </Box>
+      <WelcomeAstro />
+
+      <Services />
 
       <ZodiacSigns />
 
