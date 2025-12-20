@@ -1,4 +1,4 @@
-const Loader = () => (
+const LoaderUtil = () => (
   <div className="fixed inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-900 bg-opacity-70 backdrop-blur-sm z-[9999]">
     <div className="flex flex-col items-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
       <div className="flex space-x-2 mb-4">
@@ -22,5 +22,5 @@ const Loader = () => (
     `}</style>
   </div>
 );
-
-export default Loader;
+// test
+export default LoaderUtil;

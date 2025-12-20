@@ -63,7 +63,7 @@ const Services = () => {
     },
   ];
 
-  // Animation variants
+  // Animation variants (unchanged)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -107,19 +107,35 @@ const Services = () => {
   };
 
   return (
-    <div style={{ padding: "7px ", background: "#1a2a4487" }}>
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+    <div
+      style={{
+        padding: "32px 16px", // Increased padding for better mobile breathing room
+        background: "#1a2a4487",
+      }}
+    >
+      <div style={{ textAlign: "center", marginBottom: "40px" }}>
         <Typography
           sx={{
-            fontSize: "3rem",
+            fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Smaller on mobile
             fontWeight: "bold",
+            lineHeight: 1.2,
           }}
           className="header-why"
         >
           <span style={{ color: "#FFF" }}>How We</span>{" "}
           <span style={{ color: "#f28c38" }}>Help</span>
         </Typography>
-        <Typography variant="body1" sx={{ color: "#FFF" }}>
+        <Typography
+          variant="body1"
+          sx={{
+            color: "#FFF",
+            fontSize: { xs: "0.95rem", sm: "1rem", md: "1.1rem" },
+            maxWidth: "700px",
+            margin: "16px auto 0",
+            padding: { xs: "0 16px", md: 0 },
+            lineHeight: 1.6,
+          }}
+        >
           Unlock solutions to your love life with personalized guidance from our
           pool of expert and certified astrologers.
         </Typography>
@@ -131,49 +147,113 @@ const Services = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         style={{
-          display: "flex",
-          flexWrap: "wrap",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", // Better responsive grid
+          gap: "24px",
           justifyContent: "center",
-          gap: "15px",
+          justifyItems: "center", // Centers cards horizontally
+          padding: "0 8px",
         }}
       >
         {services.map((service, index) => (
-          <motion.div key={index} variants={cardVariants} whileHover="hover">
+          <motion.div
+            key={index}
+            variants={cardVariants}
+            whileHover="hover"
+            style={{
+              width: "100%",
+              maxWidth: "420px", // Limits max width for better proportion
+              minWidth: "280px",
+            }}
+          >
             <Card
               style={{
-                width: "500px", // Preserving original width
+                width: "100%",
                 textAlign: "center",
                 cursor: "pointer",
                 overflow: "hidden",
                 position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+                borderRadius: "12px",
               }}
               component={motion.div}
             >
-              <motion.div variants={imageHover}>
+              <motion.div
+                variants={imageHover}
+                initial="rest"
+                whileHover="hover"
+                style={{ overflow: "hidden" }}
+              >
                 <CardMedia
-                  sx={{ height: "38vh" }}
+                  sx={{
+                    height: { xs: 200, sm: 220, md: 240 },
+                    objectFit: "cover",
+                  }}
                   component="img"
                   image={service.image}
                   alt={service.title}
-                  // style={{ objectFit: "cover" }}
                 />
               </motion.div>
-              <CardContent sx={{ height: "24vh" }}>
-                <Typography variant="h6" component="div">
-                  {service.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  {service.description}
-                </Typography>
+
+              <CardContent
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  padding: {
+                    xs: "16px 14px",
+                    sm: "20px 18px",
+                    md: "24px 20px",
+                  },
+                  textAlign: { xs: "center", sm: "center" },
+                }}
+              >
+                <div>
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      fontSize: { xs: "1.15rem", sm: "1.2rem", md: "1.3rem" },
+                      fontWeight: 600,
+                      mb: 1.5,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {service.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      fontSize: { xs: "0.9rem", sm: "0.95rem" },
+                      lineHeight: 1.6,
+                      mb: 2,
+                    }}
+                  >
+                    {service.description}
+                  </Typography>
+                </div>
+
                 <Button
                   variant="contained"
                   color="warning"
                   href={service.link}
                   endIcon={<ArrowForwardIcon />}
                   sx={{
+                    mt: "auto", // Pushes button to bottom if space
+                    width: { xs: "100%", sm: "auto" },
+                    fontSize: { xs: "0.9rem", md: "0.95rem" },
+                    px: { xs: 3, md: 4 },
+                    py: 1.2,
+                    borderRadius: "8px",
+                    textTransform: "none",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      transform: "translateX(5px)",
+                      transform: "translateX(8px)",
                       backgroundColor: "#e67c22",
                     },
                   }}
