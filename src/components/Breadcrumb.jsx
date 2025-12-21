@@ -13,7 +13,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 const CustomBreadcrumbs = styled(MuiBreadcrumbs)(({ theme }) => ({
   "& .MuiBreadcrumbs-ol": {
     background: "rgba(255, 255, 255, 0.1)",
-    padding: theme.spacing(1, 2), // Reduced padding for compactness
+    padding: theme.spacing(1, 2),
     borderRadius: theme.spacing(1),
     display: "flex",
     alignItems: "center",
@@ -23,7 +23,7 @@ const CustomBreadcrumbs = styled(MuiBreadcrumbs)(({ theme }) => ({
   "& .MuiBreadcrumbs-li": {
     display: "inline-flex",
     alignItems: "center",
-    color: theme.palette.primary.main, // Use theme color (#ff9800)
+    color: theme.palette.primary.main,
     "& a": {
       color: "#fff",
       textDecoration: "none",
@@ -47,11 +47,11 @@ const CustomBreadcrumbs = styled(MuiBreadcrumbs)(({ theme }) => ({
 const Breadcrumb = ({ title, parentLink, parentTitle }) => {
   const theme = useTheme();
 
-  // Memoize breadcrumb items to prevent unnecessary re-renders
+  // ✅ FIXED: "Home" → "Astrology Home" (Descriptive)
   const breadcrumbItems = useMemo(
     () => [
       {
-        label: "Home",
+        label: "Astrology Home", // ✅ SEO: Descriptive (was "Home")
         to: "/",
       },
       ...(parentLink && parentTitle
@@ -80,18 +80,20 @@ const Breadcrumb = ({ title, parentLink, parentTitle }) => {
       aria-label="breadcrumb"
       sx={{
         background: "transparent",
-        padding: theme.spacing(1, 0), // Reduced vertical padding
+        padding: theme.spacing(1, 0),
         overflow: "hidden",
       }}
     >
       {/* Structured Data for SEO */}
-      <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
 
       <Box
         sx={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: theme.spacing(0, 2), // Consistent horizontal padding
+          padding: theme.spacing(0, 2),
         }}
       >
         <CustomBreadcrumbs separator={<NavigateNextIcon fontSize="small" />}>
@@ -132,7 +134,6 @@ const Breadcrumb = ({ title, parentLink, parentTitle }) => {
   );
 };
 
-// PropTypes for type safety
 Breadcrumb.propTypes = {
   title: PropTypes.string.isRequired,
   parentLink: PropTypes.string,

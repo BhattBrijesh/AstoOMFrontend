@@ -141,7 +141,7 @@ const ServicesCardComponent = () => {
                   src={service.video}
                   poster="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // ✅ Tiny poster
                   muted
-                  playsInline
+                  // playsInline
                   className="service-video"
                   // onMouseEnter={(e) => e.target.play()} // ✅ Play on hover
                   // onMouseLeave={(e) => e.target.pause()} // ✅ Pause on leave
