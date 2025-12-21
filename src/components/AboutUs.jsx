@@ -1,33 +1,16 @@
 import React, { useEffect } from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
-
 import Breadcrumb from "../components/Breadcrumb";
 
 const About = () => {
   useEffect(() => {
-    document.title = "About Us | Astro Om Solution";
+    document.title =
+      "About Us | Astro Om Solution - Best Vedic Astrology in India";
   }, []);
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
-      {/* ✅ SEO: Dynamic meta tags for this page */}
-
-      <title>
-        About Us | Astro Om Solution - Best Vedic Astrology in India
-      </title>
-      <meta
-        name="description"
-        content="Discover Astro Om Solution - India's premier Vedic astrology service offering expert guidance for love, marriage, family, career, health & more. Worldwide consultations available."
-      />
-      <meta property="og:title" content="About Us | Astro Om Solution" />
-      <meta
-        property="og:description"
-        content="Expert Vedic astrology services for all life challenges - love, marriage, career, family & more from India's top astrologers."
-      />
-      <meta
-        property="og:url"
-        content="https://astroomsolution.vercel.app/aboutus"
-      />
+      {/* ❌ REMOVED: Invalid <title> and <meta> tags (not valid in JSX body) */}
 
       {/* Breadcrumb */}
       <Breadcrumb title="About Us" />
@@ -64,6 +47,7 @@ const About = () => {
             }}
           >
             <Box
+              className="about-hover" // ✅ CSS hover animation
               sx={{
                 pl: { md: 2 },
                 textAlign: "left",
@@ -72,11 +56,6 @@ const About = () => {
                 borderRadius: 2,
                 color: "black",
                 border: "1px solid rgba(255, 152, 0, 0.1)",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  boxShadow: "0 6px 16px rgba(255, 152, 0, 0.2)",
-                },
               }}
             >
               <Typography
@@ -144,16 +123,12 @@ const About = () => {
 
       <Container maxWidth="xxl" sx={{ py: { xs: 2, md: 4 } }}>
         <Box
+          className="about-section-hover" // ✅ CSS hover animation
           sx={{
             borderRadius: 2,
             p: 1.5,
             bgcolor: "#FFF",
             border: "1px solid rgba(255, 152, 0, 0.1)",
-            transition: "transform 0.3s ease, box-shadow 0.3s ease",
-            "&:hover": {
-              transform: "translateY(-6px)",
-              boxShadow: "0 8px 20px rgba(255, 152, 0, 0.3)",
-            },
           }}
         >
           <Typography
@@ -336,11 +311,13 @@ const About = () => {
             astrology and unlock the secrets to a more balanced and harmonious
             life with Astro Om Solution.
           </Typography>
-          {/* ✅ SEO: "Contact Us Now" is already descriptive - GOOD */}
+
+          {/* ✅ PERFECT SEO BUTTON */}
           <Button
             variant="contained"
             color="primary"
             size="large"
+            className="contact-btn-about" // ✅ CSS hover
             sx={{
               mt: 1,
               px: 3,
