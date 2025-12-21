@@ -161,7 +161,7 @@ const WelcomeAstro = () => {
                       >
                         Consult{" "}
                         <span style={{ fontStyle: "italic" }}>
-                          Astro Om Solution
+                          Om Astrto solutions
                         </span>
                       </Typography>
                       <Box
