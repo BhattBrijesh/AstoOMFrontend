@@ -101,12 +101,16 @@ const Home = () => {
           zIndex: 1300,
         }}
       >
-        <a href="tel:+9417339708" style={{ textDecoration: "none" }}>
+        {/* ✅ iOS + Android Compatible */}
+        <a
+          href="tel:+919417339708" // ✅ COMPLETE +91 format
+          style={{ textDecoration: "none" }}
+        >
           <Box
             sx={{
               display: "flex",
               alignItems: "center",
-              backgroundColor: "#28a745", // Green
+              backgroundColor: "#28a745", // Green WhatsApp style
               color: "white",
               px: { xs: 2, sm: 3 },
               py: { xs: 1.2, sm: 1.5 },
@@ -114,15 +118,24 @@ const Home = () => {
               boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
               fontSize: { xs: "14px", sm: "16px" },
               fontWeight: 600,
+              cursor: "pointer", // ✅ Desktop cursor
               "&:hover": {
                 backgroundColor: "#218838",
                 transform: "scale(1.05)",
+                boxShadow: "0 8px 25px rgba(40, 167, 69, 0.4)",
               },
               transition: "all 0.3s ease",
+              // ✅ TOUCH FRIENDLY for mobile
+              "@media (hover: none)": {
+                "&:active": {
+                  backgroundColor: "#1e7e34",
+                  transform: "scale(0.98)",
+                },
+              },
             }}
           >
             <PhoneIcon sx={{ mr: 1, fontSize: { xs: 20, sm: 24 } }} />
-            +91 9417339708
+            Call Now: +91 9417339708
           </Box>
         </a>
       </Box>
