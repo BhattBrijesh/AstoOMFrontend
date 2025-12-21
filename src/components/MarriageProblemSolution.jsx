@@ -20,16 +20,39 @@ const MarriageProblemSolution = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>
+        Marriage Problem Solution Astrologer | Astro Om Solution India
+      </title>
+      <meta
+        name="description"
+        content="Expert marriage problem solutions by Vedic astrologers at Astro Om Solution. Fix husband-wife disputes, improve marital harmony, prevent divorce with proven remedies."
+      />
+      <meta
+        property="og:title"
+        content="Marriage Problem Solution | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Get Vedic astrology solutions for marriage problems, husband-wife disputes, marital conflicts from India's top marriage astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/marriage-problem-solution"
+      />
+      <meta
+        name="keywords"
+        content="marriage problem solution, marriage astrologer, husband wife dispute, marital problems, Vedic astrology marriage"
+      />
+
       {/* Breadcrumb */}
-
       <Breadcrumb title="Marriage Problem Solution" />
-
 
       {/* Hero Section */}
       <Box
         sx={{
           py: { xs: 4, md: 2, mt: 0, pt: 0 },
-
         }}
       >
         <Container maxWidth="xxl">
@@ -55,7 +78,7 @@ const MarriageProblemSolution = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -67,7 +90,7 @@ const MarriageProblemSolution = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -91,13 +114,13 @@ const MarriageProblemSolution = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "80vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "80vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -244,6 +267,7 @@ const MarriageProblemSolution = () => {
                     Tips and make a decision to resolve your issues. Reach out
                     to us today to get help with your all problems.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"

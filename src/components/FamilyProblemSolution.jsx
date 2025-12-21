@@ -10,6 +10,7 @@ import {
   Fade,
   Grow,
 } from "@mui/material";
+
 import Breadcrumb from "../components/Breadcrumb";
 import familyProblem from "../assets/images/services/family.mp4";
 
@@ -20,10 +21,34 @@ const FamilyProblemSolution = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>
+        Family Problem Solution Astrologer | Astro Om Solution India
+      </title>
+      <meta
+        name="description"
+        content="Expert family problem solutions by Vedic astrologers. Resolve family disputes, improve relationships, fix conflicts between husband-wife, parents-children with proven remedies."
+      />
+      <meta
+        property="og:title"
+        content="Family Problem Solution | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Get Vedic astrology solutions for family problems, disputes, conflicts between family members from India's top family astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/family-problem-solution"
+      />
+      <meta
+        name="keywords"
+        content="family problem solution, family astrologer, family disputes, husband wife family issues, Vedic astrology family"
+      />
+
       {/* Breadcrumb */}
-
       <Breadcrumb title="Family Problem Solution" />
-
 
       {/* Hero Section */}
       <Box
@@ -54,7 +79,7 @@ const FamilyProblemSolution = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -83,13 +108,13 @@ const FamilyProblemSolution = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "90vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "90vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -250,6 +275,7 @@ const FamilyProblemSolution = () => {
                     misunderstandings. It possesses the power to transform
                     undesirable situations into more favorable ones.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"

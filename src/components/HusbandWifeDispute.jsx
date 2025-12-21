@@ -23,10 +23,35 @@ const HusbandWifeDispute = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>
+        Husband Wife Dispute Solution | Marriage Problem Astrologer | Astro Om
+        Solution
+      </title>
+      <meta
+        name="description"
+        content="Expert husband-wife dispute solutions by Vedic astrologers. Fix marital conflicts, improve communication, restore trust & harmony in marriage with proven remedies."
+      />
+      <meta
+        property="og:title"
+        content="Husband Wife Dispute Solution | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Get Vedic astrology solutions for husband-wife disputes, marital conflicts, communication issues from India's top marriage astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/husband-wife-dispute-solution"
+      />
+      <meta
+        name="keywords"
+        content="husband wife dispute, marriage problem solution, marital conflict, husband wife relationship, Vedic astrology marriage"
+      />
+
       {/* Breadcrumb */}
-
       <Breadcrumb title="Husband Wife Dispute Solution" />
-
 
       {/* Hero Section */}
       <Box
@@ -57,7 +82,7 @@ const HusbandWifeDispute = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -75,7 +100,7 @@ const HusbandWifeDispute = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -104,13 +129,13 @@ const HusbandWifeDispute = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "70vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "70vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -305,6 +330,7 @@ const HusbandWifeDispute = () => {
                     relationship problems. Contact us now to solve all your
                     problems.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"

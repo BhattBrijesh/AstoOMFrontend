@@ -20,10 +20,34 @@ const LoveProblemSolution = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>
+        Love Marriage Problem Solution Astrologer | Astro Om Solution India
+      </title>
+      <meta
+        name="description"
+        content="Expert love marriage problem solutions by top Vedic astrologers. Overcome parental opposition, intercaste marriage issues, family disputes with proven astrology remedies."
+      />
+      <meta
+        property="og:title"
+        content="Love Marriage Problem Solution | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Get love marriage solutions for parental disapproval, intercaste marriage, family opposition from India's best love marriage astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/love-marriage-problem-solution"
+      />
+      <meta
+        name="keywords"
+        content="love marriage problem, love marriage astrologer, intercaste marriage, parental opposition, love marriage solution"
+      />
+
       {/* Breadcrumb */}
-
       <Breadcrumb title="Love Marriage Problem Solution" />
-
 
       {/* Hero Section */}
       <Box
@@ -54,7 +78,7 @@ const LoveProblemSolution = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -79,13 +103,13 @@ const LoveProblemSolution = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "80vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "80vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -308,6 +332,7 @@ const LoveProblemSolution = () => {
                     astrology field. Reach out to us today to get help with your
                     problems.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"
