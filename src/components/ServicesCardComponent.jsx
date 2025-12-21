@@ -1,9 +1,6 @@
 import React from "react";
 import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-// ❌ REMOVED: import { motion } from "framer-motion";
-
-// Import your video files here (KEEP - but optimize loading)
 import num0Video from "../assets/images/services/best astrology.mp4";
 import loveMarriageVideo from "../assets/images/services/loveMarriageVideo.mp4";
 import intercastemarriage from "../assets/images/services/intercastemarriage.mp4";

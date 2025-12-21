@@ -21,9 +21,7 @@ function App() {
             </video>
           </div>
           <Header />
-          <div className="App">
-            <AppRoutes />
-          </div>
+          <AppRoutes />
           <Footer />
         </Router>
       </ThemeProvider>
