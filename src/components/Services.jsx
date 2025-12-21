@@ -8,7 +8,6 @@ import {
   Button,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-// ❌ REMOVED: import { motion } from "framer-motion";
 import img1 from "../assets/images/1.1.jpg";
 import img2 from "../assets/images/2.1.jpg";
 import img3 from "../assets/images/3.1.jpg";
