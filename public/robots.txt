@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap (optional)
-# Sitemap: https://astroomsolution.vercel.app/sitemap.xml
