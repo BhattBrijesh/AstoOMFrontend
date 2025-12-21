@@ -1,64 +1,77 @@
-import React, { useEffect, useState, useCallback, memo } from 'react';
-import { Card, CardMedia, Typography, IconButton, Box } from '@mui/material';
-import { ImageNotSupported, Close, ChevronLeft, ChevronRight } from '@mui/icons-material';
-import Breadcrumb from '../components/Breadcrumb';
-import img1 from '../assets/images/banner4.jpeg';
-import img5 from '../assets/images/banner5.jpeg';
-import img6 from '../assets/images/banner6.jpeg';
-import img4 from '../assets/images/banner1.jpeg';
-import img2 from '../assets/images/banner7.jpeg';
-import img3 from '../assets/images/banner8.jpeg';
+import React, { useEffect, useState, useCallback, memo } from "react";
+import { Card, CardMedia, Typography, IconButton, Box } from "@mui/material";
+import {
+  ImageNotSupported,
+  Close,
+  ChevronLeft,
+  ChevronRight,
+} from "@mui/icons-material";
+import Breadcrumb from "../components/Breadcrumb";
+import img1 from "../assets/images/banner4.jpeg";
+import img5 from "../assets/images/banner5.jpeg";
+import img6 from "../assets/images/banner6.jpeg";
+import img4 from "../assets/images/banner1.jpeg";
+import img2 from "../assets/images/banner7.jpeg";
+import img3 from "../assets/images/banner8.jpeg";
 
-import img7 from '../assets/images/galleryimg1.jpeg';
-import img8 from '../assets/images/banner75.png';
-import img9 from '../assets/images/banner71.jpeg';
+import img7 from "../assets/images/galleryimg1.jpeg";
+import img8 from "../assets/images/banner75.png";
+import img9 from "../assets/images/banner71.jpeg";
 
 const PhotoGallery = memo(() => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
   const [imageError, setImageError] = useState({});
 
   const photos = [
-    { src: img1, alt: 'Cosmic Galaxy', caption: 'Explore the cosmos' },
-    { src: img2, alt: 'Stellar Nebula', caption: 'Stellar beauty' },
-    { src: img3, alt: 'Mystic Stars', caption: 'Mystic horizons' },
-    { src: img4, alt: 'Celestial Sky', caption: 'Celestial wonders' },
-    { src: img5, alt: 'Galactic View', caption: 'Galactic dreams' },
-    { src: img6, alt: 'Infinite Space', caption: 'Infinite skies' },
-    { src: img7, alt: 'Infinite Space', caption: 'Infinite skies' },
-    { src: img8, alt: 'Infinite Space', caption: 'Infinite skies' },
-    { src: img9, alt: 'Infinite Space', caption: 'Infinite skies' },
+    { src: img1, alt: "Cosmic Galaxy", caption: "Explore the cosmos" },
+    { src: img2, alt: "Stellar Nebula", caption: "Stellar beauty" },
+    { src: img3, alt: "Mystic Stars", caption: "Mystic horizons" },
+    { src: img4, alt: "Celestial Sky", caption: "Celestial wonders" },
+    { src: img5, alt: "Galactic View", caption: "Galactic dreams" },
+    { src: img6, alt: "Infinite Space", caption: "Infinite skies" },
+    { src: img7, alt: "Infinite Space", caption: "Infinite skies" },
+    { src: img8, alt: "Infinite Space", caption: "Infinite skies" },
+    { src: img9, alt: "Infinite Space", caption: "Infinite skies" },
   ];
 
   // Set document title and log image paths
   useEffect(() => {
-    document.title = 'Photo Gallery | Astro Om Solution';
-    photos.forEach((photo, index) => {
-
-    });
+    document.title = "Photo Gallery | Astro Om Solutions";
+    photos.forEach((photo, index) => {});
   }, []);
 
-  const openLightbox = useCallback((index) => {
-
-    setSelectedImageIndex(index);
-  }, [photos]);
+  const openLightbox = useCallback(
+    (index) => {
+      setSelectedImageIndex(index);
+    },
+    [photos]
+  );
 
   const closeLightbox = useCallback(() => {
-
     setSelectedImageIndex(null);
   }, []);
 
   const goToPrevious = useCallback(() => {
-    setSelectedImageIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? photos.length - 1 : prev - 1
+    );
   }, [photos.length]);
 
   const goToNext = useCallback(() => {
-    setSelectedImageIndex((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
+    setSelectedImageIndex((prev) =>
+      prev === photos.length - 1 ? 0 : prev + 1
+    );
   }, [photos.length]);
 
-  const handleImageError = useCallback((index) => {
-    console.error(`Failed to load image at index ${index}: ${photos[index].src}`);
-    setImageError((prev) => ({ ...prev, [index]: true }));
-  }, [photos]);
+  const handleImageError = useCallback(
+    (index) => {
+      console.error(
+        `Failed to load image at index ${index}: ${photos[index].src}`
+      );
+      setImageError((prev) => ({ ...prev, [index]: true }));
+    },
+    [photos]
+  );
 
   return (
     <div className="font-sans min-h-screen bg-transparent">
@@ -77,17 +90,13 @@ const PhotoGallery = memo(() => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {photos.map((photo, index) => (
-                <div
-                  key={index}
-                >
-                  <Card
-                    className="relative rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2"
-                  >
+                <div key={index}>
+                  <Card className="relative rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2">
                     <CardMedia
                       component="img"
                       image={
                         imageError[index]
-                          ? 'https://via.placeholder.com/600x500?text=Image+Not+Found'
+                          ? "https://via.placeholder.com/600x500?text=Image+Not+Found"
                           : photo.src
                       }
                       alt={photo.alt}
@@ -118,7 +127,7 @@ const PhotoGallery = memo(() => {
               component="img"
               image={
                 imageError[selectedImageIndex]
-                  ? 'https://via.placeholder.com/1200x800?text=Image+Not+Found'
+                  ? "https://via.placeholder.com/1200x800?text=Image+Not+Found"
                   : photos[selectedImageIndex]?.src
               }
               alt={photos[selectedImageIndex]?.alt}

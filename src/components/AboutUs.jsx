@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Box, Container, Grid, Typography, Button } from "@mui/material";
 import Breadcrumb from "../components/Breadcrumb";
 
 const About = () => {
   useEffect(() => {
     document.title =
-      "About Us | Astro Om Solution - Best Vedic Astrology in India";
+      "About Us | Astro Om Solutions - Best Vedic Astrology in India";
   }, []);
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
-      {/* ❌ REMOVED: Invalid <title> and <meta> tags (not valid in JSX body) */}
-
       {/* Breadcrumb */}
       <Breadcrumb title="About Us" />
 
@@ -34,7 +32,7 @@ const About = () => {
                 boxShadow: 1,
               }}
             >
-              Unlocking the Mysteries of the Cosmos with Astro Om Solution
+              Unlocking the Mysteries of the Cosmos with Astro Om Solutions
             </Typography>
           </Box>
           <Grid
@@ -63,7 +61,7 @@ const About = () => {
                 component="h1"
                 sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
               >
-                Astro Om Solution: Your Premier Destination for Expert Vedic
+                Astro Om Solutions: Your Premier Destination for Expert Vedic
                 Astrology in India
               </Typography>
               <Typography
@@ -144,9 +142,9 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            At Astro Om Solution, we understand that every individual is unique.
-            That's why we offer a wide range of services tailored to your
-            specific needs. Our team of top astrologers is skilled in
+            At Astro Om Solutions, we understand that every individual is
+            unique. That's why we offer a wide range of services tailored to
+            your specific needs. Our team of top astrologers is skilled in
             deciphering the intricate details of your birth chart, including
             your zodiac sign, moon sign, and the positions of planets and
             modalities. With this information, we can provide you with
@@ -166,7 +164,7 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            One of the key benefits of consulting with Astro Om Solution is
+            One of the key benefits of consulting with Astro Om Solutions is
             gaining insight into the influence of planetary transitions on your
             life. Our expert astrologers will help you understand how planetary
             movements impact your experiences. Whether it's navigating
@@ -293,8 +291,8 @@ const About = () => {
           >
             When you require assistance in decoding planetary positions and
             seeking solutions for your life's challenges, don't hesitate to
-            reach out to Astro Om Solution. Our experienced astrologers in India
-            are committed to providing you with reliable and insightful
+            reach out to Astro Om Solutions. Our experienced astrologers in
+            India are committed to providing you with reliable and insightful
             astrological guidance.
           </Typography>
           <Typography
@@ -309,7 +307,7 @@ const About = () => {
             or any other aspect of your life, our dedicated team is here to
             guide you towards a brighter future. Embrace the wisdom of Vedic
             astrology and unlock the secrets to a more balanced and harmonious
-            life with Astro Om Solution.
+            life with Astro Om Solutions.
           </Typography>
 
           {/* ✅ PERFECT SEO BUTTON */}

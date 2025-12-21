@@ -18,7 +18,7 @@ import husbandWifeDispute from "../assets/images/services/husband and wife dispu
 
 const HusbandWifeDispute = () => {
   useEffect(() => {
-    document.title = "Husband Wife Dispute Solution | Astro Om Solution";
+    document.title = "Husband Wife Dispute Solution | Astro Om Solutions";
   }, []);
 
   return (
@@ -35,7 +35,7 @@ const HusbandWifeDispute = () => {
       />
       <meta
         property="og:title"
-        content="Husband Wife Dispute Solution | Astro Om Solution"
+        content="Husband Wife Dispute Solution | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -74,7 +74,7 @@ const HusbandWifeDispute = () => {
                       mb: 1,
                     }}
                   >
-                    Husband Wife Dispute Solution by Astro Om Solution
+                    Husband Wife Dispute Solution by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"

@@ -16,7 +16,7 @@ import familyProblem from "../assets/images/services/family.mp4";
 
 const FamilyProblemSolution = () => {
   useEffect(() => {
-    document.title = "Family Problem Solution | Astro Om Solution";
+    document.title = "Family Problem Solution | Astro Om Solutions";
   }, []);
 
   return (
@@ -24,7 +24,7 @@ const FamilyProblemSolution = () => {
       {/* ✅ SEO: Page-specific meta tags */}
 
       <title>
-        Family Problem Solution Astrologer | Astro Om Solution India
+        Family Problem Solution Astrologer | Astro Om Solutions India
       </title>
       <meta
         name="description"
@@ -32,7 +32,7 @@ const FamilyProblemSolution = () => {
       />
       <meta
         property="og:title"
-        content="Family Problem Solution | Astro Om Solution"
+        content="Family Problem Solution | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -71,7 +71,7 @@ const FamilyProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Family Problem Solution by Astro Om Solution
+                    Family Problem Solution by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"
