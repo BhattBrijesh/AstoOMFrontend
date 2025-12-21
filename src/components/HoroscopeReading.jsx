@@ -10,6 +10,7 @@ import {
   Fade,
   Grow,
 } from "@mui/material";
+
 import Breadcrumb from "../components/Breadcrumb";
 import horoscopeVideo from "../assets/images/horoscope1.mp4";
 
@@ -20,9 +21,34 @@ const HoroscopeReading = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>
+        Horoscope Reading Online | Vedic Astrology Birth Chart | Astro Om
+        Solution
+      </title>
+      <meta
+        name="description"
+        content="Get accurate online horoscope reading & Vedic astrology birth chart analysis. Understand your 12 houses, planetary positions, past life karma & future predictions."
+      />
+      <meta
+        property="og:title"
+        content="Horoscope Reading | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Expert Vedic horoscope reading service. Get detailed birth chart analysis, 12 houses explanation, planetary predictions from top astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/horoscope-reading"
+      />
+      <meta
+        name="keywords"
+        content="horoscope reading, Vedic astrology, birth chart, kundli reading, Janam kundali, online horoscope"
+      />
 
       <Breadcrumb title="Horoscope Reading" />
-
 
       {/* Hero Section */}
       <Box
@@ -53,7 +79,7 @@ const HoroscopeReading = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -79,13 +105,13 @@ const HoroscopeReading = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "70vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "70vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -528,6 +554,7 @@ const HoroscopeReading = () => {
                     horoscope. Contact us to solve your all problems related to
                     astrology.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"

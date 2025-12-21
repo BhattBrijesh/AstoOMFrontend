@@ -25,6 +25,7 @@ const Services = () => {
       description:
         "Facing challenges in your love life? Get personalized guidance to overcome misunderstandings, rebuild trust, and bring harmony back into your relationship.",
       link: "/love-problem-solution",
+      buttonText: "Love Problem Solutions", // ✅ SEO: Descriptive link text
     },
     {
       image: img2,
@@ -32,6 +33,7 @@ const Services = () => {
       description:
         "Whether before or after marriage, receive expert astrological support to resolve delays, conflicts, and compatibility concerns for a peaceful married life.",
       link: "/marriage-problem-solution",
+      buttonText: "Marriage Problem Solutions", // ✅ SEO: Descriptive
     },
     {
       image: img3,
@@ -39,6 +41,7 @@ const Services = () => {
       description:
         "Struggling to make your love marriage successful? Get trusted guidance to overcome family opposition, delays, and emotional challenges with confidence.",
       link: "/love-marriage-problem-solution",
+      buttonText: "Love Marriage Solutions", // ✅ SEO: Descriptive
     },
     {
       image: img4,
@@ -46,6 +49,7 @@ const Services = () => {
       description:
         "Resolve ongoing disputes between husband and wife with compassionate guidance that helps restore understanding, balance, and emotional connection.",
       link: "/husband-wife-dispute-solution",
+      buttonText: "Husband Wife Solutions", // ✅ SEO: Descriptive
     },
     {
       image: img5,
@@ -53,6 +57,7 @@ const Services = () => {
       description:
         "Family conflicts can be stressful and overwhelming. Receive thoughtful solutions to restore peace, understanding, and emotional balance at home.",
       link: "/family-problem-solution",
+      buttonText: "Family Problem Solutions", // ✅ SEO: Descriptive
     },
     {
       image: img6,
@@ -60,6 +65,7 @@ const Services = () => {
       description:
         "Lost someone you still care about? Discover practical guidance and proven remedies to reconnect, heal emotional gaps, and rebuild your relationship.",
       link: "/horoscope-reading",
+      buttonText: "Horoscope Reading Services", // ✅ SEO: Descriptive
     },
   ];
 
@@ -109,14 +115,14 @@ const Services = () => {
   return (
     <div
       style={{
-        padding: "32px 16px", // Increased padding for better mobile breathing room
+        padding: "32px 16px",
         background: "#1a2a4487",
       }}
     >
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
         <Typography
           sx={{
-            fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" }, // Smaller on mobile
+            fontSize: { xs: "1.8rem", sm: "2.5rem", md: "3rem" },
             fontWeight: "bold",
             lineHeight: 1.2,
           }}
@@ -148,10 +154,10 @@ const Services = () => {
         viewport={{ once: true, margin: "-100px" }}
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", // Better responsive grid
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "24px",
           justifyContent: "center",
-          justifyItems: "center", // Centers cards horizontally
+          justifyItems: "center",
           padding: "0 8px",
         }}
       >
@@ -162,7 +168,7 @@ const Services = () => {
             whileHover="hover"
             style={{
               width: "100%",
-              maxWidth: "420px", // Limits max width for better proportion
+              maxWidth: "420px",
               minWidth: "280px",
             }}
           >
@@ -238,13 +244,15 @@ const Services = () => {
                   </Typography>
                 </div>
 
+                {/* ✅ SEO FIXED: Descriptive button text + proper Link wrapper */}
                 <Button
                   variant="contained"
                   color="warning"
-                  href={service.link}
+                  component={Link}
+                  to={service.link}
                   endIcon={<ArrowForwardIcon />}
                   sx={{
-                    mt: "auto", // Pushes button to bottom if space
+                    mt: "auto",
                     width: { xs: "100%", sm: "auto" },
                     fontSize: { xs: "0.9rem", md: "0.95rem" },
                     px: { xs: 3, md: 4 },
@@ -258,7 +266,7 @@ const Services = () => {
                     },
                   }}
                 >
-                  Read More
+                  {service.buttonText}
                 </Button>
               </CardContent>
             </Card>

@@ -23,10 +23,32 @@ const LoveProblemSolution = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Page-specific meta tags */}
+
+      <title>Love Problem Solution Astrologer | Astro Om Solution India</title>
+      <meta
+        name="description"
+        content="Expert love problem solutions by top Vedic astrologers at Astro Om Solution. Fix relationship issues, get your love back, prevent breakups with proven astrology remedies."
+      />
+      <meta
+        property="og:title"
+        content="Love Problem Solution | Astro Om Solution"
+      />
+      <meta
+        property="og:description"
+        content="Get expert Vedic astrology solutions for love problems, relationship issues, breakups & marriage disputes from India's best astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/love-problem-solution"
+      />
+      <meta
+        name="keywords"
+        content="love problem solution, love astrologer, relationship problems, get love back, Vedic astrology love"
+      />
+
       {/* Breadcrumb */}
-
       <Breadcrumb title="Love Problem Solution" />
-
 
       {/* Hero Section */}
       <Box
@@ -57,7 +79,7 @@ const LoveProblemSolution = () => {
                     sx={{
                       lineHeight: 1.8,
                       fontSize: { xs: "1rem", md: "1.1rem" },
-                      color: "#FFF"
+                      color: "#FFF",
                     }}
                     paragraph
                   >
@@ -80,13 +102,13 @@ const LoveProblemSolution = () => {
                   playsInline
                   alt="Love and Relationship Solutions"
                   sx={{
-                    width: "100vw",    // Full viewport width
-                    height: "78vh",    // 30% of viewport height
+                    width: "100vw",
+                    height: "78vh",
                     borderRadius: 3,
                     boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)",
                     objectFit: "cover",
-                    mx: "auto",        // Centered display
-                    display: "block",  // Remove inline spacing
+                    mx: "auto",
+                    display: "block",
                     transition: "transform 0.3s ease-in-out",
                     "&:hover": {
                       transform: "scale(1.02)",
@@ -398,6 +420,7 @@ const LoveProblemSolution = () => {
                     transforming your life forever. Contact us now to solve your
                     all problems.
                   </Typography>
+                  {/* ✅ SEO: "Contact Us Now" is descriptive - PERFECT */}
                   <Button
                     variant="contained"
                     color="primary"

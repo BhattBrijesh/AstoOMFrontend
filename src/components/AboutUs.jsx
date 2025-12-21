@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Box, Container, Grid, Typography, Button } from "@mui/material";
+
 import Breadcrumb from "../components/Breadcrumb";
 
 const About = () => {
@@ -15,9 +10,27 @@ const About = () => {
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+      {/* ✅ SEO: Dynamic meta tags for this page */}
+
+      <title>
+        About Us | Astro Om Solution - Best Vedic Astrology in India
+      </title>
+      <meta
+        name="description"
+        content="Discover Astro Om Solution - India's premier Vedic astrology service offering expert guidance for love, marriage, family, career, health & more. Worldwide consultations available."
+      />
+      <meta property="og:title" content="About Us | Astro Om Solution" />
+      <meta
+        property="og:description"
+        content="Expert Vedic astrology services for all life challenges - love, marriage, career, family & more from India's top astrologers."
+      />
+      <meta
+        property="og:url"
+        content="https://astroomsolution.vercel.app/aboutus"
+      />
+
       {/* Breadcrumb */}
       <Breadcrumb title="About Us" />
-
 
       {/* Hero Section */}
       <Box
@@ -30,7 +43,13 @@ const About = () => {
             <Typography
               variant="body1"
               color="text.secondary"
-              sx={{ lineHeight: 1.4, fontSize: { xs: "2rem", md: "2.1rem" }, color: "#ff9800", fontWeight: 500, boxShadow: 1 }}
+              sx={{
+                lineHeight: 1.4,
+                fontSize: { xs: "2rem", md: "2.1rem" },
+                color: "#ff9800",
+                fontWeight: 500,
+                boxShadow: 1,
+              }}
             >
               Unlocking the Mysteries of the Cosmos with Astro Om Solution
             </Typography>
@@ -65,14 +84,19 @@ const About = () => {
                 component="h1"
                 sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
               >
-                Astro Om Solution: Your Premier Destination for Expert Vedic Astrology in India
+                Astro Om Solution: Your Premier Destination for Expert Vedic
+                Astrology in India
               </Typography>
               <Typography
                 variant="body2"
                 color="text.secondary"
                 sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
               >
-                Are you in search of profound astrological insights and guidance to navigate life's challenges? Look no further than Astro Om Solution, your trusted partner in Vedic astrology based in India. Our mission is to provide you with top-notch astrological solutions and help you find answers to your deepest questions.
+                Are you in search of profound astrological insights and guidance
+                to navigate life's challenges? Look no further than Astro Om
+                Solution, your trusted partner in Vedic astrology based in
+                India. Our mission is to provide you with top-notch astrological
+                solutions and help you find answers to your deepest questions.
               </Typography>
               <Typography
                 variant="h5"
@@ -86,7 +110,13 @@ const About = () => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
               >
-                We pride ourselves as pioneers in the field of Vedic astrology, with a rich heritage of wisdom and knowledge. Vedic astrology, also known as Jyotish Shastra, is a time-tested and ancient system that delves into the cosmic influences on your life. Our dedicated team of astrologers is well-versed in the art of Vedic astrology and can offer you invaluable insights into your life's journey.
+                We pride ourselves as pioneers in the field of Vedic astrology,
+                with a rich heritage of wisdom and knowledge. Vedic astrology,
+                also known as Jyotish Shastra, is a time-tested and ancient
+                system that delves into the cosmic influences on your life. Our
+                dedicated team of astrologers is well-versed in the art of Vedic
+                astrology and can offer you invaluable insights into your life's
+                journey.
               </Typography>
               <Typography
                 variant="h5"
@@ -100,7 +130,12 @@ const About = () => {
                 color="text.secondary"
                 sx={{ lineHeight: 1.4, color: "black", fontWeight: 500 }}
               >
-                No matter where you are in the world, you can benefit from our expertise. We are honored to be recognized as one of the world's top astrology services, and our astrologers are available to serve you regardless of your location. With Om Astro Service, distance is no barrier to receiving the best astrological guidance.
+                No matter where you are in the world, you can benefit from our
+                expertise. We are honored to be recognized as one of the world's
+                top astrology services, and our astrologers are available to
+                serve you regardless of your location. With Om Astro Service,
+                distance is no barrier to receiving the best astrological
+                guidance.
               </Typography>
             </Box>
           </Grid>
@@ -134,7 +169,14 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            At Astro Om Solution, we understand that every individual is unique. That's why we offer a wide range of services tailored to your specific needs. Our team of top astrologers is skilled in deciphering the intricate details of your birth chart, including your zodiac sign, moon sign, and the positions of planets and modalities. With this information, we can provide you with personalized guidance and expert advice to address various aspects of your life.
+            At Astro Om Solution, we understand that every individual is unique.
+            That's why we offer a wide range of services tailored to your
+            specific needs. Our team of top astrologers is skilled in
+            deciphering the intricate details of your birth chart, including
+            your zodiac sign, moon sign, and the positions of planets and
+            modalities. With this information, we can provide you with
+            personalized guidance and expert advice to address various aspects
+            of your life.
           </Typography>
           <Typography
             variant="h4"
@@ -149,7 +191,13 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            One of the key benefits of consulting with Astro Om Solution is gaining insight into the influence of planetary transitions on your life. Our expert astrologers will help you understand how planetary movements impact your experiences. Whether it's navigating challenging times during planetary retrogrades or capitalizing on favourable celestial alignments, our guidance will empower you to make informed decisions and lead a more harmonious life.
+            One of the key benefits of consulting with Astro Om Solution is
+            gaining insight into the influence of planetary transitions on your
+            life. Our expert astrologers will help you understand how planetary
+            movements impact your experiences. Whether it's navigating
+            challenging times during planetary retrogrades or capitalizing on
+            favourable celestial alignments, our guidance will empower you to
+            make informed decisions and lead a more harmonious life.
           </Typography>
           <Typography
             variant="h4"
@@ -163,7 +211,9 @@ const About = () => {
             color="text.secondary"
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
           >
-            No matter the nature of your concerns, our team of expert Vedic astrologers is here to assist you. Our comprehensive services cover a wide spectrum of life's challenges, including:
+            No matter the nature of your concerns, our team of expert Vedic
+            astrologers is here to assist you. Our comprehensive services cover
+            a wide spectrum of life's challenges, including:
           </Typography>
           <Box sx={{ ml: 2, mt: 0.5 }}>
             <Typography
@@ -250,7 +300,8 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            Count on us for dependable and effective astrology solutions that cater to the specific issues you're facing in your life.
+            Count on us for dependable and effective astrology solutions that
+            cater to the specific issues you're facing in your life.
           </Typography>
           <Typography
             variant="h4"
@@ -265,7 +316,11 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            When you require assistance in decoding planetary positions and seeking solutions for your life's challenges, don't hesitate to reach out to Astro Om Solution. Our experienced astrologers in India are committed to providing you with reliable and insightful astrological guidance.
+            When you require assistance in decoding planetary positions and
+            seeking solutions for your life's challenges, don't hesitate to
+            reach out to Astro Om Solution. Our experienced astrologers in India
+            are committed to providing you with reliable and insightful
+            astrological guidance.
           </Typography>
           <Typography
             variant="body2"
@@ -273,8 +328,15 @@ const About = () => {
             sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
             paragraph
           >
-            Take the first step toward a more fulfilling life by contacting the best astrologer in India today. Whether you're seeking answers about your personal relationships, career prospects, financial decisions, or any other aspect of your life, our dedicated team is here to guide you towards a brighter future. Embrace the wisdom of Vedic astrology and unlock the secrets to a more balanced and harmonious life with Astro Om Solution.
+            Take the first step toward a more fulfilling life by contacting the
+            best astrologer in India today. Whether you're seeking answers about
+            your personal relationships, career prospects, financial decisions,
+            or any other aspect of your life, our dedicated team is here to
+            guide you towards a brighter future. Embrace the wisdom of Vedic
+            astrology and unlock the secrets to a more balanced and harmonious
+            life with Astro Om Solution.
           </Typography>
+          {/* ✅ SEO: "Contact Us Now" is already descriptive - GOOD */}
           <Button
             variant="contained"
             color="primary"
