@@ -16,7 +16,7 @@ import horoscopeVideo from "../assets/images/horoscope1.mp4";
 
 const HoroscopeReading = () => {
   useEffect(() => {
-    document.title = "Horoscope Reading | Astro Om Solution";
+    document.title = "Horoscope Reading | Astro Om Solutions";
   }, []);
 
   return (
@@ -33,7 +33,7 @@ const HoroscopeReading = () => {
       />
       <meta
         property="og:title"
-        content="Horoscope Reading | Astro Om Solution"
+        content="Horoscope Reading | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -71,7 +71,7 @@ const HoroscopeReading = () => {
                       mb: 1,
                     }}
                   >
-                    Horoscope Reading by Astro Om Solution
+                    Horoscope Reading by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"

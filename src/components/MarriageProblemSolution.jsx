@@ -23,15 +23,15 @@ const MarriageProblemSolution = () => {
       {/* ✅ SEO: Page-specific meta tags */}
 
       <title>
-        Marriage Problem Solution Astrologer | Astro Om Solution India
+        Marriage Problem Solution Astrologer | Astro Om Solutions India
       </title>
       <meta
         name="description"
-        content="Expert marriage problem solutions by Vedic astrologers at Astro Om Solution. Fix husband-wife disputes, improve marital harmony, prevent divorce with proven remedies."
+        content="Expert marriage problem solutions by Vedic astrologers at Astro Om Solutions. Fix husband-wife disputes, improve marital harmony, prevent divorce with proven remedies."
       />
       <meta
         property="og:title"
-        content="Marriage Problem Solution | Astro Om Solution"
+        content="Marriage Problem Solution | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -70,7 +70,7 @@ const MarriageProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Marriage Problem Solution by Astro Om Solution
+                    Marriage Problem Solution by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"

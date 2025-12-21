@@ -1,15 +1,15 @@
-import React, { useEffect, useState, memo } from 'react';
-import { Card, CardMedia, Typography, Box } from '@mui/material';
-import { VideocamOff } from '@mui/icons-material';
-import Breadcrumb from '../components/Breadcrumb';
-import video from '../assets/images/video1.mp4';
+import React, { useEffect, useState, memo } from "react";
+import { Card, CardMedia, Typography, Box } from "@mui/material";
+import { VideocamOff } from "@mui/icons-material";
+import Breadcrumb from "../components/Breadcrumb";
+import video from "../assets/images/video1.mp4";
 
 const VideoGallery = memo(() => {
   const [videoError, setVideoError] = useState({});
   const [isVisible, setIsVisible] = useState({});
 
   const videos = [
-    { src: video, alt: 'Cosmic Journey Video', caption: 'Cosmic Journey' },
+    { src: video, alt: "Cosmic Journey Video", caption: "Cosmic Journey" },
   ];
 
   // Lazy loading with IntersectionObserver
@@ -26,30 +26,31 @@ const VideoGallery = memo(() => {
       { threshold: 0.1 }
     );
 
-    document.querySelectorAll('.gallery-card').forEach((card) => observer.observe(card));
+    document
+      .querySelectorAll(".gallery-card")
+      .forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
   }, []);
 
   // Set document title and log video paths
   useEffect(() => {
-    document.title = 'Video Gallery | Astro Om Solution';
-    videos.forEach((video, index) => {
-
-    });
+    document.title = "Video Gallery | Astro Om Solutions";
+    videos.forEach((video, index) => {});
   }, []);
 
   const handleVideoError = (index) => {
-    console.error(`Failed to load video at index ${index}: ${videos[index].src}`);
+    console.error(
+      `Failed to load video at index ${index}: ${videos[index].src}`
+    );
     setVideoError((prev) => ({ ...prev, [index]: true }));
   };
 
   const handleVideoClick = (e, index) => {
     // Prevent lightbox opening when interacting with video controls
-    if (e.target.tagName === 'VIDEO') {
+    if (e.target.tagName === "VIDEO") {
       e.stopPropagation(); // Allow video controls to work
     } else {
-
       // Add lightbox functionality here if needed
     }
   };
@@ -77,15 +78,17 @@ const VideoGallery = memo(() => {
                 >
                   <Card
                     className="relative rounded-xl shadow-lg overflow-hidden group hover:shadow-2xl transition-all duration-500 ease-in-out transform hover:-translate-y-2"
-                    style={{ background: 'transparent' }}
+                    style={{ background: "transparent" }}
                     onClick={(e) => handleVideoClick(e, index)}
                   >
                     <CardMedia
                       component="video"
-                      src={videoError[index] || !isVisible[index] ? '' : video.src}
+                      src={
+                        videoError[index] || !isVisible[index] ? "" : video.src
+                      }
                       poster={
                         videoError[index]
-                          ? 'https://via.placeholder.com/600x500?text=Video+Not+Found'
+                          ? "https://via.placeholder.com/600x500?text=Video+Not+Found"
                           : undefined
                       }
                       preload="metadata"
@@ -93,7 +96,6 @@ const VideoGallery = memo(() => {
                       className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
                       onError={() => handleVideoError(index)}
                     />
-
                   </Card>
                 </div>
               ))}

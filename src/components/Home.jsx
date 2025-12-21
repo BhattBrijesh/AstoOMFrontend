@@ -1,69 +1,18 @@
-import React, { useEffect } from "react";
-import Carousel from "../components/Carousel";
+import { useEffect } from "react";
 import ZodiacSigns from "../components/ZodiacSigns";
 import Services from "../components/Services";
 import Counter from "../components/Counter";
-import Awards from "../components/Awards";
-import Testimonials from "../components/Testimonials";
-import Header from "./Header";
-import Footer from "./Footer";
 import ServicesCardComponent from "./ServicesCardComponent";
 import WelcomeAstro from "./WelcomeAstro";
-import { Avatar, Box, Grid, Typography } from "@mui/material";
-import employee from "../assets/images/animation/success.mp4";
-import team_building from "../assets/images/animation/team-building.mp4";
-import time24 from "../assets/images/animation/24-hours.mp4";
-import "../components/css/Home.css";
-import { motion } from "framer-motion";
+import { Box, Grid } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import "../components/css/Home.css";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Astro Om Solution";
+    document.title = "Astro Om Solutions";
   }, []);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        when: "beforeChildren",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-    hover: {
-      y: -15,
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <div>

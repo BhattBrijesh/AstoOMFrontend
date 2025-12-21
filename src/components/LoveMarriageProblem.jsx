@@ -15,7 +15,7 @@ import coupleFight from "../assets/images/services/couple fight.mp4";
 
 const LoveProblemSolution = () => {
   useEffect(() => {
-    document.title = "Love Marriage Problem Solution | Astro Om Solution";
+    document.title = "Love Marriage Problem Solution | Astro Om Solutions";
   }, []);
 
   return (
@@ -23,7 +23,7 @@ const LoveProblemSolution = () => {
       {/* ✅ SEO: Page-specific meta tags */}
 
       <title>
-        Love Marriage Problem Solution Astrologer | Astro Om Solution India
+        Love Marriage Problem Solution Astrologer | Astro Om Solutions India
       </title>
       <meta
         name="description"
@@ -31,7 +31,7 @@ const LoveProblemSolution = () => {
       />
       <meta
         property="og:title"
-        content="Love Marriage Problem Solution | Astro Om Solution"
+        content="Love Marriage Problem Solution | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -70,7 +70,7 @@ const LoveProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Love Marriage Problem Solution by Astro Om Solution
+                    Love Marriage Problem Solution by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"

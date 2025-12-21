@@ -18,21 +18,21 @@ import loveProblemSolution from "../assets/images/services/love problem solution
 
 const LoveProblemSolution = () => {
   useEffect(() => {
-    document.title = "Love Problem Solution | Astro Om Solution";
+    document.title = "Love Problem Solution | Astro Om Solutions";
   }, []);
 
   return (
     <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
       {/* ✅ SEO: Page-specific meta tags */}
 
-      <title>Love Problem Solution Astrologer | Astro Om Solution India</title>
+      <title>Love Problem Solution Astrologer | Astro Om Solutions India</title>
       <meta
         name="description"
-        content="Expert love problem solutions by top Vedic astrologers at Astro Om Solution. Fix relationship issues, get your love back, prevent breakups with proven astrology remedies."
+        content="Expert love problem solutions by top Vedic astrologers at Astro Om Solutions. Fix relationship issues, get your love back, prevent breakups with proven astrology remedies."
       />
       <meta
         property="og:title"
-        content="Love Problem Solution | Astro Om Solution"
+        content="Love Problem Solution | Astro Om Solutions"
       />
       <meta
         property="og:description"
@@ -71,7 +71,7 @@ const LoveProblemSolution = () => {
                       mb: 3,
                     }}
                   >
-                    Love Problem Solution by Astro Om Solution
+                    Love Problem Solution by Astro Om Solutions
                   </Typography>
                   <Typography
                     variant="body1"
