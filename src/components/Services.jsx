@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { motion } from "framer-motion";
+// ❌ REMOVED: import { motion } from "framer-motion";
 import img1 from "../assets/images/1.1.jpg";
 import img2 from "../assets/images/2.1.jpg";
 import img3 from "../assets/images/3.1.jpg";
@@ -25,7 +25,7 @@ const Services = () => {
       description:
         "Facing challenges in your love life? Get personalized guidance to overcome misunderstandings, rebuild trust, and bring harmony back into your relationship.",
       link: "/love-problem-solution",
-      buttonText: "Love Problem Solutions", // ✅ SEO: Descriptive link text
+      buttonText: "Love Problem Solutions",
     },
     {
       image: img2,
@@ -33,7 +33,7 @@ const Services = () => {
       description:
         "Whether before or after marriage, receive expert astrological support to resolve delays, conflicts, and compatibility concerns for a peaceful married life.",
       link: "/marriage-problem-solution",
-      buttonText: "Marriage Problem Solutions", // ✅ SEO: Descriptive
+      buttonText: "Marriage Problem Solutions",
     },
     {
       image: img3,
@@ -41,7 +41,7 @@ const Services = () => {
       description:
         "Struggling to make your love marriage successful? Get trusted guidance to overcome family opposition, delays, and emotional challenges with confidence.",
       link: "/love-marriage-problem-solution",
-      buttonText: "Love Marriage Solutions", // ✅ SEO: Descriptive
+      buttonText: "Love Marriage Solutions",
     },
     {
       image: img4,
@@ -49,7 +49,7 @@ const Services = () => {
       description:
         "Resolve ongoing disputes between husband and wife with compassionate guidance that helps restore understanding, balance, and emotional connection.",
       link: "/husband-wife-dispute-solution",
-      buttonText: "Husband Wife Solutions", // ✅ SEO: Descriptive
+      buttonText: "Husband Wife Solutions",
     },
     {
       image: img5,
@@ -57,7 +57,7 @@ const Services = () => {
       description:
         "Family conflicts can be stressful and overwhelming. Receive thoughtful solutions to restore peace, understanding, and emotional balance at home.",
       link: "/family-problem-solution",
-      buttonText: "Family Problem Solutions", // ✅ SEO: Descriptive
+      buttonText: "Family Problem Solutions",
     },
     {
       image: img6,
@@ -65,52 +65,9 @@ const Services = () => {
       description:
         "Lost someone you still care about? Discover practical guidance and proven remedies to reconnect, heal emotional gaps, and rebuild your relationship.",
       link: "/horoscope-reading",
-      buttonText: "Horoscope Reading Services", // ✅ SEO: Descriptive
+      buttonText: "Horoscope Reading Services",
     },
   ];
-
-  // Animation variants (unchanged)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        when: "beforeChildren",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-    hover: {
-      y: -15,
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <div
@@ -147,11 +104,9 @@ const Services = () => {
         </Typography>
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+      {/* ✅ CSS ANIMATION: Replace motion.div */}
+      <div
+        className="services-grid animate-fade-in"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -162,17 +117,18 @@ const Services = () => {
         }}
       >
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
-            variants={cardVariants}
-            whileHover="hover"
+            className="service-card animate-slide-up"
             style={{
               width: "100%",
               maxWidth: "420px",
               minWidth: "280px",
+              animationDelay: `${index * 0.1}s`, // Stagger effect
             }}
           >
             <Card
+              className="service-card-inner"
               style={{
                 width: "100%",
                 textAlign: "center",
@@ -185,14 +141,9 @@ const Services = () => {
                 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 borderRadius: "12px",
               }}
-              component={motion.div}
             >
-              <motion.div
-                variants={imageHover}
-                initial="rest"
-                whileHover="hover"
-                style={{ overflow: "hidden" }}
-              >
+              {/* ✅ CSS HOVER: Replace motion.div */}
+              <div className="image-container">
                 <CardMedia
                   sx={{
                     height: { xs: 200, sm: 220, md: 240 },
@@ -201,8 +152,9 @@ const Services = () => {
                   component="img"
                   image={service.image}
                   alt={service.title}
+                  loading="lazy" // ✅ LAZY LOADING
                 />
-              </motion.div>
+              </div>
 
               <CardContent
                 sx={{
@@ -244,7 +196,6 @@ const Services = () => {
                   </Typography>
                 </div>
 
-                {/* ✅ SEO FIXED: Descriptive button text + proper Link wrapper */}
                 <Button
                   variant="contained"
                   color="warning"
@@ -270,9 +221,9 @@ const Services = () => {
                 </Button>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

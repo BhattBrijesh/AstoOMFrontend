@@ -1,19 +1,20 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+// ❌ REMOVED: import { motion } from "framer-motion";
 
-// Import your video files here
+// Import your video files here (KEEP - but optimize loading)
 import num0Video from "../assets/images/services/best astrology.mp4";
 import loveMarriageVideo from "../assets/images/services/loveMarriageVideo.mp4";
 import intercastemarriage from "../assets/images/services/intercastemarriage.mp4";
 import maritalIssuesVideo from "../assets/images/services/maritalIssuesVideo.mp4";
 import delayInMarriageVideo from "../assets/images/services/delay in marriage.mp4";
 import divorceVideo from "../assets/images/services/diveroce.mp4";
+import "../components/css/Home.css";
 
 const services = [
   {
-    title: "World’s Trusted Astrology Expert",
+    title: "World's Trusted Astrology Expert",
     description:
       "Feeling confused about love, career, or life decisions? Connect with a world-renowned astrology expert known for accurate predictions and deep insights. Get clear answers and practical guidance to move forward with confidence.",
     video: num0Video,
@@ -57,59 +58,6 @@ const services = [
 ];
 
 const ServicesCardComponent = () => {
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        when: "beforeChildren",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-    hover: {
-      y: -15,
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.4)",
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const imageHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const buttonHover = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.2,
-      },
-    },
-  };
-
   return (
     <div
       style={{
@@ -152,11 +100,9 @@ const ServicesCardComponent = () => {
         </Box>
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+      {/* ✅ CSS ANIMATION: Replace motion.div */}
+      <div
+        className="services-grid-v2 animate-fade-in"
         style={{
           display: "flex",
           flexWrap: "wrap",
@@ -165,17 +111,18 @@ const ServicesCardComponent = () => {
         }}
       >
         {services.map((service, index) => (
-          <motion.div
+          <div
             key={index}
-            variants={cardVariants}
-            whileHover="hover"
+            className="service-card-v2 animate-slide-up"
             style={{
-              flex: "1 1 260px", // responsive basis
+              flex: "1 1 260px",
               maxWidth: "340px",
               minWidth: "260px",
+              animationDelay: `${index * 0.1}s`, // Stagger effect
             }}
           >
             <Card
+              className="service-card-inner-v2"
               style={{
                 width: "100%",
                 textAlign: "center",
@@ -186,26 +133,28 @@ const ServicesCardComponent = () => {
                 height: "100%",
               }}
             >
-              <motion.div
-                variants={imageHover}
-                initial="rest"
-                whileHover="hover"
-                style={{ overflow: "hidden" }}
-              >
+              {/* ✅ OPTIMIZED VIDEO: preload="metadata" + poster fallback */}
+              <div className="video-container">
                 <video
+                  preload="metadata" // ✅ DON'T preload full video
                   src={service.video}
-                  style={{
-                    width: "100%",
-                    height: 180, // fixed px height so small screens don’t squash content
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                  autoPlay
-                  loop
+                  poster="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // ✅ Tiny poster
                   muted
                   playsInline
+                  className="service-video"
+                  onMouseEnter={(e) => e.target.play()} // ✅ Play on hover
+                  onMouseLeave={(e) => e.target.pause()} // ✅ Pause on leave
+                  loop
                 />
-              </motion.div>
+                {/* ✅ FALLBACK IMAGE for poor connections */}
+                <div className="video-fallback">
+                  <img
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOGY4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmc8L3RleHQ+PC9zdmc+"
+                    alt="Service preview"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
 
               <CardContent
                 sx={{
@@ -241,11 +190,8 @@ const ServicesCardComponent = () => {
                   </Typography>
                 </div>
 
-                <motion.div
-                  variants={buttonHover}
-                  whileHover="hover"
-                  style={{ marginTop: "auto" }}
-                >
+                {/* ✅ CSS HOVER BUTTON */}
+                <div className="whatsapp-button-container">
                   <Button
                     variant="contained"
                     color="primary"
@@ -253,26 +199,16 @@ const ServicesCardComponent = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     startIcon={<WhatsAppIcon />}
-                    sx={{
-                      backgroundColor: "#25D366",
-                      color: "#fff",
-                      width: { xs: "100%", sm: "auto" },
-                      fontSize: { xs: "0.85rem", md: "0.9rem" },
-                      px: { xs: 2, md: 3 },
-                      py: 1,
-                      "&:hover": {
-                        backgroundColor: "#1ebe5a",
-                      },
-                    }}
+                    className="whatsapp-btn"
                   >
                     Whatsapp Now
                   </Button>
-                </motion.div>
+                </div>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };
