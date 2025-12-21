@@ -18,7 +18,6 @@ import Breadcrumb from "../components/Breadcrumb";
 import ganesh from "../assets/images/ganeshji.mp4"; // Update path as needed
 import { handleSubmitInquiryForm } from "../api";
 import toast from "react-hot-toast";
-import { motion } from "framer-motion";
 
 const Inquiry = () => {
   const containerVariants = {
