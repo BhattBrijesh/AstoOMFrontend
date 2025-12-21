@@ -136,14 +136,15 @@ const ServicesCardComponent = () => {
               {/* ✅ OPTIMIZED VIDEO: preload="metadata" + poster fallback */}
               <div className="video-container">
                 <video
-                  preload="metadata" // ✅ DON'T preload full video
+                  autoPlay
+                  // preload="metadata" // ✅ DON'T preload full video
                   src={service.video}
                   poster="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" // ✅ Tiny poster
                   muted
                   playsInline
                   className="service-video"
-                  onMouseEnter={(e) => e.target.play()} // ✅ Play on hover
-                  onMouseLeave={(e) => e.target.pause()} // ✅ Pause on leave
+                  // onMouseEnter={(e) => e.target.play()} // ✅ Play on hover
+                  // onMouseLeave={(e) => e.target.pause()} // ✅ Pause on leave
                   loop
                 />
                 {/* ✅ FALLBACK IMAGE for poor connections */}
