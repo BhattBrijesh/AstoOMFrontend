@@ -63,7 +63,7 @@ const Inquiry = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
-    document.title = "Inquiry | Astro Om Solutions";
+    document.title = "Inquiry | Om Astro Solutions";
   }, []);
 
   const validateForm = useCallback(() => {

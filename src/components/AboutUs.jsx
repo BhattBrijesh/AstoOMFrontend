@@ -1,342 +1,560 @@
-import { useEffect } from "react";
-import { Box, Container, Grid, Typography, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Button,
+  Card,
+  CardContent,
+} from "@mui/material";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Breadcrumb from "../components/Breadcrumb";
 
 const About = () => {
+  const [language, setLanguage] = useState("en");
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title =
-      "About Us | Astro Om Solutions - Best Vedic Astrology in India";
+      "About Us | Om Astro Soultions - Expert Vedic Astrology Services";
   }, []);
 
+  const englishContent = {
+    title: "About Om Astro Soultions",
+    subtitle: "Your Trusted Partner in Vedic Astrology for Life Guidance",
+    intro: `Welcome to Om Astro Soultions, India's premier destination for authentic Vedic astrology services. We are dedicated to helping thousands of individuals and families navigate life's challenges through the ancient wisdom of Jyotish Shastra (Vedic Astrology). With over 20 years of experience, our certified astrologers have transformed countless lives by providing accurate predictions, practical remedies, and spiritual guidance aligned with planetary influences.`,
+
+    mission: `Our mission is simple: to empower you with cosmic knowledge so you can make informed decisions about your future, overcome obstacles, and build a life of harmony, prosperity, and fulfillment.`,
+
+    section1Title: "Why Choose Om Astro Soultions?",
+    section1Content: `In today's complex world, many people feel lost, confused, or stuck in life. They struggle with unexplained delays, recurring failures, or emotional turmoil without understanding the root cause. This is where Vedic astrology comes in. Unlike modern psychology or self-help, Vedic astrology looks at your birth chart (Kundali), which acts like a cosmic blueprint of your life.`,
+
+    section1List: [
+      "Detailed horoscope analysis and interpretation",
+      "Personalized remedies (Gemstones, Mantras, Rituals)",
+      "Compatibility matching for marriage (Kundali Milan)",
+      "Career and business guidance aligned with your planets",
+      "Health astrology and wellness recommendations",
+      "Financial planning based on your prosperity timings",
+      "Legal case guidance with favorable timing",
+    ],
+
+    section2Title: "Our Comprehensive Services",
+    section2Intro: `We offer expert astrological solutions across all major life areas:`,
+
+    section3Title: "The Vedic Astrology Advantage",
+    section3Content: `Vedic astrology is not superstition—it is a 5,000-year-old science that understands the relationship between celestial bodies and human affairs.`,
+
+    section4Title: "Meet Our Expert Astrologers",
+    section4Content: `Our team consists of certified Vedic astrologers trained at prestigious Sanskrit universities and with decades of practical experience.`,
+
+    section5Title: "Thousands of Success Stories",
+    section5Content: `Over two decades, we have guided thousands of people through life's most challenging moments and transformed their lives.`,
+
+    section6Title: "Why Now is the Time to Consult",
+    section6Content: `Life is not random. Planetary positions are moving, and certain periods bring specific opportunities or challenges.`,
+
+    cta: "Begin Your Journey to Clarity and Success Today",
+  };
+
+  const hindiContent = {
+    title: "अस्त्रो ओम सॉल्यूशंस के बारे में",
+    subtitle: "जीवन मार्गदर्शन के लिए आपका विश्वसनीय वैदिक ज्योतिष साथी",
+    intro: `अस्त्रो ओम सॉल्यूशंस में आपका स्वागत है, भारत का सबसे विश्वसनीय वैदिक ज्योतिष सेवा केंद्र।`,
+    mission: `हमारा मिशन सरल है: आपको ब्रह्मांडीय ज्ञान से सशक्त करना।`,
+    section1Title: "अस्त्रो ओम सॉल्यूशंस को क्यों चुनें?",
+    section1Content: `आज की जटिल दुनिया में कई लोग खोया हुआ महसूस करते हैं।`,
+    section1List: [
+      "विस्तृत कुंडली विश्लेषण और व्याख्या",
+      "व्यक्तिगत उपाय (रत्न, मंत्र, अनुष्ठान)",
+      "विवाह के लिए अनुकूलता मिलान",
+      "करियर और व्यवसाय मार्गदर्शन",
+      "स्वास्थ्य ज्योतिष और सिफारिशें",
+      "वित्तीय योजना",
+      "कानूनी मामलों का मार्गदर्शन",
+    ],
+    section2Title: "हमारी व्यापक सेवाएँ",
+    section2Intro: `हम जीवन के सभी प्रमुख क्षेत्रों में विशेषज्ञ समाधान प्रदान करते हैं:`,
+    section3Title: "वैदिक ज्योतिष का लाभ",
+    section3Content: `वैदिक ज्योतिष एक 5,000 साल पुरानी विज्ञान है।`,
+    section4Title: "हमारे विशेषज्ञ ज्योतिषी",
+    section4Content: `हमारी टीम प्रतिष्ठित विश्वविद्यालयों से प्रशिक्षित है।`,
+    section5Title: "हजारों सफलता की कहानियाँ",
+    section5Content: `हमने हजारों लोगों को उनके जीवन में बदलाव लाने में मदद की है।`,
+    section6Title: "अब परामर्श लेने का सही समय क्यों है?",
+    section6Content: `जीवन यादृच्छिक नहीं है। ग्रहों की स्थिति बदल रही है।`,
+    cta: "आज ही स्पष्टता और सफलता की ओर अपनी यात्रा शुरू करें",
+  };
+
+  const content = language === "en" ? englishContent : hindiContent;
+
+  const handleBack = () => navigate(-1);
+
+  const handleWhatsApp = () => {
+    const message = encodeURIComponent(
+      `Hello, I would like to know more about your astrology services. Please contact me.`
+    );
+    window.open(
+      `https://api.whatsapp.com/send?phone=919417339708&text=${message}`
+    );
+  };
+
   return (
-    <Box sx={{ bgcolor: "transparent", minHeight: "100vh" }}>
+    <Box sx={{ minHeight: "100vh", position: "relative" }}>
+      {/* VIDEO BACKGROUND */}
+      <video
+        autoPlay
+        muted
+        loop
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -2,
+        }}
+      >
+        <source src="/assets/videos/astro-background.mp4" type="video/mp4" />
+      </video>
+
+      {/* DARK OVERLAY */}
+      <Box
+        sx={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(26, 42, 68, 0.75)", // 75% dark overlay
+          zIndex: -1,
+        }}
+      />
+
       {/* Breadcrumb */}
       <Breadcrumb title="About Us" />
 
-      {/* Hero Section */}
+      {/* Language Toggle + Back Button */}
       <Box
         sx={{
-          py: { xs: 2, md: 4 },
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          px: { xs: 2, md: 4 },
+          py: 2,
+          bgcolor: "rgba(26, 42, 68, 0.9)",
+          backdropFilter: "blur(10px)",
+          position: "relative",
+          zIndex: 10,
         }}
       >
-        <Container maxWidth="xxl">
-          <Box sx={{ textAlign: "center", mb: 2 }}>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{
-                lineHeight: 1.4,
-                fontSize: { xs: "2rem", md: "2.1rem" },
-                color: "#ff9800",
-                fontWeight: 500,
-                boxShadow: 1,
-              }}
-            >
-              Unlocking the Mysteries of the Cosmos with Astro Om Solutions
-            </Typography>
-          </Box>
-          <Grid
-            container
+        <Button
+          variant="outlined"
+          size="small"
+          onClick={handleBack}
+          sx={{
+            color: "#fff",
+            borderColor: "#ff9800",
+            "&:hover": {
+              borderColor: "#fff",
+              bgcolor: "rgba(255, 152, 0, 0.1)",
+            },
+          }}
+        >
+          ← {language === "en" ? "Back" : "वापस जाएँ"}
+        </Button>
+
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Button
+            variant={language === "en" ? "contained" : "outlined"}
+            size="small"
+            onClick={() => setLanguage("en")}
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "nowrap",
-              mt: 1,
+              textTransform: "none",
+              bgcolor: language === "en" ? "#ff9800" : "transparent",
+              color: language === "en" ? "#fff" : "#ff9800",
+              borderColor: "#ff9800",
             }}
           >
-            <Box
-              className="about-hover" // ✅ CSS hover animation
-              sx={{
-                pl: { md: 2 },
-                textAlign: "left",
-                bgcolor: "#FFF",
-                p: 1.5,
-                borderRadius: 2,
-                color: "black",
-                border: "1px solid rgba(255, 152, 0, 0.1)",
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="h1"
-                sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-              >
-                Astro Om Solutions: Your Premier Destination for Expert Vedic
-                Astrology in India
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-              >
-                Are you in search of profound astrological insights and guidance
-                to navigate life's challenges? Look no further than Astro Om
-                Solution, your trusted partner in Vedic astrology based in
-                India. Our mission is to provide you with top-notch astrological
-                solutions and help you find answers to your deepest questions.
-              </Typography>
-              <Typography
-                variant="h5"
-                component="h1"
-                sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-              >
-                Discover the World of Vedic Astrology:
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-              >
-                We pride ourselves as pioneers in the field of Vedic astrology,
-                with a rich heritage of wisdom and knowledge. Vedic astrology,
-                also known as Jyotish Shastra, is a time-tested and ancient
-                system that delves into the cosmic influences on your life. Our
-                dedicated team of astrologers is well-versed in the art of Vedic
-                astrology and can offer you invaluable insights into your life's
-                journey.
-              </Typography>
-              <Typography
-                variant="h5"
-                component="h1"
-                sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-              >
-                Access Astrological Solutions Worldwide:
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ lineHeight: 1.4, color: "black", fontWeight: 500 }}
-              >
-                No matter where you are in the world, you can benefit from our
-                expertise. We are honored to be recognized as one of the world's
-                top astrology services, and our astrologers are available to
-                serve you regardless of your location. With Om Astro Service,
-                distance is no barrier to receiving the best astrological
-                guidance.
-              </Typography>
-            </Box>
-          </Grid>
+            English
+          </Button>
+          <Button
+            variant={language === "hi" ? "contained" : "outlined"}
+            size="small"
+            onClick={() => setLanguage("hi")}
+            sx={{
+              textTransform: "none",
+              bgcolor: language === "hi" ? "#ff9800" : "transparent",
+              color: language === "hi" ? "#fff" : "#ff9800",
+              borderColor: "#ff9800",
+            }}
+          >
+            हिन्दी
+          </Button>
+        </Box>
+      </Box>
+
+      {/* Hero Section - with transparent content */}
+      <Box
+        sx={{
+          py: { xs: 4, md: 6 },
+          textAlign: "center",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            sx={{
+              color: "#ff9800",
+              fontWeight: 700,
+              mb: 1,
+              textAlign: "center",
+              fontSize: { xs: "1.8rem", md: "2.5rem" },
+              textShadow: "2px 2px 8px rgba(0, 0, 0, 0.7)",
+            }}
+          >
+            {content.title}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#fff",
+              textAlign: "center",
+              mb: 2,
+              fontSize: { xs: "1rem", md: "1.2rem" },
+              textShadow: "1px 1px 4px rgba(0, 0, 0, 0.7)",
+            }}
+          >
+            {content.subtitle}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#ddd",
+              textAlign: "center",
+              lineHeight: 1.7,
+              maxWidth: "900px",
+              mx: "auto",
+              textShadow: "1px 1px 3px rgba(0, 0, 0, 0.7)",
+              fontSize: { xs: "0.95rem", md: "1rem" },
+            }}
+          >
+            {content.intro}
+          </Typography>
         </Container>
       </Box>
 
-      <Container maxWidth="xxl" sx={{ py: { xs: 2, md: 4 } }}>
-        <Box
-          className="about-section-hover" // ✅ CSS hover animation
+      {/* Mission */}
+      <Container maxWidth="lg" sx={{ py: 3, position: "relative", zIndex: 1 }}>
+        <Card
           sx={{
-            borderRadius: 2,
-            p: 1.5,
-            bgcolor: "#FFF",
-            border: "1px solid rgba(255, 152, 0, 0.1)",
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            borderLeft: "5px solid #ff9800",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
           }}
         >
-          <Typography
-            variant="h4"
-            sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-            gutterBottom
-          >
-            Comprehensive Astrological Services at Your Fingertips:
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-            paragraph
-          >
-            At Astro Om Solutions, we understand that every individual is
-            unique. That's why we offer a wide range of services tailored to
-            your specific needs. Our team of top astrologers is skilled in
-            deciphering the intricate details of your birth chart, including
-            your zodiac sign, moon sign, and the positions of planets and
-            modalities. With this information, we can provide you with
-            personalized guidance and expert advice to address various aspects
-            of your life.
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-            gutterBottom
-          >
-            Harness the Power of Planetary Transitions:
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-            paragraph
-          >
-            One of the key benefits of consulting with Astro Om Solutions is
-            gaining insight into the influence of planetary transitions on your
-            life. Our expert astrologers will help you understand how planetary
-            movements impact your experiences. Whether it's navigating
-            challenging times during planetary retrogrades or capitalizing on
-            favourable celestial alignments, our guidance will empower you to
-            make informed decisions and lead a more harmonious life.
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-            gutterBottom
-          >
-            A Solution for Every Concern:
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-          >
-            No matter the nature of your concerns, our team of expert Vedic
-            astrologers is here to assist you. Our comprehensive services cover
-            a wide spectrum of life's challenges, including:
-          </Typography>
-          <Box sx={{ ml: 2, mt: 0.5 }}>
+          <CardContent>
             <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
             >
-              • Numerology
+              {language === "en" ? "Our Mission" : "हमारा मिशन"}
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Face-Reading
+            <Typography variant="body1" sx={{ color: "#333", lineHeight: 1.7 }}>
+              {content.mission}
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Kundali-Milan (Matchmaking)
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Family Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Health Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Education & Career Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Job & Business Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Finance & Investment Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Marriage Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500, mb: 0.5 }}
-            >
-              • Legal Dispute Astrology
-            </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ lineHeight: 1.4, color: "black", fontWeight: 500 }}
-            >
-              • Relationship Astrology
-            </Typography>
-          </Box>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-            paragraph
-          >
-            Count on us for dependable and effective astrology solutions that
-            cater to the specific issues you're facing in your life.
-          </Typography>
-          <Typography
-            variant="h4"
-            sx={{ color: "#ff9800", fontWeight: "medium", mb: 1 }}
-            gutterBottom
-          >
-            Connect with the Best Astrologer in India:
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-            paragraph
-          >
-            When you require assistance in decoding planetary positions and
-            seeking solutions for your life's challenges, don't hesitate to
-            reach out to Astro Om Solutions. Our experienced astrologers in
-            India are committed to providing you with reliable and insightful
-            astrological guidance.
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ lineHeight: 1.4, mb: 1, color: "black", fontWeight: 500 }}
-            paragraph
-          >
-            Take the first step toward a more fulfilling life by contacting the
-            best astrologer in India today. Whether you're seeking answers about
-            your personal relationships, career prospects, financial decisions,
-            or any other aspect of your life, our dedicated team is here to
-            guide you towards a brighter future. Embrace the wisdom of Vedic
-            astrology and unlock the secrets to a more balanced and harmonious
-            life with Astro Om Solutions.
-          </Typography>
-
-          {/* ✅ PERFECT SEO BUTTON */}
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className="contact-btn-about" // ✅ CSS hover
-            sx={{
-              mt: 1,
-              px: 3,
-              py: 0.5,
-              borderRadius: 1,
-              textTransform: "none",
-              fontWeight: "medium",
-              bgcolor: "#ff9800",
-              transition: "all 0.3s ease",
-              "&:hover": {
-                bgcolor: "#e68900",
-                transform: "scale(1.05)",
-                boxShadow: "0 4px 12px rgba(255, 152, 0, 0.3)",
-              },
-            }}
-            href="/contactus"
-          >
-            Contact Us Now
-          </Button>
-        </Box>
+          </CardContent>
+        </Card>
       </Container>
+
+      {/* Main Content Sections */}
+      <Container maxWidth="lg" sx={{ py: 3, position: "relative", zIndex: 1 }}>
+        {/* Section 1 */}
+        <Card
+          sx={{
+            mb: 3,
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
+            >
+              {content.section1Title}
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#333",
+                lineHeight: 1.8,
+                mb: 2,
+              }}
+            >
+              {content.section1Content}
+            </Typography>
+            <Box sx={{ ml: 2 }}>
+              {content.section1List.map((item, idx) => (
+                <Typography
+                  key={idx}
+                  variant="body2"
+                  sx={{
+                    color: "#555",
+                    mb: 0.8,
+                    fontSize: "0.95rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  ✓ {item}
+                </Typography>
+              ))}
+            </Box>
+          </CardContent>
+        </Card>
+
+        {/* Services Grid */}
+        <Box sx={{ mb: 4 }}>
+          <Typography
+            variant="h5"
+            sx={{
+              color: "#ff9800",
+              fontWeight: 600,
+              mb: 2,
+              textShadow: "1px 1px 3px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            {content.section2Title}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#ddd",
+              mb: 2,
+              textShadow: "1px 1px 3px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            {content.section2Intro}
+          </Typography>
+          <Grid container spacing={2}>
+            {[
+              "Education & Foreign Study",
+              "Health & Wellness",
+              "Police Cases & Court Matters",
+              "Finance & Property",
+              "Career & Business",
+              "Marriage & Relationships",
+            ].map((service, idx) => (
+              <Grid item xs={12} sm={6} md={4} key={idx}>
+                <Card
+                  sx={{
+                    height: "100%",
+                    bgcolor: "rgba(255, 255, 255, 0.95)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 152, 0, 0.2)",
+                    transition: "all 0.3s",
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.2)",
+                    "&:hover": {
+                      transform: "translateY(-5px)",
+                      boxShadow: "0 8px 24px rgba(255, 152, 0, 0.3)",
+                    },
+                  }}
+                >
+                  <CardContent>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        color: "#ff9800",
+                        fontWeight: 600,
+                        fontSize: "0.95rem",
+                      }}
+                    >
+                      ✓ {service}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Section 3 */}
+        <Card
+          sx={{
+            mb: 3,
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
+            >
+              {content.section3Title}
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#333", lineHeight: 1.8 }}>
+              {content.section3Content}
+            </Typography>
+          </CardContent>
+        </Card>
+
+        {/* Section 4 */}
+        <Card
+          sx={{
+            mb: 3,
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
+            >
+              {content.section4Title}
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#333", lineHeight: 1.8 }}>
+              {content.section4Content}
+            </Typography>
+          </CardContent>
+        </Card>
+
+        {/* Section 5 */}
+        <Card
+          sx={{
+            mb: 3,
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
+            >
+              {content.section5Title}
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#333", lineHeight: 1.8 }}>
+              {content.section5Content}
+            </Typography>
+          </CardContent>
+        </Card>
+
+        {/* Section 6 */}
+        <Card
+          sx={{
+            mb: 4,
+            bgcolor: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{ color: "#ff9800", fontWeight: 600, mb: 2 }}
+            >
+              {content.section6Title}
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#333", lineHeight: 1.8 }}>
+              {content.section6Content}
+            </Typography>
+          </CardContent>
+        </Card>
+
+        {/* CTA Section */}
+        <Card
+          sx={{
+            background:
+              "linear-gradient(135deg, rgba(255, 152, 0, 0.9) 0%, rgba(242, 140, 56, 0.9) 100%)",
+            backdropFilter: "blur(10px)",
+            py: 4,
+            textAlign: "center",
+            boxShadow: "0 8px 32px rgba(255, 152, 0, 0.3)",
+          }}
+        >
+          <CardContent>
+            <Typography
+              variant="h5"
+              sx={{
+                color: "#fff",
+                fontWeight: 600,
+                mb: 3,
+                fontSize: { xs: "1.2rem", md: "1.4rem" },
+                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              {content.cta}
+            </Typography>
+
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                href="/contactus"
+                sx={{
+                  fontWeight: 600,
+                  px: { xs: 2, md: 4 },
+                  bgcolor: "#fff",
+                  color: "#ff9800",
+                  textTransform: "none",
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    bgcolor: "#f0f0f0",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                {language === "en" ? "Contact Us" : "हमसे संपर्क करें"}
+              </Button>
+
+              <Button
+                variant="contained"
+                size="large"
+                startIcon={<WhatsAppIcon />}
+                onClick={handleWhatsApp}
+                sx={{
+                  fontWeight: 600,
+                  px: { xs: 2, md: 4 },
+                  bgcolor: "#25D366",
+                  color: "#fff",
+                  textTransform: "none",
+                  fontSize: { xs: "0.9rem", md: "1rem" },
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+                  "&:hover": {
+                    bgcolor: "#1ebe5a",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                {language === "en" ? "WhatsApp Now" : "व्हाट्सऐप करें"}
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
+      </Container>
+
+      {/* Extra spacing at bottom */}
+      <Box sx={{ py: 3 }} />
     </Box>
   );
 };

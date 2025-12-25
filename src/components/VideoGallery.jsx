@@ -35,7 +35,7 @@ const VideoGallery = memo(() => {
 
   // Set document title and log video paths
   useEffect(() => {
-    document.title = "Video Gallery | Astro Om Solutions";
+    document.title = "Video Gallery | Om Astro Solutions";
     videos.forEach((video, index) => {});
   }, []);
 
