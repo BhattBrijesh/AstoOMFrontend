@@ -11,7 +11,7 @@ import "../components/css/Home.css";
 
 const Home = () => {
   useEffect(() => {
-    document.title = "Astro Om Solutions";
+    document.title = "Om Astro Solutions";
   }, []);
 
   return (
