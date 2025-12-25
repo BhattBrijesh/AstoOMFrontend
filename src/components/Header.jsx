@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useMemo } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   AppBar,
@@ -23,7 +23,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { styled, useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../components/Admin/Redux/Store";
 
@@ -107,6 +106,7 @@ const StyledMenu = styled(Menu)(({ theme }) => ({
   },
 }));
 
+// NOTE: services submenu now uses titleKey instead of direct route
 const baseMenuItems = [
   { label: "Home", to: "/" },
   {
@@ -116,18 +116,12 @@ const baseMenuItems = [
   {
     label: "Services",
     submenu: [
-      { label: "Love Problem Solution", to: "/love-problem-solution" },
-      { label: "Marriage Problem Solution", to: "/marriage-problem-solution" },
-      {
-        label: "Love Marriage Problem Solution",
-        to: "/love-marriage-problem-solution",
-      },
-      { label: "Family Problem Solution", to: "/family-problem-solution" },
-      {
-        label: "Husband Wife Dispute Solution",
-        to: "/husband-wife-dispute-solution",
-      },
-      { label: "Horoscope Reading", to: "/horoscope-reading" },
+      { label: "Education & Foreign Study", key: "education" },
+      { label: "Health & Wellness", key: "health" },
+      { label: "Police & Court Remedies", key: "legal" },
+      { label: "Finance & Property", key: "finance" },
+      { label: "Career & Business", key: "career" },
+      { label: "Marriage & Matchmaking", key: "marriage" },
     ],
   },
   {
@@ -148,6 +142,7 @@ const Header = React.memo(() => {
   const isAuthenticated = useSelector(
     (state) => state.auth.status === "active"
   );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState({
     about: null,
@@ -157,6 +152,7 @@ const Header = React.memo(() => {
   const [accountAnchorEl, setAccountAnchorEl] = useState(null);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const closeTimeoutRef = useRef(null);
+
   const menuItems = useMemo(() => {
     if (isAuthenticated) {
       return [...baseMenuItems, { label: "Dashboard", to: "/dashboard" }];
@@ -220,16 +216,23 @@ const Header = React.memo(() => {
       "@context": "https://schema.org",
       "@type": "SiteNavigationElement",
       name: menuItems.map((item) => item.label),
-      url: menuItems.map((item) => `${window.location.origin}${item.to}`),
+      url: menuItems.map((item) =>
+        item.to ? `${window.location.origin}${item.to}` : window.location.origin
+      ),
     }),
     [menuItems]
   );
+
+  // helper to go to ServiceDetail with key
+  const goToServiceDetail = (key) => {
+    navigate("/service-detail", { state: { key } });
+  };
 
   const drawerList = useMemo(
     () => (
       <Box>
         <DrawerHeader>
-          <Box sx={{ background: "transparent" }}></Box>
+          <Box sx={{ background: "transparent" }} />
           <IconButton onClick={toggleDrawer(false)} aria-label="Close menu">
             <CloseIcon />
           </IconButton>
@@ -243,7 +246,10 @@ const Header = React.memo(() => {
                     <StyledListItem
                       button
                       onClick={() => toggleSubmenu(item.label)}
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
                     >
                       <ListItemText
                         primary={item.label}
@@ -258,25 +264,51 @@ const Header = React.memo(() => {
                         <ExpandMoreIcon />
                       )}
                     </StyledListItem>
+
                     {openSubmenu === item.label && (
                       <Box sx={{ paddingLeft: 2 }}>
-                        {item.submenu.map((subItem, subIndex) => (
-                          <StyledListItem
-                            key={subIndex}
-                            button
-                            component={RouterLink}
-                            to={subItem.to}
-                            onClick={toggleDrawer(false)}
-                          >
-                            <ListItemText
-                              primary={subItem.label}
-                              primaryTypographyProps={{
-                                fontSize: "0.8125rem",
-                                color: theme.palette.text.secondary,
-                              }}
-                            />
-                          </StyledListItem>
-                        ))}
+                        {item.submenu.map((subItem, subIndex) => {
+                          // Services submenu: use key → ServiceDetail
+                          if (item.label === "Services" && subItem.key) {
+                            return (
+                              <StyledListItem
+                                key={subIndex}
+                                button
+                                onClick={() => {
+                                  toggleDrawer(false)();
+                                  goToServiceDetail(subItem.key);
+                                }}
+                              >
+                                <ListItemText
+                                  primary={subItem.label}
+                                  primaryTypographyProps={{
+                                    fontSize: "0.8125rem",
+                                    color: theme.palette.text.secondary,
+                                  }}
+                                />
+                              </StyledListItem>
+                            );
+                          }
+
+                          // Normal submenu item with direct route
+                          return (
+                            <StyledListItem
+                              key={subIndex}
+                              button
+                              component={RouterLink}
+                              to={subItem.to}
+                              onClick={toggleDrawer(false)}
+                            >
+                              <ListItemText
+                                primary={subItem.label}
+                                primaryTypographyProps={{
+                                  fontSize: "0.8125rem",
+                                  color: theme.palette.text.secondary,
+                                }}
+                              />
+                            </StyledListItem>
+                          );
+                        })}
                       </Box>
                     )}
                   </>
@@ -360,8 +392,8 @@ const Header = React.memo(() => {
 
       <Container maxWidth="xl" sx={{ background: "transparent" }}>
         <StyledToolbar>
-          {/* Logo/Brand */}
-          <Box sx={{ background: "transparent" }}></Box>
+          {/* Logo/Brand placeholder */}
+          <Box sx={{ background: "transparent" }} />
 
           {/* Desktop Navigation */}
           <Box
@@ -396,16 +428,34 @@ const Header = React.memo(() => {
                       onMouseEnter={() => clearTimeout(closeTimeoutRef.current)}
                       onMouseLeave={handleMenuClose}
                     >
-                      {item.submenu.map((subItem, subIndex) => (
-                        <StyledMenuItem
-                          key={subIndex}
-                          onClick={handleMenuClose}
-                          component={RouterLink}
-                          to={subItem.to}
-                        >
-                          {subItem.label}
-                        </StyledMenuItem>
-                      ))}
+                      {item.submenu.map((subItem, subIndex) => {
+                        // Desktop Services submenu → ServiceDetail
+                        if (item.label === "Services" && subItem.key) {
+                          return (
+                            <StyledMenuItem
+                              key={subIndex}
+                              onClick={() => {
+                                handleMenuClose();
+                                goToServiceDetail(subItem.key);
+                              }}
+                            >
+                              {subItem.label}
+                            </StyledMenuItem>
+                          );
+                        }
+
+                        // Other submenu items with direct route
+                        return (
+                          <StyledMenuItem
+                            key={subIndex}
+                            onClick={handleMenuClose}
+                            component={RouterLink}
+                            to={subItem.to}
+                          >
+                            {subItem.label}
+                          </StyledMenuItem>
+                        );
+                      })}
                     </StyledMenu>
                   </>
                 ) : (
@@ -426,6 +476,7 @@ const Header = React.memo(() => {
             <IconButtonStyled aria-label="Search">
               <SearchIcon fontSize="small" />
             </IconButtonStyled>
+
             <IconButtonStyled
               aria-label="Account"
               onClick={handleAccountMenuOpen}
@@ -435,6 +486,7 @@ const Header = React.memo(() => {
             >
               <PersonIcon fontSize="small" />
             </IconButtonStyled>
+
             <Menu
               id="account-menu"
               anchorEl={accountAnchorEl}
@@ -470,6 +522,7 @@ const Header = React.memo(() => {
                 </MenuItem>
               )}
             </Menu>
+
             <IconButtonStyled
               sx={{ display: { lg: "none" }, marginLeft: 0.25 }}
               onClick={toggleDrawer(true)}
@@ -494,8 +547,6 @@ const Header = React.memo(() => {
   );
 });
 
-Header.propTypes = {
-  // No props currently, but added for future extensibility
-};
+Header.propTypes = {};
 
 export default Header;

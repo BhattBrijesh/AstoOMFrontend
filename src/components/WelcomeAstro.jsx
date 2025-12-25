@@ -8,31 +8,24 @@ import {
   Button,
   Grid,
   Collapse,
-  Switch,
-  FormControlLabel,
 } from "@mui/material";
-import img1 from "../assets/images/banner4.jpeg";
-
 import PhoneIcon from "@mui/icons-material/Phone";
+import img1 from "../assets/images/banner4.jpeg";
 import "../components/css/Home.css";
 
 const WelcomeAstro = () => {
   const [expanded, setExpanded] = useState(false);
-  const [isEnglish, setIsEnglish] = useState(false);
+  const [language, setLanguage] = useState("en"); // 'hi' | 'en'
 
   const handleToggle = () => {
     setExpanded(!expanded);
   };
 
-  const handleLanguageToggle = () => {
-    setIsEnglish(!isEnglish);
-  };
-
   const hindiIntro = `
-    <span style={{ color: "#ff9800" }}>
+    <span style="color:#ff9800;">
       नमस्ते और स्वागत है पंडित ओम प्रकाश
     </span>
-    , की आधिकारिक वेबसाइट पर!भारत के शीर्ष ज्योतिषियों में से एक,
+    , की आधिकारिक वेबसाइट पर! भारत के शीर्ष ज्योतिषियों में से एक,
     पंडित ओम प्रकाश, जिनके पास 20 वर्षों से अधिक का अनुभव है,
     वैदिक ज्योतिष के क्षेत्र में अपनी विशेषज्ञता के लिए प्रसिद्ध
     हैं। उत्तराखंड के पवित्र गंगोत्री से ताल्लुक रखने वाले और
@@ -43,26 +36,26 @@ const WelcomeAstro = () => {
   `;
 
   const hindiExpanded = `
-    वह न केवल एक प्रख्यात ज्योतिषी हैं, बल्कि चंडीगढ़ के सेक्टर
-    37 में देवालया परिषद संगठन के महा सचिव के रूप में भी कार्यरत
+    वे न केवल एक प्रख्यात ज्योतिषी हैं, बल्कि चंडीगढ़ के सेक्टर
+    37 में <span style="color:#ffeb3b; font-weight:600;">श्री देवालया परिषद संगठन</span> के महा सचिव के रूप में भी कार्यरत
     हैं। इसके अतिरिक्त, वह चंडीगढ़ के विभिन्न मंदिर समितियों के
     साथ मिलकर सामाजिक और आध्यात्मिक कार्यों में योगदान दे रहे
     हैं। उनकी सेवाएँ प्रेम, विवाह, दांपत्य जीवन, पारिवारिक
-    समस्याओं, और दैनिक जीवन की चुनौतियों के समाधान के लिए जानी
+    समस्याओं और दैनिक जीवन की चुनौतियों के समाधान के लिए जानी
     जाती हैं, जो अत्यंत सटीक और विश्वसनीय हैं।
     
     वर्तमान में, पंडित ओम प्रकाश चंडीगढ़ के सेक्टर 11 और सेक्टर
     43 में दो कार्यालयों के माध्यम से अपनी सेवाएँ प्रदान कर रहे
     हैं। उनकी वैदिक ज्योतिष पर गहरी पकड़ और आध्यात्मिक दृष्टिकोण
     ने उन्हें देश-विदेश में विश्वास और सम्मान दिलाया है। लोग
-    दूर-दूर से, विभिन्न शहरों, राज्यों, और यहाँ तक कि देशों से,
+    दूर-दूर से, विभिन्न शहरों, राज्यों और देशों से
     उनके मार्गदर्शन के लिए आते हैं।
     
-    <span style={{ color: "#ff9800" }}>पंडित ओम प्रकाश </span> 
+    <span style="color:#ff9800;">पंडित ओम प्रकाश</span>
     का उद्देश्य आपके जीवन को ग्रहों की शक्ति और वैदिक ज्योतिष के
     प्राचीन ज्ञान के माध्यम से सकारात्मक दिशा प्रदान करना है।
     चाहे आप प्रेम संबंधी समस्याओं, वैवाहिक मुद्दों, पारिवारिक
-    विवादों, या भविष्य के बारे में जानना चाहते हों, हमारी सेवाएँ
+    विवादों या भविष्य के बारे में जानना चाहते हों, हमारी सेवाएँ
     आपके लिए एक उज्ज्वल और सुखमय भविष्य सुनिश्चित करने के लिए
     समर्पित हैं।
     
@@ -72,37 +65,41 @@ const WelcomeAstro = () => {
   `;
 
   const englishIntro = `
-    <span style={{ color: "#ff9800" }}>
+    <span style="color:#ff9800;">
       Greetings and welcome to the official website of Pandit Om Prakash!
     </span>
     One of India's top astrologers, Pandit Om Prakash, with over 20 years of experience,
     is renowned for his expertise in Vedic astrology. Hailing from the sacred Gangotri in Uttarakhand
-    and educated in Haridwar, Rishikesh, and Sampurnanand Sanskrit University (SSVV), Varanasi,
+    and educated in Haridwar, Rishikesh and Sampurnanand Sanskrit University (SSVV), Varanasi,
     Pandit Om Prakash has illuminated the lives of millions through astrology and spiritual guidance.
   `;
 
   const englishExpanded = `
-    He is not only a renowned astrologer but also serves as the General Secretary of the Devalaya Parishad Organization in Sector 37, Chandigarh.
+    He is not only a renowned astrologer but also serves as the General Secretary of
+    <span style="color:#ffeb3b; font-weight:600;">Shree Dewalaya Parishad Organization</span> in Sector 37, Chandigarh.
     Additionally, he contributes to social and spiritual activities in collaboration with various temple committees in Chandigarh.
-    His services are known for providing solutions to issues related to love, marriage, marital life, family problems, and daily life challenges,
+    His services are known for providing solutions to issues related to love, marriage, marital life, family problems and daily life challenges,
     which are extremely accurate and reliable.
     
     Currently, Pandit Om Prakash provides his services through two offices in Sector 11 and Sector 43, Chandigarh.
     His deep grasp of Vedic astrology and spiritual perspective has earned him trust and respect both nationally and internationally.
-    People come from far and wide, from different cities, states, and even countries, seeking his guidance.
+    People come from far and wide, from different cities, states and even countries, seeking his guidance.
     
-    <span style={{ color: "#ff9800" }}>Pandit Om Prakash's</span> 
+    <span style="color:#ff9800;">Pandit Om Prakash's</span>
     objective is to provide positive direction to your life through the power of planets and the ancient knowledge of Vedic astrology.
-    Whether you want to know about love-related problems, marital issues, family disputes, or your future,
+    Whether you want to know about love-related problems, marital issues, family disputes or your future,
     our services are dedicated to ensuring a bright and happy future for you.
     
     Contact us today and get solutions to the challenges in your life. Give a new direction to your future with this experienced expert in Vedic astrology!
   `;
 
+  const introHtml = language === "en" ? englishIntro : hindiIntro;
+  const expandedHtml = language === "en" ? englishExpanded : hindiExpanded;
+
   return (
     <Box sx={{ background: "#1a2a4487", marginTop: "-20px" }}>
       <Box>
-        {/* New Welcome Title */}
+        {/* Title */}
         <Box
           sx={{
             textAlign: "center",
@@ -131,6 +128,7 @@ const WelcomeAstro = () => {
             padding: "0",
           }}
         >
+          {/* Left: Card */}
           <div
             className="services-grid-v2 animate-fade-in"
             style={{
@@ -147,6 +145,7 @@ const WelcomeAstro = () => {
                 maxWidth: "100%",
                 display: "flex",
                 justifyContent: "center",
+                mb: { xs: 2, md: 0 }, // extra space under card on mobile
               }}
             >
               <div
@@ -224,7 +223,7 @@ const WelcomeAstro = () => {
             </Grid>
           </div>
 
-          {/* Right Side - Collapsible Text */}
+          {/* Right: Text with language buttons */}
           <Grid
             item
             sx={{
@@ -232,6 +231,7 @@ const WelcomeAstro = () => {
               padding: { xs: "0 5px", md: "10px 0" },
               display: "flex",
               justifyContent: "center",
+              mt: { xs: 2, md: 0 }, // space above buttons on mobile
             }}
           >
             <Box
@@ -242,41 +242,46 @@ const WelcomeAstro = () => {
                 maxWidth: "500px",
               }}
             >
-              {/* Language Switch */}
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={isEnglish}
-                    onChange={handleLanguageToggle}
-                    color="primary"
-                  />
-                }
-                label={isEnglish ? "English" : "Hindi"}
-                labelPlacement="start"
-                sx={{ mb: 2, color: "#FFF" }}
-              />
+              {/* Language buttons */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 1,
+                  mb: 2,
+                }}
+              >
+                <Button
+                  variant={language === "hi" ? "contained" : "outlined"}
+                  size="small"
+                  onClick={() => setLanguage("hi")}
+                  sx={{ textTransform: "none" }}
+                >
+                  हिन्दी
+                </Button>
+                <Button
+                  variant={language === "en" ? "contained" : "outlined"}
+                  size="small"
+                  onClick={() => setLanguage("en")}
+                  sx={{ textTransform: "none" }}
+                >
+                  English
+                </Button>
+              </Box>
 
-              {/* Always Visible Short Intro */}
+              {/* Intro */}
               <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: isEnglish ? englishIntro : hindiIntro,
-                  }}
-                />
+                <span dangerouslySetInnerHTML={{ __html: introHtml }} />
               </Typography>
 
-              {/* Collapsible Remaining Content */}
+              {/* Expanded part */}
               <Collapse in={expanded} collapsedSize={0}>
                 <Typography variant="body1" paragraph sx={{ color: "#FFF" }}>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: isEnglish ? englishExpanded : hindiExpanded,
-                    }}
-                  />
+                  <span dangerouslySetInnerHTML={{ __html: expandedHtml }} />
                 </Typography>
               </Collapse>
 
-              {/* Show More / Show Less Button */}
+              {/* Show more / less */}
               <Button
                 variant="outlined"
                 color="success"
@@ -286,7 +291,7 @@ const WelcomeAstro = () => {
                 {expanded ? "Show Less" : "Show More"}
               </Button>
 
-              {/* Existing Buttons */}
+              {/* Bottom buttons */}
               <Box sx={{ mt: 2 }}>
                 <Button
                   variant="contained"
