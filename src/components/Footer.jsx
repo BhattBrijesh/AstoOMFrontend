@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
   Container,
@@ -17,6 +17,8 @@ import Whatsapp from "../assets/images/animation/icons8-whatsapp.gif";
 import Contact from "../assets/images/animation/icons8-contact-us.gif";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -48,9 +50,23 @@ const Footer = () => {
     },
   };
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Map Footer “Our Services” to ServiceDetail titleKey values
+  const footerServices = [
+    { label: "Education & Foreign Study", key: "education" },
+    { label: "Health & Wellness", key: "health" },
+    { label: "Police & Court Remedies", key: "legal" },
+    { label: "Finance & Property", key: "finance" },
+    { label: "Career & Business", key: "career" },
+    { label: "Marriage & Matchmaking", key: "marriage" },
+  ];
+
+  const handleServiceClick = (key) => {
+    scrollToTop();
+    navigate("/service-detail", { state: { key } });
   };
 
   return (
@@ -105,6 +121,7 @@ const Footer = () => {
                 </Avatar>
               </IconButton>
             </motion.div>
+
             <motion.div variants={cardVariants} whileHover="hover">
               <IconButton
                 href="https://www.instagram.com"
@@ -133,6 +150,7 @@ const Footer = () => {
                 </Avatar>
               </IconButton>
             </motion.div>
+
             <motion.div variants={cardVariants} whileHover="hover">
               <IconButton
                 href="https://api.whatsapp.com/send?phone=919417339708&text=I'd%20like%20to%20know%20more%20about%20your%20services.%20Please%20contact%20me"
@@ -161,6 +179,7 @@ const Footer = () => {
                 </Avatar>
               </IconButton>
             </motion.div>
+
             <motion.div variants={cardVariants} whileHover="hover">
               <IconButton
                 href="tel:+919417339708"
@@ -227,12 +246,12 @@ const Footer = () => {
                 <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
                   <Link
                     to={link.to}
-                    onClick={scrollToTop} // Add scrollToTop handler
+                    onClick={scrollToTop}
                     style={{
                       textDecoration: "none",
                       color: "#ffffff",
                       position: "relative",
-                      fontSize: { xs: "0.9rem", sm: "1rem" },
+                      fontSize: "0.95rem",
                     }}
                     className="hover:text-yellow-300"
                   >
@@ -255,7 +274,7 @@ const Footer = () => {
             </List>
           </Grid>
 
-          {/* Our Services */}
+          {/* Our Services -> navigate to ServiceDetail with state.key */}
           <Grid item xs={12} sm={4}>
             <Typography
               variant="h6"
@@ -268,39 +287,25 @@ const Footer = () => {
               Our Services
             </Typography>
             <List>
-              {[
-                { to: "/love-problem-solution", text: "Love Problem Solution" },
-                {
-                  to: "/marriage-problem-solution",
-                  text: "Marriage Problem Solution",
-                },
-                {
-                  to: "/love-marriage-problem-solution",
-                  text: "Love Marriage Problem Solution",
-                },
-                {
-                  to: "/family-problem-solution",
-                  text: "Family Problem Solution",
-                },
-                {
-                  to: "/husband-wife-dispute-solution",
-                  text: "Husband Wife Dispute Solution",
-                },
-                { to: "/horoscope-reading", text: "Horoscope Reading" },
-              ].map((link) => (
-                <ListItem key={link.to} disablePadding sx={{ mb: 0.5 }}>
-                  <Link
-                    to={link.to}
-                    onClick={scrollToTop} // Add scrollToTop handler
+              {footerServices.map((item) => (
+                <ListItem key={item.key} disablePadding sx={{ mb: 0.5 }}>
+                  <button
+                    type="button"
+                    onClick={() => handleServiceClick(item.key)}
                     style={{
-                      textDecoration: "none",
+                      textAlign: "left",
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      margin: 0,
+                      cursor: "pointer",
                       color: "#ffffff",
                       position: "relative",
-                      fontSize: { xs: "0.9rem", sm: "1rem" },
+                      fontSize: "0.95rem",
                     }}
                     className="hover:text-yellow-300"
                   >
-                    {link.text}
+                    {item.label}
                     <span
                       style={{
                         content: '""',
@@ -313,7 +318,7 @@ const Footer = () => {
                         transition: "width 0.3s ease-in-out",
                       }}
                     />
-                  </Link>
+                  </button>
                 </ListItem>
               ))}
             </List>

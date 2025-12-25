@@ -8,6 +8,7 @@ import maritalIssuesVideo from "../assets/images/services/maritalIssuesVideo.mp4
 import delayInMarriageVideo from "../assets/images/services/delay in marriage.mp4";
 import divorceVideo from "../assets/images/services/diveroce.mp4";
 import "../components/css/Home.css";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -190,6 +191,25 @@ const ServicesCardComponent = () => {
 
                 {/* ✅ CSS HOVER BUTTON */}
                 <div className="whatsapp-button-container">
+                  <Button
+                    variant="contained"
+                    // className="whatsapp-btn"
+                    color="warning"
+                    component={Link}
+                    to="/contactus"
+                    sx={{
+                      width: "100%",
+                      backgroundColor: "#e67c22",
+                      transition: "all 0.3s ease",
+                      marginBottom: "10px",
+                      "&:hover": {
+                        transform: "translateX(8px)",
+                        backgroundColor: "#e67c22",
+                      },
+                    }}
+                  >
+                    Contact Us
+                  </Button>
                   <Button
                     variant="contained"
                     color="primary"
