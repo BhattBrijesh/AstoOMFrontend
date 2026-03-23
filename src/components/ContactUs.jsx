@@ -166,7 +166,7 @@ const Contact = () => {
           "Thank you for reaching out! We've received your message and will connect with you shortly.",
           {
             duration: 5000,
-          }
+          },
         );
         setFormStatus("Message sent successfully!");
         setTimeout(() => {
@@ -208,11 +208,11 @@ const Contact = () => {
         title: "Email",
         content: (
           <a
-            href="mailto:astroomsolution@gmail.com"
+            href="mailto:om.astro28@gmail.com"
             className="hover:text-blue-500 transition-colors duration-200"
-            aria-label="Email astroomsolution@gmail.com"
+            aria-label="Email om.astro28@gmail.com"
           >
-            astroomsolution@gmail.com
+            om.astro28@gmail.com
           </a>
         ),
       },
@@ -223,7 +223,7 @@ const Contact = () => {
         content: "House number 20, Sector 11, Chandigarh",
       },
     ],
-    []
+    [],
   );
 
   const structuredData = {
@@ -234,7 +234,7 @@ const Contact = () => {
         "@type": "ContactPoint",
         telephone: "+919417339708",
         contactType: "Customer Service",
-        email: "astroomsolution@gmail.com",
+        email: "om.astro28@gmail.com",
         address: {
           "@type": "PostalAddress",
           streetAddress: "House number 20, Sector 11",

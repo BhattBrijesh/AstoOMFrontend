@@ -339,13 +339,13 @@ const Footer = () => {
             <List>
               {[
                 {
-                  href: "mailto:astroomsolution@gmail.com",
+                  href: "mailto:om.astro28@gmail.com",
                   text: "House Number 20 Sector 11 Chandigarh",
                   icon: "🏠",
                 },
                 {
-                  href: "mailto:astroomsolution@gmail.com",
-                  text: "astroomsolution@gmail.com",
+                  href: "mailto:om.astro28@gmail.com",
+                  text: "om.astro28@gmail.com",
                   icon: "📧",
                 },
                 {
