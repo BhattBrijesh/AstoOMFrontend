@@ -225,7 +225,7 @@ const ZodiacDetail = () => {
                     paragraph
                     sx={{ lineHeight: 1.6 }}
                   >
-                    {horoscopeData.data.horoscope_data}
+                    {horoscopeData?.data?.horoscope}
                   </Typography>
                   <Typography
                     variant="caption"
