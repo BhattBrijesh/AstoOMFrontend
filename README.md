@@ -2,6 +2,9 @@
 
 A modern and scalable frontend web application built with **React 19** and **Vite** for an astrology services platform. This project is designed to showcase astrologer profiles, services, and provide users with a smooth browsing experience through a responsive and fast interface.
 
+🚀 Live Demo
+https://www.omastrosolutions.com/
+
 ## 🚀 Features
 
 * Built with React 19
